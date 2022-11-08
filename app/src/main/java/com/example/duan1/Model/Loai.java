@@ -1,10 +1,10 @@
 package com.example.duan1.Model;
 
 public class Loai {
-    Integer maLoai;
-    String tenLoai;
-    String trangThai;
-    Integer soTK;
+    private Integer maLoai;
+    private String tenLoai;
+    private String trangThai;
+    private Integer soTK;
 
     public Loai() {
     }

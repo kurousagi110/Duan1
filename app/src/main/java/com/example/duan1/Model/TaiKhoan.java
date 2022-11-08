@@ -1,9 +1,9 @@
 package com.example.duan1.Model;
 
 public class TaiKhoan {
-    Integer soTK;
-    String taiKhoan;
-    String matKhau;
+    private Integer soTK;
+    private String taiKhoan;
+    private String matKhau;
 
     public TaiKhoan() {
     }

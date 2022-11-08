@@ -1,16 +1,18 @@
 package com.example.duan1.Model;
 
 public class KhoanThuChi {
-    Integer maKhoan;
-    Integer tenKhoan;
-    String ngay;
-    Integer maLoai;
+    private Integer maKhoan;
+    private Integer tien;
+    private String tenKhoan;
+    private String ngay;
+    private Integer maLoai;
 
     public KhoanThuChi() {
     }
 
-    public KhoanThuChi(Integer maKhoan, Integer tenKhoan, String ngay, Integer maLoai) {
+    public KhoanThuChi(Integer maKhoan, Integer tien, String tenKhoan, String ngay, Integer maLoai) {
         this.maKhoan = maKhoan;
+        this.tien = tien;
         this.tenKhoan = tenKhoan;
         this.ngay = ngay;
         this.maLoai = maLoai;
@@ -24,11 +26,19 @@ public class KhoanThuChi {
         this.maKhoan = maKhoan;
     }
 
-    public Integer getTenKhoan() {
+    public Integer getTien() {
+        return tien;
+    }
+
+    public void setTien(Integer tien) {
+        this.tien = tien;
+    }
+
+    public String getTenKhoan() {
         return tenKhoan;
     }
 
-    public void setTenKhoan(Integer tenKhoan) {
+    public void setTenKhoan(String tenKhoan) {
         this.tenKhoan = tenKhoan;
     }
 

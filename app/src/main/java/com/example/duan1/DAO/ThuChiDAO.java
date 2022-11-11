@@ -18,17 +18,19 @@ public class ThuChiDAO {
         dataHelper = new DataHelper(context);
     }
 
+
     // get danh sách loại thu/chi
 
-    public ArrayList<Loai> getDsLoaiThuChi(String loai) {
+    public ArrayList<Loai> getDsLoaiThuChi(String loai,Integer id) {
         ArrayList<Loai> list = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = dataHelper.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM LOAI", null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
+                Integer maTK = cursor.getInt(3);
                 String trangthai = cursor.getString(2);
-                if (trangthai.equals(loai)) {
+                if (trangthai.equals(loai)&&maTK.equals(id)) {
                     list.add(new Loai(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3)));
                 }
             } while (cursor.moveToNext());
@@ -68,10 +70,10 @@ public class ThuChiDAO {
         return true;
     }
     //lay danh sach khoan thu chi
-    public ArrayList<KhoanThuChi> getDSKhoanThuChi(String loai){
+    public ArrayList<KhoanThuChi> getDSKhoanThuChi(String loai, int soTK){
         ArrayList<KhoanThuChi> list = new ArrayList<>();
         SQLiteDatabase database = dataHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT k.maKhoan, k.tien, l.tenLoai, l.ngay, k.maLoai FROM LOAI l, KHOANTHUCHI k WHERE l.maLoai = k.maLoai AND l.trangthai = ? ", new String[]{loai});
+        Cursor cursor = database.rawQuery("SELECT k.maKhoan, k.tien, l.tenLoai, k.ngay, k.maLoai FROM LOAI l, KHOANTHUCHI k WHERE l.maLoai = k.maLoai AND l.trangthai = ? and l.soTK =?", new String[]{loai, String.valueOf(soTK)});
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
             do{

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@mipmap/nen_lienhe"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="381dp"
+        android:layout_height="174dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/botton_bo_goc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/lien_he" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="336dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/botton_bo_goc"
+        android:text="Hotline: 09090900900909090090"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.426"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="320dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/botton_bo_goc"
+        android:text="FB: Tai KoBe(Link)"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.406"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="320dp"
+        android:layout_height="79dp"
+        android:layout_marginTop="144dp"
+        android:background="@drawable/botton_bo_goc"
+        android:text="WED ( Link )"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.406"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="325dp"
+        android:layout_height="83dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/botton_bo_goc"
+        android:text="Gmail.sjafjhshajc@fafaadsfafaad"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.372"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="44dp"
+        android:onClick="onCLick"
+        android:src="@drawable/ic_add"
+        app:layout_anchorGravity="bottom|end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

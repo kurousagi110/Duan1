@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.duan1.R;
+
 public class Activity_Chao extends AppCompatActivity {
 
     @Override

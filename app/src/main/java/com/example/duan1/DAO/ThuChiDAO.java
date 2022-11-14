@@ -44,6 +44,7 @@ public class ThuChiDAO {
         ContentValues contentValues = new ContentValues();
         contentValues.put("tenloai", loai.getTenLoai());
         contentValues.put("trangthai", loai.getTrangThai());
+        contentValues.put("soTK", loai.getSoTK());
         long check = sqLiteDatabase.insert("LOAI", null, contentValues);
         if (check == -1)
             return false;

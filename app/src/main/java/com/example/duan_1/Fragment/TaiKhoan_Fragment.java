@@ -8,7 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.duan_1.R;
+import com.example.duan1.R;
+
 
 public class TaiKhoan_Fragment extends Fragment {
 

@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.duan1.R;
+
 public class Login_Activity extends AppCompatActivity {
     IntentFilter intentFilter;
 

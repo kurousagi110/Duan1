@@ -3,7 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Ki 4/du an 1/team7/Duan1/app/src/main/res/layout/activity_main.xml" value="0.67" />
+        <entry key="..\:/DUANMOT/Duan1/app/src/main/res/layout/activity_main.xml" value="0.11302083333333333" />
+        <entry key="..\:/DuAnMot/Duan1/app/src/main/res/layout/activity_chao.xml" value="0.25416666666666665" />
+        <entry key="..\:/DuAnMot/Duan1/app/src/main/res/layout/activity_dangky.xml" value="0.25416666666666665" />
+        <entry key="..\:/DuAnMot/Duan1/app/src/main/res/layout/activity_dangnhap.xml" value="0.25416666666666665" />
+        <entry key="..\:/DuAnMot/Duan1/app/src/main/res/layout/activity_main.xml" value="0.21666666666666667" />
+        <entry key="..\:/DuAnMot/Duan1/app/src/main/res/layout/chi_tiet_kham_pha.xml" value="0.25416666666666665" />
+        <entry key="..\:/DuAnMot/Duan1/app/src/main/res/layout/chi_tiet_lien_he.xml" value="0.25416666666666665" />
+        <entry key="..\:/DuAnMot/Duan1/app/src/main/res/layout/chi_tiet_trang_chu.xml" value="0.25416666666666665" />
+        <entry key="..\:/DuAnMot/Duan1/app/src/main/res/layout/fragment_trang_chu_.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

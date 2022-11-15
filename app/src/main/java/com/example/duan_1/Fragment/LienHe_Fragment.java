@@ -8,18 +8,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.duan_1.R;
-
-public class NapTien_Fragment extends Fragment {
+import com.example.duan1.R;
 
 
-    public NapTien_Fragment() {
-        // Required empty public constructor
+public class LienHe_Fragment extends Fragment {
+    public LienHe_Fragment(){
+
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_nap_tien_, container, false);
+        return inflater.inflate(R.layout.fragment_lien_he_, container, false);
     }
 }

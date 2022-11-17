@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.duan1.Adapter.ViewPager2AdapterThongKe;
+import com.example.duan1.Adapter.ZoomOutPageTransformer;
 import com.example.duan1.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -34,10 +35,12 @@ public class ThongKe_Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         TabLayout tabLayout = view.findViewById(R.id.tablayoutThongKe);
         ViewPager2 viewPager = view.findViewById(R.id.viewpager2ThongKe);
         ViewPager2AdapterThongKe adapter = new ViewPager2AdapterThongKe(getActivity());
         viewPager.setAdapter(adapter);
+        viewPager.setPageTransformer(new ZoomOutPageTransformer());
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             switch (position){
                 case 0:

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.duan1.Adapter.ViewPagerAdapter;
+import com.example.duan1.Adapter.ZoomOutPageTransformer;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
        ViewPagerAdapter adapter = new ViewPagerAdapter(this);
         viewPager.setAdapter(adapter);
+        viewPager.setPageTransformer(new ZoomOutPageTransformer());
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
         });
 

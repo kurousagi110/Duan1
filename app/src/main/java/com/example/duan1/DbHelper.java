@@ -1,4 +1,4 @@
-package com.example.duan_1;
+package com.example.duan1;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

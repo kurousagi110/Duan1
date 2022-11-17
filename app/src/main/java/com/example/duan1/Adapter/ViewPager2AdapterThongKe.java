@@ -2,6 +2,7 @@ package com.example.duan1.Adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
@@ -13,8 +14,8 @@ import com.example.duan1.Fragment.Thongke_nam_fragment;
 public class ViewPager2AdapterThongKe extends FragmentStateAdapter {
 
 
-    public ViewPager2AdapterThongKe(@NonNull Fragment fragment) {
-        super(fragment);
+    public ViewPager2AdapterThongKe(@NonNull FragmentActivity fragmentActivity) {
+        super(fragmentActivity);
     }
 
     @NonNull

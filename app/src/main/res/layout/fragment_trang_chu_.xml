@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="469dp"
-        android:layout_height="157dp"
+        android:layout_height="190dp"
         android:background="@mipmap/nentr"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,6 +34,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView16" />
 
+
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="wrap_content"
@@ -46,17 +47,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView12"
-                app:layout_constraintVertical_bias="0.8" />
-
-            <ImageView
-                android:id="@+id/imageView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="124dp"
-                android:layout_marginTop="80dp"
-                app:layout_constraintStart_toStartOf="@+id/imageView16"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_sua" />
+                app:layout_constraintVertical_bias="0.304" />
 
             <ImageView
                 android:id="@+id/imageView16"
@@ -71,10 +62,12 @@
     </LinearLayout>
 
     <LinearLayout
+
         android:layout_width="372dp"
-        android:layout_height="559dp"
+        android:layout_height="400dp"
         android:background="@drawable/bottom_backgroud_trang"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
@@ -83,121 +76,27 @@
             android:layout_width="match_parent"
             android:layout_height="462dp">
 
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="326dp"
-                android:layout_height="61dp"
+            <Button
+                android:id="@+id/btnThu"
+                android:layout_width="289dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="52dp"
-                android:text="Mục tiêu cá nhân:"
+                android:text="Thu"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.652"
+                app:layout_constraintHorizontal_bias="0.506"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textView17"
-                android:layout_width="326dp"
-                android:layout_height="63dp"
-                android:text="Khoản chi tiêu:"
-                app:layout_constraintBottom_toTopOf="@+id/textView18"
+            <Button
+                android:id="@+id/btnChi"
+                android:layout_width="289dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="140dp"
+                android:text="Chi"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.608"
+                app:layout_constraintHorizontal_bias="0.506"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView15"
-                app:layout_constraintVertical_bias="0.55" />
-
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="335dp"
-                android:layout_height="59dp"
-                android:layout_marginBottom="156dp"
-                android:text="Khoản thu:"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.756"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <ImageView
-                android:id="@+id/imageView10"
-                android:layout_width="25dp"
-                android:layout_height="27dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/textView15"
-                app:layout_constraintHorizontal_bias="0.939"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView15"
-                app:srcCompat="@drawable/ic_delete" />
-
-            <ImageView
-                android:id="@+id/imageView11"
-                android:layout_width="23dp"
-                android:layout_height="27dp"
-                android:layout_marginTop="12dp"
-                app:layout_constraintEnd_toEndOf="@+id/textView18"
-                app:layout_constraintHorizontal_bias="0.913"
-                app:layout_constraintStart_toStartOf="@+id/textView18"
-                app:layout_constraintTop_toTopOf="@+id/textView18"
-                app:srcCompat="@drawable/ic_delete" />
-
-            <ImageView
-                android:id="@+id/imageView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/textView17"
-                app:layout_constraintHorizontal_bias="0.937"
-                app:layout_constraintStart_toStartOf="@+id/textView17"
-                app:layout_constraintTop_toTopOf="@+id/textView17"
-                app:srcCompat="@drawable/ic_delete" />
-
-            <ImageView
-                android:id="@+id/imageView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/textView15"
-                app:layout_constraintHorizontal_bias="0.814"
-                app:layout_constraintStart_toStartOf="@+id/textView15"
-                app:layout_constraintTop_toTopOf="@+id/textView15"
-                app:srcCompat="@drawable/ic_sua" />
-
-            <ImageView
-                android:id="@+id/imageView14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:layout_constraintEnd_toStartOf="@+id/imageView11"
-                app:layout_constraintHorizontal_bias="0.95"
-                app:layout_constraintStart_toStartOf="@+id/textView18"
-                app:layout_constraintTop_toTopOf="@+id/textView18"
-                app:srcCompat="@drawable/ic_sua" />
-
-            <ImageView
-                android:id="@+id/imageView15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toStartOf="@+id/imageView12"
-                app:layout_constraintHorizontal_bias="0.957"
-                app:layout_constraintStart_toStartOf="@+id/textView17"
-                app:layout_constraintTop_toTopOf="@+id/textView17"
-                app:srcCompat="@drawable/ic_sua" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatAdd"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_gravity="bottom|end"
-                android:layout_marginBottom="4dp"
-                android:onClick="onCLick"
-                android:src="@drawable/ic_add"
-                app:layout_anchorGravity="bottom|end"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.984"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView18"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>

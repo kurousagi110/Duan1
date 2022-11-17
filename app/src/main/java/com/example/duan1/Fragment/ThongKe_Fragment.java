@@ -25,7 +25,7 @@ public class ThongKe_Fragment extends Fragment {
 
         TabLayout tabLayout = view.findViewById(R.id.tablayoutThongKe);
         ViewPager2 viewPager = view.findViewById(R.id.viewpager2ThongKe);
-        ViewPager2AdapterThongKe adapter = new ViewPager2AdapterThongKe(this);
+        ViewPager2AdapterThongKe adapter = new ViewPager2AdapterThongKe(getActivity());
         viewPager.setAdapter(adapter);
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             switch (position){

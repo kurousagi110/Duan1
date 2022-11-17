@@ -13,6 +13,10 @@ import androidx.fragment.app.Fragment;
 import com.example.duan1.R;
 
 public class ThongKe_thang_Fragment extends Fragment {
+    public ThongKe_thang_Fragment()
+    {
+
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

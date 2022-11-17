@@ -15,6 +15,7 @@ public class ViewPager2AdapterThongKe extends FragmentStateAdapter {
 
 
     public ViewPager2AdapterThongKe(@NonNull FragmentActivity fragmentActivity) {
+
         super(fragmentActivity);
     }
 

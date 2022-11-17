@@ -12,6 +12,10 @@ import androidx.fragment.app.Fragment;
 import com.example.duan1.R;
 
 public class Thongke_nam_fragment extends Fragment {
+    public Thongke_nam_fragment()
+    {
+
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

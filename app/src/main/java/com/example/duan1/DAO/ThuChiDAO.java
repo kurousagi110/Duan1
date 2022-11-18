@@ -138,4 +138,34 @@ public class ThuChiDAO {
         float[] ketQua = new float[]{thu, chi};
         return ketQua;
     }
+    public int getDoanhThu(String ngaybatdau, String ngayketthuc, int id){ //2022/09/30
+        ngaybatdau = ngaybatdau.replace("/","");
+        ngayketthuc = ngayketthuc.replace("/","");
+        SQLiteDatabase sqLiteDatabase = dataHelper.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT SUM(tien) FROM KHOANTHUCHI WHERE maLoai in (select maLoai FROM LOAI where trangthai = 'thu') and substr(ngay,7)||substr(ngay,4,2)||substr(ngay,1,2) between ? and ?", new String[]{ngaybatdau, ngayketthuc});
+        if(cursor.getCount() != 0){
+            cursor.moveToFirst();
+            return cursor.getInt(0);
+        }
+        return 0;
+    }
+    public float[] getThongTinThuChiThang(){
+        SQLiteDatabase sqLiteDatabase = dataHelper.getReadableDatabase();
+        int thu = 0, chi = 0;
+        Cursor cursorThu = sqLiteDatabase.rawQuery("SELECT sum(tien) from KHOANTHUCHI where maLoai in (select maLoai FROM LOAI where trangthai = 'thu') ", null);
+        if (cursorThu.getCount() != 0) {
+            cursorThu.moveToFirst();
+            thu = cursorThu.getInt(0);
+        }
+        //select sum(tien)
+        //from giaodich
+        //where maloai in (select maloai from phanloai where thangthai = 'chi')
+        Cursor cursorChi = sqLiteDatabase.rawQuery("select sum(tien) from KHOANTHUCHI where maLoai in (select maLoai from loai where trangthai = 'chi') ", null);
+        if (cursorChi.getCount() != 0) {
+            cursorChi.moveToFirst();
+            chi = cursorChi.getInt(0);
+        }
+        float[] ketQua = new float[]{thu, chi};
+        return ketQua;
+    }
 }

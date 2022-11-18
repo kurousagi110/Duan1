@@ -21,6 +21,7 @@ import java.util.List;
 
 public class ThongKe_thang_Fragment extends Fragment {
     Spinner spinner;
+
     public ThongKe_thang_Fragment()
     {
 
@@ -57,8 +58,15 @@ public class ThongKe_thang_Fragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String thangChon =spinner.getSelectedItem().toString();
+                switch (thangChon){
+                    case "1":
 
+                        break;
+                }
             }
         });
+    }
+    public void hienBieuDo(){
+
     }
 }

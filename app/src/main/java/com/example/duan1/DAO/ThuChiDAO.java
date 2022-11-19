@@ -21,7 +21,7 @@ public class ThuChiDAO {
 
     // get danh sách loại thu/chi
 
-    public ArrayList<Loai> getDsLoaiThuChi(String loai,Integer id) {
+    public ArrayList<Loai> getDSLoaiThuChi(String loai,Integer id) {
         ArrayList<Loai> list = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = dataHelper.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM LOAI", null);

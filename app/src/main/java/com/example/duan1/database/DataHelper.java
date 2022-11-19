@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DataHelper extends SQLiteOpenHelper {
     public DataHelper( Context context) {
-        super(context, "ThuChiDatabase", null, 3);
+        super(context, "ThuChiDatabase", null, 4);
     }
 
     @Override
@@ -18,7 +18,7 @@ public class DataHelper extends SQLiteOpenHelper {
         String qloai = "CREATE TABLE LOAI (maloai integer primary key autoincrement, tenloai text, trangthai text, soTK integer,FOREIGN KEY(soTK) references TAIKHOAN(SoTK))";
         db.execSQL(qloai);
 
-        String qKhoan = "CREATE TABLE KHOANTHUCHI(makhoan integer primary key autoincrement, tien integer, ngay date, maloai integer,FOREIGN KEY(maloai) references LOAI(maloai))";
+        String qKhoan = "CREATE TABLE KHOANTHUCHI(makhoan integer primary key autoincrement, tien integer, ngay text, maloai integer,FOREIGN KEY(maloai) references LOAI(maloai))";
         db.execSQL(qKhoan);
         //data mẫu:
         String taikhoan = "INSERT INTO TAIKHOAN VALUES(1, 'admin', 'admin'), (2, 'hoa123', '123'), (3, 'tai456', '456'), (4, 'loi789', '789')";
@@ -30,11 +30,12 @@ public class DataHelper extends SQLiteOpenHelper {
         String loai1 = "INSERT INTO LOAI VALUES(4, 'tiền ăn', 'chi',3), (5, 'tiền lương', 'thu',3), (6, 'ăn đòn', 'thu',3)";
         db.execSQL(loai1);
 
-        String khoanthuchi = "INSERT INTO KHOANTHUCHI VALUES(1, 5000, 11/2/2022 ,1), (2, 5000, 11/3/2022, 3), (3, 1000, 15/5/2022,2)";
+        String khoanthuchi = "INSERT INTO KHOANTHUCHI VALUES(1, 6000, '02/11/2022' ,1), (2, 5000, '03/11/2022', 3), (3, 10000, '05/01/2022',2)";
         db.execSQL(khoanthuchi);
 
-        String khoanthuchi1 = "INSERT INTO KHOANTHUCHI VALUES(4, 5000, 11/1/2022 ,6), (5, 5000, 11/9/2022, 5), (6, 1000, 15/8/2022,4)";
+        String khoanthuchi1 = "INSERT INTO KHOANTHUCHI VALUES(4, 5000, '01/11/2022' ,6), (5, 7000, '09/11/2022', 5), (6, 1000, '08/12/2022',4)";
         db.execSQL(khoanthuchi1);
+
 
     }
 

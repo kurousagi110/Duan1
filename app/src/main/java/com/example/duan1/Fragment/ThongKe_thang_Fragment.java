@@ -36,35 +36,7 @@ public class ThongKe_thang_Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        spinner = view.findViewById(R.id.spinnerThang);
-        List<String> thang = new ArrayList<>();
-        thang.add("chọn tháng");
-        thang.add("1");
-        thang.add("2");
-        thang.add("3");
-        thang.add("4");
-        thang.add("5");
-        thang.add("6");
-        thang.add("7");
-        thang.add("8");
-        thang.add("9");
-        thang.add("10");
-        thang.add("11");
-        thang.add("12");
-        ArrayAdapter<String> thangAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item,thang);
-        thangAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(thangAdapter);
-        spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String thangChon =spinner.getSelectedItem().toString();
-                switch (thangChon){
-                    case "1":
 
-                        break;
-                }
-            }
-        });
     }
     public void hienBieuDo(){
 

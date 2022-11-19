@@ -62,7 +62,7 @@ public class ThongKe_ThuChi_Fragment extends Fragment implements OnChartValueSel
 
     private void addDataSet(PieChart pieChart) {
         ArrayList<PieEntry> entrys = new ArrayList<>();
-        float[] yData = dao.getThongTinThuChi();
+        float[] yData = dao.getThongTinThuChi(2);
         String[] xData = {"Khoản thu", "Khoản chi"};
         for (int i = 0; i < yData.length; i++) {
             entrys.add(new PieEntry(yData[i], xData[i]));

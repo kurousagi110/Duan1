@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.duan1.Model.KhoanThuChi;
 import com.example.duan1.Model.Loai;
+import com.example.duan1.Model.ThongKe;
 import com.example.duan1.database.DataHelper;
 
 import java.util.ArrayList;
@@ -122,7 +123,7 @@ public class ThuChiDAO {
         //select sum(tien)
         //from giaodich
         //where maloai in (select maloai from phanloai where thangthai = 'thu')
-        Cursor cursorThu = sqLiteDatabase.rawQuery("SELECT sum(tien) from KHOANTHUCHI where maLoai in (select maLoai FROM LOAI where trangthai = 'thu'and soTK = ?) ", new String[]{String.valueOf(id)});
+        Cursor cursorThu = sqLiteDatabase.rawQuery("SELECT sum(tien) from KHOANTHUCHI where maloai in (select maloai FROM LOAI where trangthai = 'thu'and soTK = ?) ", new String[]{String.valueOf(id)});
         if (cursorThu.getCount() != 0) {
             cursorThu.moveToFirst();
             thu = cursorThu.getInt(0);
@@ -130,7 +131,7 @@ public class ThuChiDAO {
         //select sum(tien)
         //from giaodich
         //where maloai in (select maloai from phanloai where thangthai = 'chi')
-        Cursor cursorChi = sqLiteDatabase.rawQuery("select sum(tien) from KHOANTHUCHI where maLoai in (select maLoai from loai where trangthai = 'chi'and soTK = ?) ", new String[]{String.valueOf(id)});
+        Cursor cursorChi = sqLiteDatabase.rawQuery("select sum(tien) from KHOANTHUCHI where maloai in (select maloai from LOAI where trangthai = 'chi'and soTK = ?) ", new String[]{String.valueOf(id)});
         if (cursorChi.getCount() != 0) {
             cursorChi.moveToFirst();
             chi = cursorChi.getInt(0);
@@ -138,34 +139,57 @@ public class ThuChiDAO {
         float[] ketQua = new float[]{thu, chi};
         return ketQua;
     }
-    public int getDoanhThu(String ngaybatdau, String ngayketthuc, int id){ //2022/09/30
+    public Integer getDoanhThuNam(Integer id, String ngaybatdau, String ngayketthuc, String loai) { //2022/09/30
+        ngaybatdau = ngaybatdau.replace("/", "");
+        ngayketthuc = ngayketthuc.replace("/", "");
+        SQLiteDatabase sqLiteDatabase = dataHelper.getReadableDatabase();
+        int thu = 0, chi = 0;
+        if (loai == "thu") {
+            Cursor cursorThu = sqLiteDatabase.rawQuery("SELECT SUM(tien) FROM KHOANTHUCHI WHERE maLoai in (select maLoai FROM LOAI where trangthai = 'thu' and soTK = ?) and substr(ngay,7)||substr(ngay,4,2)||substr(ngay,1,2) between ? and ?", new String[]{String.valueOf(id), ngaybatdau, ngayketthuc});
+            if (cursorThu.getCount() != 0) {
+                cursorThu.moveToFirst();
+                thu = cursorThu.getInt(0);
+                String a = String.valueOf(cursorThu.getInt(0));
+                if (a == ""){
+                    return 1;
+                }else {
+                    return thu;
+                }
+            }
+        } else {
+            Cursor cursorChi = sqLiteDatabase.rawQuery("SELECT SUM(tien) FROM KHOANTHUCHI WHERE maLoai in (select maLoai FROM LOAI where trangthai = 'chi' and soTK = ?) and substr(ngay,7)||substr(ngay,4,2)||substr(ngay,1,2) between ? and ?", new String[]{String.valueOf(id), ngaybatdau, ngayketthuc});
+            if (cursorChi.getCount() != 0) {
+                cursorChi.moveToFirst();
+                chi = cursorChi.getInt(0);
+                String b = String.valueOf(cursorChi.getInt(0));
+                if (b == ""){
+                    return 1;
+                }else {
+                    return chi;
+                }
+            }
+        }
+        return 1;
+    }
+
+    public float[] getDoanhThuTheoThang(Integer id, String ngaybatdau, String ngayketthuc){ //2022/09/30
         ngaybatdau = ngaybatdau.replace("/","");
         ngayketthuc = ngayketthuc.replace("/","");
         SQLiteDatabase sqLiteDatabase = dataHelper.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT SUM(tien) FROM KHOANTHUCHI WHERE maLoai in (select maLoai FROM LOAI where trangthai = 'thu' and soTK = ?) and substr(ngay,7)||substr(ngay,4,2)||substr(ngay,1,2) between ? and ?", new String[]{String.valueOf(id), ngaybatdau, ngayketthuc});
-        if(cursor.getCount() != 0){
-            cursor.moveToFirst();
-            return cursor.getInt(0);
-        }
-        return 0;
-    }
-    public float[] getThongTinThuChiThang(int id){
-        SQLiteDatabase sqLiteDatabase = dataHelper.getReadableDatabase();
         int thu = 0, chi = 0;
-        Cursor cursorThu = sqLiteDatabase.rawQuery("SELECT sum(tien) from KHOANTHUCHI where maLoai in (select maLoai FROM LOAI where trangthai = 'thu' and soTK =?) ", new String[]{String.valueOf(id)});
-        if (cursorThu.getCount() != 0) {
+     //                                                 SELECT SUM(tien) FROM KHOANTHUCHI WHERE maLoai in (select maLoai FROM LOAI where trangthai = 'chi' and soTK = 2) and substr(ngay,7)||substr(ngay,4,2)||substr(ngay,1,2) between '20220101' and '20221119'
+        Cursor cursorThu = sqLiteDatabase.rawQuery("SELECT SUM(tien) FROM KHOANTHUCHI WHERE maloai in (select maloai FROM LOAI where trangthai = 'thu' and soTK = ?) and substr(ngay,7)||substr(ngay,4,2)||substr(ngay,1,2) between ? and ?", new String[]{String.valueOf(id), ngaybatdau, ngayketthuc});
+        if(cursorThu.getCount() != 0){
             cursorThu.moveToFirst();
             thu = cursorThu.getInt(0);
         }
-        //select sum(tien)
-        //from giaodich
-        //where maloai in (select maloai from phanloai where thangthai = 'chi')
-        Cursor cursorChi = sqLiteDatabase.rawQuery("select sum(tien) from KHOANTHUCHI where maLoai in (select maLoai from loai where trangthai = 'chi') ", null);
-        if (cursorChi.getCount() != 0) {
+        Cursor cursorChi = sqLiteDatabase.rawQuery("SELECT SUM(tien) FROM KHOANTHUCHI WHERE maLoai in (select maLoai FROM LOAI where trangthai = 'chi' and soTK = ?) and substr(ngay,7)||substr(ngay,4,2)||substr(ngay,1,2) between ? and ?", new String[]{String.valueOf(id), ngaybatdau, ngayketthuc});
+        if(cursorChi.getCount() != 0){
             cursorChi.moveToFirst();
             chi = cursorChi.getInt(0);
         }
         float[] ketQua = new float[]{thu, chi};
         return ketQua;
     }
+
 }

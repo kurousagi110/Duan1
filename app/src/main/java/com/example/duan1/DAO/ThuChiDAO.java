@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.duan1.DbHelper;
 import com.example.duan1.Model.KhoanThuChi;
 import com.example.duan1.Model.Loai;
 import com.example.duan1.database.DataHelper;

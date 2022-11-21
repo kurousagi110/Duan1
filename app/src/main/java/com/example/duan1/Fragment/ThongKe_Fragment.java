@@ -5,8 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
@@ -44,13 +42,13 @@ public class ThongKe_Fragment extends Fragment {
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             switch (position){
                 case 0:
-                    tab.setText("Thống kê thu chi");
-                    break;
-                case 1:
                     tab.setText("Thống kê theo tháng");
                     break;
+                case 1:
+                    tab.setText("Thống kê thu theo năm");
+                    break;
                 case 2:
-                    tab.setText("Thống kê theo năm");
+                    tab.setText("Thống kê chi theo năm");
                     break;
             }
         }).attach();

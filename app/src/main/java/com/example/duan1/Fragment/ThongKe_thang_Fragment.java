@@ -175,7 +175,7 @@ public class ThongKe_thang_Fragment extends Fragment implements OnChartValueSele
     private void addDataSet(PieChart pieChart, String ngaybatdau, String denngay) {
 
         ArrayList<PieEntry> entrys = new ArrayList<>();
-        float[] yData = thuChiDAO.getDoanhThuTheoThang(2,ngaybatdau,denngay);
+        Integer[] yData = thuChiDAO.getDoanhThuTheoThang(2,ngaybatdau,denngay);
         String[] xData = {"Khoản thu", "Khoản chi"};
         for (int i = 0; i < yData.length; i++) {
             entrys.add(new PieEntry(yData[i], xData[i]));

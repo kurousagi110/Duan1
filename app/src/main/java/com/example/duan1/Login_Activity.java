@@ -1,4 +1,4 @@
-package com.example.duan_1;
+package com.example.duan1;
 
 import androidx.appcompat.app.AppCompatActivity;
 

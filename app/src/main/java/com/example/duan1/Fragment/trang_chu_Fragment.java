@@ -1,4 +1,4 @@
-package com.example.duan_1.Fragment;
+package com.example.duan1.Fragment;
 
 import android.os.Bundle;
 
@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.duan_1.R;
+import com.example.duan1.R;
 
 
 public class trang_chu_Fragment extends Fragment {

@@ -1,16 +1,15 @@
-package com.example.duan_1;
+package com.example.duan1;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.duan_1.Fragment.LienHe_Fragment;
-import com.example.duan_1.Fragment.NapTien_Fragment;
-import com.example.duan_1.Fragment.TaiKhoan_Fragment;
-import com.example.duan_1.Fragment.ThongKe_Fragment;
-import com.example.duan_1.Fragment.trang_chu_Fragment;
+import com.example.duan1.Fragment.LienHe_Fragment;
+import com.example.duan1.Fragment.NapTien_Fragment;
+import com.example.duan1.Fragment.TaiKhoan_Fragment;
+import com.example.duan1.Fragment.ThongKe_Fragment;
+import com.example.duan1.Fragment.trang_chu_Fragment;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 

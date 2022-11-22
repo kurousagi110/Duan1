@@ -16,6 +16,6 @@
         android:layout_margin="15dp"
         app:layout_anchor="@id/listViewKhoanThu"
         app:layout_anchorGravity="bottom|end"
-        android:id="@+id/floatAdd"/>
+        android:id="@+id/floatAddThu"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

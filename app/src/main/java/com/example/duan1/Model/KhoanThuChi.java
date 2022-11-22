@@ -28,6 +28,11 @@ public class KhoanThuChi {
         this.maLoai = maLoai;
     }
 
+    public KhoanThuChi(Integer tien, Integer maLoai) {
+        this.tien = tien;
+        this.maLoai = maLoai;
+    }
+
     public Integer getMaKhoan() {
         return maKhoan;
     }

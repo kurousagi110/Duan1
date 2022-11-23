@@ -12,7 +12,7 @@ import com.example.duan1.Fragment.TaiKhoan_Fragment;
 import com.example.duan1.Fragment.Trang_Chu_Fragment;
 
 
-import com.example.duan_1.Fragment.ThongKe_Fragment;
+import com.example.duan1.Fragment.ThongKe_Fragment;
 
 
 public class ViewPagerAdapter extends FragmentStateAdapter {

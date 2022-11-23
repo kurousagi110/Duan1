@@ -16,6 +16,12 @@ public class Loai {
         this.soTK = soTK;
     }
 
+    public Loai(String tenLoai, String trangThai, Integer soTK) {
+        this.tenLoai = tenLoai;
+        this.trangThai = trangThai;
+        this.soTK = soTK;
+    }
+
     public Integer getMaLoai() {
         return maLoai;
     }

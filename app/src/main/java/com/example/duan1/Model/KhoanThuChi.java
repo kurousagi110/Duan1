@@ -28,9 +28,10 @@ public class KhoanThuChi {
         this.maLoai = maLoai;
     }
 
-    public KhoanThuChi(Integer tien, Integer maLoai) {
+    public KhoanThuChi(Integer tien, Integer maLoai,String ngay) {
         this.tien = tien;
         this.maLoai = maLoai;
+        this.ngay = ngay;
     }
 
     public Integer getMaKhoan() {

@@ -25,7 +25,9 @@ import com.example.duan1.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 
 public class KhoanThuFragment extends Fragment {
@@ -68,7 +70,10 @@ public class KhoanThuFragment extends Fragment {
         View view = layoutInflater.inflate(R.layout.dialog_themkhoanthu,null);
         Spinner spnLoaiThu = view.findViewById(R.id.spnLoaiThu);
         EditText edtTien = view.findViewById(R.id.edtTien);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        String date = sdf.format(Calendar.getInstance().getTime());
         builder.setView(view);
+
 
         SimpleAdapter adapter = new SimpleAdapter(
                 getContext(),
@@ -77,18 +82,14 @@ public class KhoanThuFragment extends Fragment {
                 new String[]{"tenloai"},
                 new int[]{android.R.id.text1}
         );
-
-
-
-
-
         builder.setPositiveButton("thêm", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
+
                 String tien = edtTien.getText().toString();
                 HashMap<String,Object> selected = (HashMap<String, Object>) spnLoaiThu.getSelectedItem();
                 int maloai = (int) selected.get("maloai");
-                KhoanThuChi khoanThuChi = new KhoanThuChi(Integer.parseInt(tien),maloai);
+                KhoanThuChi khoanThuChi = new KhoanThuChi(Integer.parseInt(tien),maloai,date);
                 if(thuChiDAO.addKhoanThuChi(khoanThuChi)){
                     Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
                     getData();

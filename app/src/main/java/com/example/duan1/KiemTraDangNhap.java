@@ -7,7 +7,8 @@ import android.os.IBinder;
 
 import androidx.annotation.Nullable;
 
-public class KiemTraDangNhap extends Service {
+public class
+KiemTraDangNhap extends Service {
 
 
     @Override

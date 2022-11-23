@@ -20,7 +20,10 @@ import com.example.duan1.Model.KhoanThuChi;
 import com.example.duan1.Model.Loai;
 import com.example.duan1.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 public class KhoanThuAdapter extends BaseAdapter {
@@ -52,7 +55,7 @@ public class KhoanThuAdapter extends BaseAdapter {
     }
 
     public static class ViewOfItem{
-        TextView txtTen,txtTien;
+        TextView txtTen,txtTien,txtNgayThu;
         ImageView ivSua,ivXoa;
     }
 
@@ -68,12 +71,14 @@ public class KhoanThuAdapter extends BaseAdapter {
                 viewOfItem.txtTien = view.findViewById(R.id.txtTienThu);
                 viewOfItem.ivSua = view.findViewById(R.id.ivSuaThu);
                 viewOfItem.ivXoa = view.findViewById(R.id.ivXoaThu);
+                viewOfItem.txtNgayThu = view.findViewById(R.id.txtNgayThu);
                 view.setTag(viewOfItem);
         }else{
             viewOfItem = (ViewOfItem) view.getTag();
         }
         viewOfItem.txtTen.setText("Tên: "+list.get(i).getTenKhoan());
         viewOfItem.txtTien.setText("Số tiền: "+list.get(i).getTien());
+        viewOfItem.txtNgayThu.setText("Ngay:"+list.get(i).getNgay());
 
         viewOfItem.ivSua.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +109,9 @@ public class KhoanThuAdapter extends BaseAdapter {
         EditText edtTien = view.findViewById(R.id.edtTien);
         builder.setView(view);
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        String date = sdf.format(Calendar.getInstance().getTime());
+
         SimpleAdapter adapter = new SimpleAdapter(
                 context,
                 listSpinner,
@@ -131,6 +139,7 @@ public class KhoanThuAdapter extends BaseAdapter {
                 int maloai = (int) selected.get("maloai");
                 khoanThuChi.setTien(Integer.parseInt(tien));
                 khoanThuChi.setMaLoai(maloai);
+                khoanThuChi.setNgay(date);
                 if(thuChiDAO.updateKhoanThuChi(khoanThuChi)){
                     Toast.makeText(context, "cap nhat thanh cong", Toast.LENGTH_SHORT).show();
                     reLoadData();

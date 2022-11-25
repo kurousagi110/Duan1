@@ -24,7 +24,7 @@ Button btn;
                              Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_trang_chu_, container, false);
         btn = view.findViewById(R.id.btnThu);
-        btn.setOnClickListener(new View.OnClickListener() {
+         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), Login_Activity.class);

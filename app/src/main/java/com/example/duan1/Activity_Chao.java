@@ -15,7 +15,7 @@ public class Activity_Chao extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(Activity_Chao.this,MainActivity.class);
+                    Intent intent = new Intent(Activity_Chao.this,Login_Activity.class);
                     startActivity(intent);
                     finish();
                 }

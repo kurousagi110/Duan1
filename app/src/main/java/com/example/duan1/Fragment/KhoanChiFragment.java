@@ -102,7 +102,7 @@ public class KhoanChiFragment extends Fragment {
 
     }
     private ArrayList<HashMap<String,Object>> getDataSpinner(){
-        ArrayList<Loai> listLoai = thuChiDAO.getDSLoaiThuChi("chi",2);
+        ArrayList<Loai> listLoai = thuChiDAO.getDsLoaiThuChi("chi",2);
         listSpinner = new ArrayList<>();
 
         for(Loai loai : listLoai){

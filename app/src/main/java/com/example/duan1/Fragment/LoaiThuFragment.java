@@ -54,7 +54,7 @@ public class LoaiThuFragment extends Fragment {
         return view;
     }
     private void loadData(){
-        list = thuChiDAO.getDSLoaiThuChi("thu",2);
+        list = thuChiDAO.getDsLoaiThuChi("thu",2);
 
         loaiThuAdapter = new LoaiThuAdapter(list,getContext(),thuChiDAO);
         listViewLoaiThu.setAdapter(loaiThuAdapter);

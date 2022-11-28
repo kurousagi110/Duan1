@@ -9,7 +9,7 @@ import com.example.duan1.Fragment.KhoanChiFragment;
 import com.example.duan1.Fragment.KhoanThuFragment;
 import com.example.duan1.Fragment.LoaiChiFragment;
 import com.example.duan1.Fragment.LoaiThuFragment;
-import com.example.duan1.Fragment.ThongKe_ThuChi_Fragment;
+
 import com.example.duan1.Fragment.ThongKe_thang_Fragment;
 
 public class ViewPager2AdapterChi extends FragmentStateAdapter {

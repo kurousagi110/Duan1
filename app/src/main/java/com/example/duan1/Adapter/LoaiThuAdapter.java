@@ -118,7 +118,7 @@ public class LoaiThuAdapter extends BaseAdapter {
     }
     private void reLoadData(){
         list.clear();
-        list = thuChiDAO.getDSLoaiThuChi("thu",2);
+        list = thuChiDAO.getDsLoaiThuChi("thu",2);
         notifyDataSetChanged();
     }
 }

@@ -24,6 +24,7 @@ import com.example.duan1.Model.Loai;
 import com.example.duan1.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -33,6 +34,7 @@ public class KhoanChiFragment extends Fragment {
     ThuChiDAO thuChiDAO;
     ArrayList<HashMap<String,Object>> listSpinner;
     KhoanChiAdapter adapter;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -65,6 +67,7 @@ public class KhoanChiFragment extends Fragment {
         View view = layoutInflater.inflate(R.layout.dialog_themkhoanchi,null);
         Spinner spnLoaiChi = view.findViewById(R.id.spnLoaiChi);
         EditText edtTien1 = view.findViewById(R.id.edtTien1);
+        SimpleDateFormat sdf = new SimpleDateFormat("");
         builder.setView(view);
 
         SimpleAdapter adapter = new SimpleAdapter(

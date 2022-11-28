@@ -20,6 +20,11 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="5000"/>
+        <TextView
+            android:id="@+id/txtNgayThu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"/>
     </LinearLayout>
     
 
@@ -27,13 +32,13 @@
     <ImageView
         android:id="@+id/ivSuaThu"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="95dp"
         android:layout_weight="1"
         android:src="@drawable/ic_sua"/>
     <ImageView
         android:id="@+id/ivXoaThu"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="95dp"
         android:layout_weight="1"
         android:src="@drawable/ic_delete"/>
 

@@ -83,7 +83,7 @@ public class KhoanChiFragment extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 String tien = edtTien1.getText().toString();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 String ngay = sdf.format(new Date());
                 HashMap<String,Object> selected = (HashMap<String, Object>) spnLoaiChi.getSelectedItem();
                 int maloai = (int) selected.get("maloai");

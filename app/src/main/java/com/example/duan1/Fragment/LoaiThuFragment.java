@@ -1,7 +1,9 @@
 package com.example.duan1.Fragment;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,8 +55,13 @@ public class LoaiThuFragment extends Fragment {
         });
         return view;
     }
+    private int soTK(){
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("THUTHU", Context.MODE_PRIVATE);
+        int soTK = sharedPreferences.getInt("soTK", 0);
+        return soTK;
+    }
     private void loadData(){
-        list = thuChiDAO.getDsLoaiThuChi("thu",2);
+        list = thuChiDAO.getDsLoaiThuChi("thu",soTK());
 
         loaiThuAdapter = new LoaiThuAdapter(list,getContext(),thuChiDAO);
         listViewLoaiThu.setAdapter(loaiThuAdapter);
@@ -70,7 +77,7 @@ public class LoaiThuFragment extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 String tenloai = edtInput.getText().toString();
-                Loai loaiThem = new Loai(tenloai,"thu",2);
+                Loai loaiThem = new Loai(tenloai,"thu",soTK());
                 if(thuChiDAO.addLoaiThuChi(loaiThem)){
                     Toast.makeText(getContext(), "Theem thnah cong", Toast.LENGTH_SHORT).show();
                     loadData();

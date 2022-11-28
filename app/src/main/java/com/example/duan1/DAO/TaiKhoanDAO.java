@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.example.duan1.Model.Loai;
 import com.example.duan1.Model.TaiKhoan;
 import com.example.duan1.database.DataHelper;
 
@@ -47,14 +48,14 @@ public class TaiKhoanDAO {
 
     public boolean update(String username, String oldPass, String newPass) {
         SQLiteDatabase database = dataHelper.getWritableDatabase();
-        Cursor cursor = database.rawQuery("SELECT * FROM THUTHU WHERE maTT = ? and matKhau = ?",new String[]{username,oldPass});
-        if (cursor.getCount()>0){
+        Cursor cursor = database.rawQuery("SELECT * FROM THUTHU WHERE maTT = ? and matKhau = ?", new String[]{username, oldPass});
+        if (cursor.getCount() > 0) {
             ContentValues values = new ContentValues();
             values.put("matKhau", newPass);
-            long check = database.update("THUTHU",values,"maTT = ?",new String[]{username});
-            if (check == -1){
+            long check = database.update("THUTHU", values, "maTT = ?", new String[]{username});
+            if (check == -1) {
                 return false;
-            }else {
+            } else {
                 return true;
             }
         }
@@ -76,16 +77,18 @@ public class TaiKhoanDAO {
         }
     }
 
-    public void addNew(String taikhoan, String matkhau) {
-        SQLiteDatabase database = dataHelper.getWritableDatabase();
+    public int getSoTK(String username, String password) {
+        SQLiteDatabase sqLiteOpenHelper = dataHelper.getReadableDatabase();
+        int soTK = 0;
+        Cursor cursor = sqLiteOpenHelper.rawQuery("select * from TAIKHOAN where taikhoan = ? and matkhau = ?", new String[]{username, password});
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                soTK = cursor.getInt(0);
 
-        ContentValues values = new ContentValues();
-//        values.put("taikhoan", TaiKhoan.getTaiKhoan);
-//        values.put("matkhau", this.getMatKhau());
-//        db.insert(TABLE_NAME, null, values);
-//        db.close();
-//    }
+            } while (cursor.moveToNext());
 
+        }return soTK;
     }
 }
 

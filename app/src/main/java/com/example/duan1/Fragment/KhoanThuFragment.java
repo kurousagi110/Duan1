@@ -1,7 +1,9 @@
 package com.example.duan1.Fragment;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Layout;
 import android.view.LayoutInflater;
@@ -58,7 +60,9 @@ public class KhoanThuFragment extends Fragment {
         return view;
     }
     private void getData(){
-        list = thuChiDAO.getDSKhoanThuChi("thu",2);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("THUTHU", Context.MODE_PRIVATE);
+        int soTK = sharedPreferences.getInt("soTK", 0);
+        list = thuChiDAO.getDSKhoanThuChi("thu",soTK);
 
 
         adapter = new KhoanThuAdapter(list,getContext(),thuChiDAO,getDataSpinner());

@@ -30,7 +30,8 @@ public class Login_Activity extends AppCompatActivity {
         Button bntLogin = findViewById(R.id.btnLogin);
         Button bntdangky = findViewById(R.id.btnDANGKY);
         taiKhoanDAO = new TaiKhoanDAO(this);
-//        showInfoRem();
+        final int[] soTK = new int[1];
+        showInfoRem();
 
         bntdangky.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,8 +48,9 @@ public class Login_Activity extends AppCompatActivity {
                 String taikhoan = edtUser.getText().toString();
                 String matkhau = edtPass.getText().toString();
                 if (validate(taikhoan, matkhau) == true) {
+                    soTK[0] = taiKhoanDAO.getSoTK(taikhoan,matkhau);
                     Intent intent = new Intent(Login_Activity.this, MainActivity.class);
-                    saveInfo();
+                    saveInfo(soTK[0]);
                     startActivity(intent);
                     finish();
                 } else {
@@ -59,25 +61,34 @@ public class Login_Activity extends AppCompatActivity {
     }
 
     public void showInfoRem() {
+
         SharedPreferences sharedPreferences = getSharedPreferences("THUTHU", MODE_PRIVATE);
-        SharedPreferences sharedPreferences1preferences = getSharedPreferences("THUTHU", MODE_PRIVATE);
         String taikhoan = sharedPreferences.getString("taikhoan", "");
         String matkhau = sharedPreferences.getString("matkhau", "");
         boolean check = sharedPreferences.getBoolean("remember", false);
-        edtUser.setText(taikhoan);
-        edtPass.setText(matkhau);
-        chkRememberPass.setChecked(check);
+        if (check){
+            edtUser.setText(taikhoan);
+            edtPass.setText(matkhau);
+            chkRememberPass.setChecked(check);
+        }else {
+            edtUser.setText("");
+            edtPass.setText("");
+            chkRememberPass.setChecked(check);
+        }
+
 
     }
 
-    public void saveInfo() {
+    public void saveInfo(Integer soTK) {
         SharedPreferences sharedPreferences = getSharedPreferences("THUTHU", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         boolean ischeck = chkRememberPass.isChecked();
+        editor.putInt("soTK",soTK);
+        editor.putString("taikhoan", edtUser.getText().toString());
+        editor.putString("matkhau", edtPass.getText().toString());
+        editor.putBoolean("remember", ischeck);
         if (ischeck) {
-            editor.putString("taikhoan", edtUser.getText().toString());
-            editor.putString("matkhau", edtPass.getText().toString());
-            editor.putBoolean("remember", ischeck);
+
         } else {
             editor.clear();
         }

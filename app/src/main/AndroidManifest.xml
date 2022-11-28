@@ -31,6 +31,16 @@
             android:name=".MainActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".ThuActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".ChiActivity"
+            android:exported="true">
+
+        </activity>
     </application>
 
 </manifest>

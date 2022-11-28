@@ -6,6 +6,16 @@ public class KhoanThuChi {
     private String tenKhoan;
     private String ngay;
     private Integer maLoai;
+    private String tenLoai;
+
+    public KhoanThuChi(Integer maKhoan, Integer tien, String tenKhoan, String ngay, Integer maLoai, String tenLoai) {
+        this.maKhoan = maKhoan;
+        this.tien = tien;
+        this.tenKhoan = tenKhoan;
+        this.ngay = ngay;
+        this.maLoai = maLoai;
+        this.tenLoai = tenLoai;
+    }
 
     public KhoanThuChi() {
     }
@@ -15,6 +25,11 @@ public class KhoanThuChi {
         this.tien = tien;
         this.tenKhoan = tenKhoan;
         this.ngay = ngay;
+        this.maLoai = maLoai;
+    }
+
+    public KhoanThuChi(Integer tien, Integer maLoai) {
+        this.tien = tien;
         this.maLoai = maLoai;
     }
 
@@ -56,5 +71,13 @@ public class KhoanThuChi {
 
     public void setMaLoai(Integer maLoai) {
         this.maLoai = maLoai;
+    }
+
+    public String getTenLoai() {
+        return tenLoai;
+    }
+
+    public void setTenLoai(String tenLoai) {
+        this.tenLoai = tenLoai;
     }
 }

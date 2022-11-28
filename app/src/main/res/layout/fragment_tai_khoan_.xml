@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@mipmap/nen_trangchu"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@mipmap/nen_trangchu">
 
     <TextView
         android:id="@+id/textView29"
@@ -47,16 +47,17 @@
 
     <TextView
         android:id="@+id/textView32"
-        android:layout_width="339dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="344dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="149dp"
         android:background="@drawable/botton_bo_goc"
         android:text="Đổi Mk:"
         android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <TextView
         android:id="@+id/textView33"
@@ -73,9 +74,11 @@
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="363dp"
-        android:layout_height="275dp"
+        android:layout_height="0dp"
         android:layout_marginTop="4dp"
+        android:layout_marginBottom="247dp"
         android:background="@drawable/botton_bo_goc"
+        app:layout_constraintBottom_toTopOf="@+id/textView32"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.441"
         app:layout_constraintStart_toStartOf="parent"

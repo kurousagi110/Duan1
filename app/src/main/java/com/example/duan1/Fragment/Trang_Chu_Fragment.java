@@ -10,13 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.duan1.Login_Activity;
+import com.example.duan1.ChiActivity;
 import com.example.duan1.R;
+import com.example.duan1.ThuActivity;
 
 
-public class trang_chu_Fragment extends Fragment {
+public class Trang_Chu_Fragment extends Fragment {
 Button btn;
-    public trang_chu_Fragment() {
+    public Trang_Chu_Fragment() {
         // Required empty public constructor
     }
     @Override
@@ -27,7 +28,15 @@ Button btn;
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Login_Activity.class);
+                Intent intent = new Intent(getActivity(), ThuActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn = view.findViewById(R.id.btnChi);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ChiActivity.class);
                 startActivity(intent);
             }
         });

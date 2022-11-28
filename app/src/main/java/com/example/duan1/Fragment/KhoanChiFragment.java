@@ -26,6 +26,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class KhoanChiFragment extends Fragment {
@@ -67,7 +68,7 @@ public class KhoanChiFragment extends Fragment {
         View view = layoutInflater.inflate(R.layout.dialog_themkhoanchi,null);
         Spinner spnLoaiChi = view.findViewById(R.id.spnLoaiChi);
         EditText edtTien1 = view.findViewById(R.id.edtTien1);
-        SimpleDateFormat sdf = new SimpleDateFormat("");
+
         builder.setView(view);
 
         SimpleAdapter adapter = new SimpleAdapter(
@@ -82,9 +83,11 @@ public class KhoanChiFragment extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 String tien = edtTien1.getText().toString();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+                String ngay = sdf.format(new Date());
                 HashMap<String,Object> selected = (HashMap<String, Object>) spnLoaiChi.getSelectedItem();
                 int maloai = (int) selected.get("maloai");
-                KhoanThuChi khoanThuChi = new KhoanThuChi(Integer.parseInt(tien),maloai);
+                KhoanThuChi khoanThuChi = new KhoanThuChi(Integer.parseInt(tien),maloai,ngay);
                 if(thuChiDAO.addKhoanThuChi(khoanThuChi)){
                     Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
                     getData();

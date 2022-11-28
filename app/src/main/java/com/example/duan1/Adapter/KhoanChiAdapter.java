@@ -52,7 +52,7 @@ public class KhoanChiAdapter extends BaseAdapter {
     }
 
     public static class ViewOfItem{
-        TextView txtTen,txtTien;
+        TextView txtTen,txtTien,txtNgayChi;
         ImageView ivSua,ivXoa;
     }
 
@@ -68,12 +68,15 @@ public class KhoanChiAdapter extends BaseAdapter {
             viewOfItem.txtTien = view.findViewById(R.id.txtTienChi);
             viewOfItem.ivSua = view.findViewById(R.id.ivSuaChi);
             viewOfItem.ivXoa = view.findViewById(R.id.ivXoaChi);
+            viewOfItem.txtNgayChi = view.findViewById(R.id.txtNgayChi);
+
             view.setTag(viewOfItem);
         }else{
             viewOfItem = (ViewOfItem) view.getTag();
         }
         viewOfItem.txtTen.setText("Tên: "+list.get(i).getTenKhoan());
         viewOfItem.txtTien.setText("Số tiền: "+list.get(i).getTien());
+        viewOfItem.txtNgayChi.setText("Ngày: "+list.get(i).getNgay());
 
         viewOfItem.ivSua.setOnClickListener(new View.OnClickListener() {
             @Override

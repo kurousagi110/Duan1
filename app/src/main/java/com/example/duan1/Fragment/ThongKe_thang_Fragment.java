@@ -5,42 +5,23 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.SimpleAdapter;
-import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import androidx.fragment.app.Fragment;
-
 import com.example.duan1.DAO.ThuChiDAO;
 import com.example.duan1.Model.ThongKe;
-import com.example.duan1.NguoiDungDao;
 import com.example.duan1.R;
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Description;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
-import com.github.mikephil.charting.utils.ColorTemplate;
+
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
-public class ThongKe_thang_Fragment extends Fragment implements OnChartValueSelectedListener {
+public class ThongKe_thang_Fragment extends Fragment  {
     ThuChiDAO thuChiDAO;
     EditText edtNgayBatDau, edtDenNgay;
     Button btnThongKeThang;
@@ -127,12 +108,12 @@ public class ThongKe_thang_Fragment extends Fragment implements OnChartValueSele
             public void onClick(View v) {
                 String ngaybatdau = edtNgayBatDau.getText().toString();
                 String denngay = edtDenNgay.getText().toString();
-                PieChart mChart = view.findViewById(R.id.chartThongKeTheoThang);
-                mChart.setRotationEnabled(true);
-                mChart.setHoleRadius(35f);
-                mChart.setTransparentCircleAlpha(0);
-                mChart.setDrawEntryLabels(true);
-                addDataSet(mChart, ngaybatdau, denngay);
+//                PieChart mChart = view.findViewById(R.id.chartThongKeTheoThang);
+//                mChart.setRotationEnabled(true);
+//                mChart.setHoleRadius(35f);
+//                mChart.setTransparentCircleAlpha(0);
+//                mChart.setDrawEntryLabels(true);
+//                addDataSet(mChart, ngaybatdau, denngay);
 
 //                String ngaybatdau = edtNgayBatDau.toString();
 //                String denngay = edtDenNgay.toString();
@@ -163,39 +144,39 @@ public class ThongKe_thang_Fragment extends Fragment implements OnChartValueSele
         });
 
     }
-    @Override
-    public void onValueSelected(Entry e, Highlight h) {
-
-    }
-
-    @Override
-    public void onNothingSelected() {
-
-    }
-    private void addDataSet(PieChart pieChart, String ngaybatdau, String denngay) {
-
-        ArrayList<PieEntry> entrys = new ArrayList<>();
-        Integer[] yData = thuChiDAO.getDoanhThuTheoThang(2,ngaybatdau,denngay);
-        String[] xData = {"Khoản thu", "Khoản chi"};
-        for (int i = 0; i < yData.length; i++) {
-            entrys.add(new PieEntry(yData[i], xData[i]));
-        }
-
-        PieDataSet pieDataSet = new PieDataSet(entrys, " ");
-        pieDataSet.setSliceSpace(2);
-        pieDataSet.setValueTextSize(10);
-        ArrayList<Integer> colors = new ArrayList<>();
-        colors.add(Color.BLUE);
-        colors.add(Color.RED);
-        pieDataSet.setColors(colors);
-        Legend legend = pieChart.getLegend();
-        legend.setForm(Legend.LegendForm.CIRCLE);
-        PieData pieData = new PieData(pieDataSet);
-        pieChart.setData(pieData);
-        pieChart.requestLayout();
-        pieChart.invalidate();
-        pieChart.animate();
-    }
+//    @Override
+//    public void onValueSelected(Entry e, Highlight h) {
+//
+//    }
+//
+//    @Override
+//    public void onNothingSelected() {
+//
+//    }
+//    private void addDataSet(PieChart pieChart, String ngaybatdau, String denngay) {
+//
+//        ArrayList<PieEntry> entrys = new ArrayList<>();
+//        Integer[] yData = thuChiDAO.getDoanhThuTheoThang(2,ngaybatdau,denngay);
+//        String[] xData = {"Khoản thu", "Khoản chi"};
+//        for (int i = 0; i < yData.length; i++) {
+//            entrys.add(new PieEntry(yData[i], xData[i]));
+//        }
+//
+//        PieDataSet pieDataSet = new PieDataSet(entrys, " ");
+//        pieDataSet.setSliceSpace(2);
+//        pieDataSet.setValueTextSize(10);
+//        ArrayList<Integer> colors = new ArrayList<>();
+//        colors.add(Color.BLUE);
+//        colors.add(Color.RED);
+//        pieDataSet.setColors(colors);
+//        Legend legend = pieChart.getLegend();
+//        legend.setForm(Legend.LegendForm.CIRCLE);
+//        PieData pieData = new PieData(pieDataSet);
+//        pieChart.setData(pieData);
+//        pieChart.requestLayout();
+//        pieChart.invalidate();
+//        pieChart.animate();
+//    }
 
 
 }

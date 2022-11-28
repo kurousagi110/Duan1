@@ -54,39 +54,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//
-//            }
-//
-//            @Override
-//            public void onPageSelected(int position) {
-//                switch (position){
-//                    case 0:
-//                    bottomNavigationView.getMenu().findItem(R.id.mTrangChu).setChecked(true);
-//                    break;
-//                    case 1:
-//                        bottomNavigationView.getMenu().findItem(R.id.mNaptien).setChecked(true);
-//                        break;
-//                    case 2:
-//                        bottomNavigationView.getMenu().findItem(R.id.mThongKe).setChecked(true);
-//                        break;
-//                    case 3:
-//                        bottomNavigationView.getMenu().findItem(R.id.mTaiKhoan).setChecked(true);
-//                        break;
-//                    case 4:
-//                        bottomNavigationView.getMenu().findItem(R.id.mLienHe).setChecked(true);
-//                        break;
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//
-//            }
-//        });
             bottomNavigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
                 @Override
                 public void onNavigationItemReselected(@NonNull MenuItem item) {

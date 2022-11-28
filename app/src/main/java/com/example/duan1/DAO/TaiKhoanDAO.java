@@ -16,6 +16,7 @@ public class TaiKhoanDAO {
         dataHelper = new DataHelper(context);
     }
 
+
     public boolean checkLogin(String taikhoan, String matkhau) {
         SQLiteDatabase sqLiteOpenHelper = dataHelper.getReadableDatabase();
         Cursor cursor = sqLiteOpenHelper.rawQuery("select * from TAIKHOAN where taikhoan = ? and matkhau = ?", new String[]{taikhoan, matkhau});
@@ -32,14 +33,14 @@ public class TaiKhoanDAO {
             ContentValues values = new ContentValues();
             values.put("taikhoan", obj.getTaiKhoan());
             values.put("matkhau", obj.getMatKhau());
-            long check = database.insert("THUTHU", null, values);
+            long check = database.insert("TAIKHOAN", null, values);
             if (check == -1) {
                 return false;
             } else {
                 return true;
             }
         } catch (Exception e) {
-            Log.d("THUTHUDAO insert error: ", e.getMessage());
+            Log.d("TAIKHOANDAO insert error: ", e.getMessage());
             return false;
         }
     }
@@ -74,4 +75,17 @@ public class TaiKhoanDAO {
             return false;
         }
     }
+
+    public void addNew(String taikhoan, String matkhau) {
+        SQLiteDatabase database = dataHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+//        values.put("taikhoan", TaiKhoan.getTaiKhoan);
+//        values.put("matkhau", this.getMatKhau());
+//        db.insert(TABLE_NAME, null, values);
+//        db.close();
+//    }
+
+    }
 }
+

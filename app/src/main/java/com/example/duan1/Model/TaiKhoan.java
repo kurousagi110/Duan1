@@ -6,6 +6,7 @@ public class TaiKhoan {
     private String matKhau;
 
     public TaiKhoan() {
+
     }
 
     public TaiKhoan(Integer soTK, String taiKhoan, String matKhau) {

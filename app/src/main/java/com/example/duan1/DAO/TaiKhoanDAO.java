@@ -48,11 +48,11 @@ public class TaiKhoanDAO {
 
     public boolean update(String username, String oldPass, String newPass) {
         SQLiteDatabase database = dataHelper.getWritableDatabase();
-        Cursor cursor = database.rawQuery("SELECT * FROM THUTHU WHERE maTT = ? and matKhau = ?", new String[]{username, oldPass});
+        Cursor cursor = database.rawQuery("SELECT * FROM TAIKHOAN WHERE taikhoan = ? and matkhau = ?", new String[]{username, oldPass});
         if (cursor.getCount() > 0) {
             ContentValues values = new ContentValues();
             values.put("matKhau", newPass);
-            long check = database.update("THUTHU", values, "maTT = ?", new String[]{username});
+            long check = database.update("TAIKHOAN", values, "matkhau = ?", new String[]{username});
             if (check == -1) {
                 return false;
             } else {
@@ -65,7 +65,7 @@ public class TaiKhoanDAO {
     public boolean delete(String id) {
         SQLiteDatabase database = dataHelper.getWritableDatabase();
         try {
-            long check = database.delete("THUTHU", "maTT = ?", new String[]{id});
+            long check = database.delete("TAIKHOAN", "maTT = ?", new String[]{id});
             if (check == -1) {
                 return false;
             } else {

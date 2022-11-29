@@ -91,7 +91,7 @@ public class TaiKhoan_Fragment extends Fragment {
                     if (newPass.equals(newPassAgain)) {
                         TaiKhoanDAO taiKhoanDAO = new TaiKhoanDAO(getContext());
                         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("THUTHU", Context.MODE_PRIVATE);
-                        String taikhoan = sharedPreferences.getString("taikhoan", "");  
+                        String taikhoan = sharedPreferences.getString("taikhoan", "");
                         boolean check = taiKhoanDAO.update(taikhoan, oldPass, newPass);
                         if (check) {
                             Toast.makeText(getContext(), "Cập nhật mật khẩu thành công", Toast.LENGTH_SHORT).show();

@@ -7,68 +7,64 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView29"
-        android:layout_width="340dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/txtSoTK"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/botton_bo_goc"
-        android:text="STK : 124321435124321435"
+        android:text="STK : 1"
         android:textColor="#FFFFFF"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.606"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView31" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTenTaiKhoan" />
 
     <TextView
-        android:id="@+id/textView30"
-        android:layout_width="338dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/botton_bo_goc"
-        android:text="Số Dư: 1221424141343"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.479"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
-
-    <TextView
-        android:id="@+id/textView31"
-        android:layout_width="341dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/txtTenTaiKhoan"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:textSize="30dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/botton_bo_goc"
         android:text="Tên TK: Tai KoBe"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintHorizontal_bias="0.622"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView30" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <TextView
-        android:id="@+id/textView32"
-        android:layout_width="339dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="12dp"
+        android:id="@+id/txtDoiMatKhau"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/botton_bo_goc"
-        android:text="Đổi Mk:"
+        android:text="Đổi mật khẩu"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintHorizontal_bias="0.606"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+        app:layout_constraintTop_toBottomOf="@+id/txtSoTK" />
 
     <TextView
-        android:id="@+id/textView33"
-        android:layout_width="339dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/txtDangXuat"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/botton_bo_goc"
         android:text="Đăng xuất"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
+        android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.622"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView32" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDoiMatKhau" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -77,24 +73,9 @@
         android:layout_marginTop="4dp"
         android:background="@drawable/botton_bo_goc"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.441"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/canhan" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="48dp"
-        android:onClick="onCLick"
-        android:src="@drawable/ic_add"
-        app:layout_anchorGravity="bottom|end"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView33"
-        app:layout_constraintVertical_bias="0.75" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

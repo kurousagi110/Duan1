@@ -63,7 +63,7 @@ public class KhoanThuFragment extends Fragment {
         list = thuChiDAO.getDSKhoanThuChi("thu",soTK());
 
 
-        adapter = new KhoanThuAdapter(list,getContext(),thuChiDAO,getDataSpinner());
+        adapter = new KhoanThuAdapter(list,getContext(),thuChiDAO,getDataSpinner(),soTK());
         listViewKhoanThu.setAdapter(adapter);
     }
     private void showDialogThem(){

@@ -61,43 +61,47 @@
 
     </LinearLayout>
 
-    <LinearLayout
+        <LinearLayout
+            android:layout_width="372dp"
+            android:layout_height="400dp"
+            android:background="@mipmap/naptien"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-        android:layout_width="372dp"
-        android:layout_height="400dp"
-        android:background="@drawable/bottom_backgroud_trang"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="462dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="462dp">
+                <Button
+                    android:id="@+id/btnThu"
+                    android:layout_width="289dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="52dp"
+                    android:background="@drawable/custombuttonthu"
+                    android:backgroundTint="#B11111"
+                    android:text="QUẢN LÍ THU"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.506"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/btnThu"
-                android:layout_width="289dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="52dp"
-                android:text="Thu"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.506"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <Button
+                    android:id="@+id/btnChi"
+                    android:layout_width="289dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="140dp"
+                    android:background="@drawable/custombuttonchi"
+                    android:text="QUẢN LÍ CHI"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.506"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:rippleColor="#D12828" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <Button
-                android:id="@+id/btnChi"
-                android:layout_width="289dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="140dp"
-                android:text="Chi"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.506"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </LinearLayout>
+        </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

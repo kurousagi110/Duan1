@@ -60,9 +60,7 @@ public class KhoanThuFragment extends Fragment {
         return view;
     }
     private void getData(){
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("THUTHU", Context.MODE_PRIVATE);
-        int soTK = sharedPreferences.getInt("soTK", 0);
-        list = thuChiDAO.getDSKhoanThuChi("thu",soTK);
+        list = thuChiDAO.getDSKhoanThuChi("thu",soTK());
 
 
         adapter = new KhoanThuAdapter(list,getContext(),thuChiDAO,getDataSpinner());
@@ -118,7 +116,7 @@ public class KhoanThuFragment extends Fragment {
 
     }
     private ArrayList<HashMap<String,Object>> getDataSpinner(){
-        ArrayList<Loai> listLoai = thuChiDAO.getDsLoaiThuChi("thu",2);
+        ArrayList<Loai> listLoai = thuChiDAO.getDsLoaiThuChi("thu",soTK());
         listSpinner = new ArrayList<>();
 
         for(Loai loai : listLoai){
@@ -128,5 +126,10 @@ public class KhoanThuFragment extends Fragment {
             listSpinner.add(hashMap);
         }
         return listSpinner;
+    }
+    private int soTK(){
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("THUTHU", Context.MODE_PRIVATE);
+        int soTK = sharedPreferences.getInt("soTK", 0);
+        return soTK;
     }
 }

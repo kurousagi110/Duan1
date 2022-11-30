@@ -54,9 +54,7 @@ public class KhoanChiAdapter extends BaseAdapter {
     public static class ViewOfItem{
         TextView txtTen,txtTien,txtNgayChi;
         ImageView ivSua,ivXoa;
-    }
-
-
+    }   
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         LayoutInflater inflater = ((Activity)context).getLayoutInflater();

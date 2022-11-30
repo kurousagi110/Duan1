@@ -7,7 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 
 import com.example.duan1.Fragment.LienHe_Fragment;
-import com.example.duan1.Fragment.NapTien_Fragment;
+import com.example.duan1.Fragment.KeHoach_Fragment;
 import com.example.duan1.Fragment.TaiKhoan_Fragment;
 import com.example.duan1.Fragment.Trang_Chu_Fragment;
 
@@ -29,7 +29,7 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
             case 0:
                 return new Trang_Chu_Fragment();
             case 1:
-                return new NapTien_Fragment();
+                return new KeHoach_Fragment();
             case 2:
                 return new ThongKe_Fragment();
             case 3:

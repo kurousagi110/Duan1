@@ -9,8 +9,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Sưa Khoan Chi"
-        android:textColor="#D500F9"
+        android:text="Sửa Khoan Chi"
+        android:textColor="#F50057"
         android:textSize="40dp"/>
     <Spinner
         android:id="@+id/spnSuaLoaiChi"

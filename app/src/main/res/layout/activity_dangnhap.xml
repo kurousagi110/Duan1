@@ -92,7 +92,7 @@
                 android:id="@+id/chkRememberPass"
                 android:layout_width="225dp"
                 android:layout_height="wrap_content"
-                android:text="Luu mat khau"
+                android:text="Lưu Mật Khẩu"
                 android:textAlignment="textStart" />
         </LinearLayout>
     </LinearLayout>

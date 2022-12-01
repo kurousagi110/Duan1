@@ -13,7 +13,7 @@ public class DataHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String qTaiKhoan = "CREATE TABLE TAIKHOAN (soTK integer primary key autoincrement, taikhoan text, matkhau text)";
+        String qTaiKhoan = "CREATE TABLE TAIKHOAN (soTK integer primary key autoincrement, taikhoan text, matkhau text,sodt text)";
         db.execSQL(qTaiKhoan);
         String qloai = "CREATE TABLE LOAI (maloai integer primary key autoincrement, tenloai text, trangthai text, soTK integer,FOREIGN KEY(soTK) references TAIKHOAN(SoTK))";
         db.execSQL(qloai);
@@ -21,7 +21,7 @@ public class DataHelper extends SQLiteOpenHelper {
         String qKhoan = "CREATE TABLE KHOANTHUCHI(makhoan integer primary key autoincrement, tien integer, ngay text, maloai integer,FOREIGN KEY(maloai) references LOAI(maloai))";
         db.execSQL(qKhoan);
         //data mẫu:
-        String taikhoan = "INSERT INTO TAIKHOAN VALUES(1, 'admin', 'admin'), (2, 'hoa123', '123'), (3, 'tai456', '456'), (4, 'loi789', '789')";
+        String taikhoan = "INSERT INTO TAIKHOAN VALUES(1, 'admin', 'admin','0123456789'), (2, 'hoa123', '123','0123456789'), (3, 'tai456', '456','0123456789'), (4, 'loi789', '789','0123456789')";
         db.execSQL(taikhoan);
 
         String loai = "INSERT INTO LOAI VALUES(1, 'tiền xăng', 'chi',2), (2, 'tiền lương', 'thu',2), (3, 'ăn sáng', 'chi',2)";

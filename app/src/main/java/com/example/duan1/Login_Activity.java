@@ -2,7 +2,6 @@ package com.example.duan1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.duan1.DAO.TaiKhoanDAO;
+import com.example.duan1.VerifyPhoneNumber.VerifyPhoneActivity;
 
 public class Login_Activity extends AppCompatActivity {
     TaiKhoanDAO taiKhoanDAO;
@@ -37,7 +37,7 @@ public class Login_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(Login_Activity.this, "dd", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Login_Activity.this, activity_dangky.class);
+                Intent intent = new Intent(Login_Activity.this, VerifyPhoneActivity.class);
                 startActivity(intent);
             }
         });

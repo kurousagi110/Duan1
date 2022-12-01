@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.duan1.ChiActivity;
+import com.example.duan1.KeHoachActivity;
 import com.example.duan1.R;
 import com.example.duan1.ThuActivity;
 
@@ -37,6 +38,14 @@ Button btn;
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ChiActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn = view.findViewById(R.id.btnKeHoach);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), KeHoachActivity.class);
                 startActivity(intent);
             }
         });

@@ -16,12 +16,22 @@ import androidx.fragment.app.Fragment;
 import com.example.duan1.DAO.ThuChiDAO;
 import com.example.duan1.Model.ThongKe;
 import com.example.duan1.R;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class ThongKe_thang_Fragment extends Fragment  {
+public class ThongKe_thang_Fragment extends Fragment implements OnChartValueSelectedListener {
     ThuChiDAO thuChiDAO;
     EditText edtNgayBatDau, edtDenNgay;
     Button btnThongKeThang;
@@ -108,75 +118,58 @@ public class ThongKe_thang_Fragment extends Fragment  {
             public void onClick(View v) {
                 String ngaybatdau = edtNgayBatDau.getText().toString();
                 String denngay = edtDenNgay.getText().toString();
-//                PieChart mChart = view.findViewById(R.id.chartThongKeTheoThang);
-//                mChart.setRotationEnabled(true);
-//                mChart.setHoleRadius(35f);
-//                mChart.setTransparentCircleAlpha(0);
-//                mChart.setDrawEntryLabels(true);
-//                addDataSet(mChart, ngaybatdau, denngay);
+                PieChart mChart = view.findViewById(R.id.chartThongKeTheoThang);
+                mChart.setRotationEnabled(true);
+                mChart.setDescription(new Description());
+                mChart.setHoleRadius(35f);
+                mChart.setTransparentCircleAlpha(0);
+                mChart.setCenterText("Thống kê");
+                mChart.setCenterTextSize(20);
+                mChart.setDrawEntryLabels(true);
 
-//                String ngaybatdau = edtNgayBatDau.toString();
-//                String denngay = edtDenNgay.toString();
-//                thongKe = new ThongKe();
-//                thongKe = thuChiDAO.getDoanhThuThang(ngaybatdau,denngay,2);
-//
-//                PieChart pieChart = view.findViewById(R.id.chartThongKeTheoThang);
-//                ArrayList<PieEntry> thuChi = new ArrayList<>();
-//                thuChi.add(new PieEntry(thongKe.getThu(),"Khoản Thu"));
-//                thuChi.add(new PieEntry(thongKe.getChi(),"Khoản Chi"));
-//                PieDataSet pieDataSet = new PieDataSet(thuChi,"Thống Kê Thu Chi");
-//                pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-//                pieDataSet.setValueTextColor(Color.BLACK);
-//                pieDataSet.setValueTextSize(10f);
-//
-//                Legend legend = pieChart.getLegend();
-//                legend.setForm(Legend.LegendForm.CIRCLE);
-//
-//                PieData pieData = new PieData(pieDataSet);
-//
-//                pieChart.setData(pieData);
-//                pieChart.getDescription().setEnabled(false);
-//                pieChart.setCenterText("Thống Kê");
-//                pieChart.requestLayout();
-//                pieChart.invalidate();
-//                pieChart.animate();
+                mChart.setRotationEnabled(true);
+                mChart.setHoleRadius(35f);
+                mChart.setTransparentCircleAlpha(0);
+                mChart.setDrawEntryLabels(true);
+                addDataSet(mChart, ngaybatdau, denngay);
             }
         });
 
     }
-//    @Override
-//    public void onValueSelected(Entry e, Highlight h) {
-//
-//    }
-//
-//    @Override
-//    public void onNothingSelected() {
-//
-//    }
-//    private void addDataSet(PieChart pieChart, String ngaybatdau, String denngay) {
-//
-//        ArrayList<PieEntry> entrys = new ArrayList<>();
-//        Integer[] yData = thuChiDAO.getDoanhThuTheoThang(2,ngaybatdau,denngay);
-//        String[] xData = {"Khoản thu", "Khoản chi"};
-//        for (int i = 0; i < yData.length; i++) {
-//            entrys.add(new PieEntry(yData[i], xData[i]));
-//        }
-//
-//        PieDataSet pieDataSet = new PieDataSet(entrys, " ");
-//        pieDataSet.setSliceSpace(2);
-//        pieDataSet.setValueTextSize(10);
-//        ArrayList<Integer> colors = new ArrayList<>();
-//        colors.add(Color.BLUE);
-//        colors.add(Color.RED);
-//        pieDataSet.setColors(colors);
-//        Legend legend = pieChart.getLegend();
-//        legend.setForm(Legend.LegendForm.CIRCLE);
-//        PieData pieData = new PieData(pieDataSet);
-//        pieChart.setData(pieData);
-//        pieChart.requestLayout();
-//        pieChart.invalidate();
-//        pieChart.animate();
-//    }
+
+    @Override
+    public void onValueSelected(Entry e, Highlight h) {
+
+    }
+
+    @Override
+    public void onNothingSelected() {
+
+    }
+
+    private void addDataSet(PieChart pieChart, String ngaybatdau, String denngay) {
+        ArrayList<PieEntry> entrys = new ArrayList<>();
+        Integer[] yData = thuChiDAO.getDoanhThuTheoThang(ngaybatdau,denngay);
+        String[] xData = {"Khoản thu", "Khoản chi"};
+        for (int i = 0; i < yData.length; i++) {
+            entrys.add(new PieEntry(yData[i], xData[i]));
+        }
+
+        PieDataSet pieDataSet = new PieDataSet(entrys, " ");
+        pieDataSet.setSliceSpace(2);
+        pieDataSet.setValueTextSize(10);
+        ArrayList<Integer> colors = new ArrayList<>();
+        colors.add(Color.BLUE);
+        colors.add(Color.RED);
+        pieDataSet.setColors(colors);
+        Legend legend = pieChart.getLegend();
+        legend.setForm(Legend.LegendForm.CIRCLE);
+        PieData pieData = new PieData(pieDataSet);
+        pieChart.setData(pieData);
+        pieChart.requestLayout();
+        pieChart.invalidate();
+        pieChart.animate();
+    }
 
 
 }

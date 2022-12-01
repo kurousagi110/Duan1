@@ -4,15 +4,31 @@ public class TaiKhoan {
     private Integer soTK;
     private String taiKhoan;
     private String matKhau;
+    private String soDT;
 
     public TaiKhoan() {
 
     }
 
-    public TaiKhoan(Integer soTK, String taiKhoan, String matKhau) {
+    public TaiKhoan(String taiKhoan, String matKhau, String soDT) {
+        this.taiKhoan = taiKhoan;
+        this.matKhau = matKhau;
+        this.soDT = soDT;
+    }
+
+    public TaiKhoan(Integer soTK, String taiKhoan, String matKhau, String soDT) {
         this.soTK = soTK;
         this.taiKhoan = taiKhoan;
         this.matKhau = matKhau;
+        this.soDT = soDT;
+    }
+
+    public String getSoDT() {
+        return soDT;
+    }
+
+    public void setSoDT(String soDT) {
+        this.soDT = soDT;
     }
 
     public Integer getSoTK() {

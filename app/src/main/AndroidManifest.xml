@@ -42,7 +42,7 @@
 
         </activity>
         <activity
-            android:name=".activity_dangky"
+            android:name=".Activity_Dangky"
             android:exported="true">
 
         </activity>

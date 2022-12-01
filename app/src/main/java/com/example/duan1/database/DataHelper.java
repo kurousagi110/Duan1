@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DataHelper extends SQLiteOpenHelper {
     public DataHelper( Context context) {
-        super(context, "ThuChiDatabase", null, 12);
+        super(context, "ThuChiDatabase", null, 13);
     }
 
     @Override
@@ -20,6 +20,8 @@ public class DataHelper extends SQLiteOpenHelper {
 
         String qKhoan = "CREATE TABLE KHOANTHUCHI(makhoan integer primary key autoincrement, tien integer, ngay text, maloai integer,FOREIGN KEY(maloai) references LOAI(maloai))";
         db.execSQL(qKhoan);
+        String qlNO = "CREATE TABLE QUANLYNO (makhoan integer primary key autoincrement, tien integer, ngay text, maloai integer,FOREIGN KEY(maloai) references LOAI(maloai))";
+        db.execSQL(qlNO);
         //data mẫu:
         String taikhoan = "INSERT INTO TAIKHOAN VALUES(1, 'admin', 'admin'), (2, 'hoa123', '123'), (3, 'tai456', '456'), (4, 'loi789', '789')";
         db.execSQL(taikhoan);
@@ -36,7 +38,8 @@ public class DataHelper extends SQLiteOpenHelper {
         String khoanthuchi1 = "INSERT INTO KHOANTHUCHI VALUES(4, 5000, '01/11/2022' ,6), (5, 7000, '09/11/2022', 5), (6, 1000, '08/12/2022',4)";
         db.execSQL(khoanthuchi1);
 
-    }
+        String quanlyno = "INSERT INTO QUANLYNO VALUES(1, 6000, '02/11/2022' ,1), (2, 5000, '03/11/2022', 3), (3, 10000, '05/01/2022',2)";
+        db.execSQL(quanlyno);    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -47,6 +50,8 @@ public class DataHelper extends SQLiteOpenHelper {
             db.execSQL(dLoai);
             String dKhoan = "DROP TABLE IF EXISTS KHOANTHUCHI";
             db.execSQL(dKhoan);
+            String qlNO = "DROP TABLE IF EXISTS QUANLYNO";
+            db.execSQL(qlNO);
             onCreate(db);
         }
     }

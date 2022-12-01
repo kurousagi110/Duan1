@@ -9,16 +9,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Sửa Loai Thu"
-        android:textColor="#F50057"
+        android:text="Them Khoan Thu No"
+        android:textColor="#D500F9"
         android:textSize="40dp"/>
+    <Spinner
+        android:id="@+id/spnLoaiThuNO"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <EditText
-        android:id="@+id/edtInputNo"
+        android:id="@+id/edtTien"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhap ten loai thu"
-        android:textSize="19sp"/>
+        android:hint="Nhâp tiền"
+        android:textSize="19sp"
+        android:inputType="number"/>
+
+
 
 
 </LinearLayout>

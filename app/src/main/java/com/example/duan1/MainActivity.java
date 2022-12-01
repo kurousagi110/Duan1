@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                     bottomNavigationView.getMenu().findItem(R.id.mTrangChu).setChecked(true);
                     break;
                     case 1:
-                        bottomNavigationView.getMenu().findItem(R.id.mNaptien).setChecked(true);
+                        bottomNavigationView.getMenu().findItem(R.id.mquanlyno).setChecked(true);
                         break;
                     case 2:
                         bottomNavigationView.getMenu().findItem(R.id.mThongKe).setChecked(true);
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.mTrangChu:
                 viewPager.setCurrentItem(0);
                 break;
-            case R.id.mNaptien:
+            case R.id.mquanlyno:
                 viewPager.setCurrentItem(1);
                 break;
             case R.id.mThongKe:
@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.mLienHe:
                 viewPager.setCurrentItem(4);
                 break;
+
                     }
                 }
             });

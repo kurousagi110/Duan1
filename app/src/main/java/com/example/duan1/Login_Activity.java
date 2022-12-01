@@ -76,7 +76,6 @@ public class Login_Activity extends AppCompatActivity {
             chkRememberPass.setChecked(check);
         }
 
-
     }
 
     public void saveInfo(Integer soTK) {

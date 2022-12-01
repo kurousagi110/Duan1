@@ -9,15 +9,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Sửa Loai Thu"
+        android:text="Sửa Loai Nợ"
         android:textColor="#F50057"
         android:textSize="40dp"/>
 
     <EditText
-        android:id="@+id/edtInputNo"
+        android:id="@+id/edtInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhap ten loai thu"
+        android:hint="Nhap ten loai nợ"
         android:textSize="19sp"/>
 
 

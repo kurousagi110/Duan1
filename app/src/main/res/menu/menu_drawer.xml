@@ -5,8 +5,8 @@
         android:title="Trang chủ "
         android:icon="@drawable/ic_trangchu"/>
     <item
-        android:id="@+id/mNaptien"
-        android:title="Nạp tiền"
+        android:id="@+id/mquanlyno"
+        android:title="quan ly no"
         android:icon="@drawable/ic_nap_tien"/>
 
     <item
@@ -22,4 +22,5 @@
         android:id="@+id/mLienHe"
         android:title="Liên Hệ"
         android:icon="@drawable/ic_lien_he"/>
+
 </menu>

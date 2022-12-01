@@ -10,12 +10,12 @@
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="693dp"
-        android:layout_height="242dp"
+        android:layout_height="100dp"
         app:srcCompat="@mipmap/hinhtron" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="391dp"
+        android:layout_height="match_parent"
         android:layout_above="@+id/tvRegister"
         android:layout_marginTop="30dp"
         android:gravity="center"
@@ -34,7 +34,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="331dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
@@ -74,6 +74,30 @@
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
 
+            <Button
+                android:id="@+id/btnLoginOTP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/botron_button"
+                android:padding="4dp"
+                android:text="Đăng nhập bằng OTP"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+            <Button
+                android:id="@+id/btnLoginFinger"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/botron_button"
+                android:padding="4dp"
+                android:text="Đăng nhập bằng vân tay"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/btnDANGKY"

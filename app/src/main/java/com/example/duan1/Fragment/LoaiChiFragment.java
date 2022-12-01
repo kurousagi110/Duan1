@@ -49,13 +49,13 @@ public class LoaiChiFragment extends Fragment {
         });
         return view;
     }
-    private int soTK(){
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("THUTHU", Context.MODE_PRIVATE);
-        int soTK = sharedPreferences.getInt("soTK", 0);
-        return soTK;
-    }
+//    private int soTK(){
+//        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("THUTHU", Context.MODE_PRIVATE);
+//        int soTK = sharedPreferences.getInt("soTK", 0);
+//        return soTK;
+//    }
     private void loadData(){
-        list = thuChiDAO.getDsLoaiThuChi("chi",soTK());
+        list = thuChiDAO.getDsLoaiThuChi("chi");
 
         loaiChiAdapter = new LoaiChiAdapter(list,getContext(),thuChiDAO);
         listViewLoaiChi.setAdapter(loaiChiAdapter);
@@ -72,7 +72,7 @@ public class LoaiChiFragment extends Fragment {
             public void onClick(DialogInterface dialogInterface, int i) {
 
                 String tenloai = edtInput.getText().toString();
-                Loai loaiThem = new Loai(tenloai,"chi",soTK());
+                Loai loaiThem = new Loai(tenloai,"chi",2);
                 if(thuChiDAO.addLoaiThuChi(loaiThem)){
                     Toast.makeText(getContext(), "Theem thnah cong", Toast.LENGTH_SHORT).show();
                     loadData();

@@ -25,17 +25,16 @@ import java.util.HashMap;
 
 public class KhoanChiAdapter extends BaseAdapter {
     private ArrayList<KhoanThuChi> list;
-    private int soTK;
     private Context context;
     private ThuChiDAO thuChiDAO;
     private ArrayList<HashMap<String,Object>> listSpinner1;
 
-    public KhoanChiAdapter(ArrayList<KhoanThuChi> list, Context context, ThuChiDAO thuChiDAO,ArrayList<HashMap<String,Object>> listSpinner, int soTK) {
+    public KhoanChiAdapter(ArrayList<KhoanThuChi> list, Context context, ThuChiDAO thuChiDAO,ArrayList<HashMap<String,Object>> listSpinner) {
         this.list = list;
         this.context = context;
         this.thuChiDAO = thuChiDAO;
         this.listSpinner1 = listSpinner;
-        this.soTK = soTK;
+
     }
 
     @Override
@@ -156,7 +155,7 @@ public class KhoanChiAdapter extends BaseAdapter {
     }
     private void reLoadData(){
         list.clear();
-        list = thuChiDAO.getDSKhoanThuChi("chi",soTK);
+        list = thuChiDAO.getDSKhoanThuChi("chi");
         notifyDataSetChanged();
     }
 }

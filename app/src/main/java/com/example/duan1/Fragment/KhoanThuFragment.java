@@ -83,10 +83,6 @@ public class KhoanThuFragment extends Fragment {
                 new int[]{android.R.id.text1}
         );
 
-
-
-
-
         builder.setPositiveButton("thêm", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {

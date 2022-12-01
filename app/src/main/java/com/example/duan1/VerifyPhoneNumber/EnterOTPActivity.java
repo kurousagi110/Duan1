@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duan1.Activity_Dangky;
+import com.example.duan1.MainActivity;
 import com.example.duan1.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -116,7 +117,7 @@ public class EnterOTPActivity extends AppCompatActivity {
                 });
     }
     private void GotoMainActivity(String phoneNumber) {
-        Intent intent = new Intent(this, Activity_Dangky.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("phone_number",phoneNumber);
         startActivity(intent);
     }

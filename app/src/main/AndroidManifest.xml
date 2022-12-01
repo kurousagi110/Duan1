@@ -4,6 +4,7 @@
     package="com.example.duan1">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
     <application
         android:allowBackup="true"
@@ -52,6 +53,9 @@
             android:exported="true" />
         <activity
             android:name=".Activity_Dangky"
+            android:exported="true" />
+        <activity
+            android:name=".VerifyPhoneNumber.FingeprintActivity"
             android:exported="true" />
     </application>
 

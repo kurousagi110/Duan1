@@ -50,6 +50,9 @@
         <activity
             android:name=".ChiActivity"
             android:exported="true" />
+        <activity
+            android:name=".Activity_Dangky"
+            android:exported="true" />
     </application>
 
 </manifest>

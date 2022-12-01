@@ -10,7 +10,13 @@ public class TaiKhoan {
 
     }
 
-    public TaiKhoan(Integer soTK, String taiKhoan, String matKhau,String soDT) {
+    public TaiKhoan(String taiKhoan, String matKhau, String soDT) {
+        this.taiKhoan = taiKhoan;
+        this.matKhau = matKhau;
+        this.soDT = soDT;
+    }
+
+    public TaiKhoan(Integer soTK, String taiKhoan, String matKhau, String soDT) {
         this.soTK = soTK;
         this.taiKhoan = taiKhoan;
         this.matKhau = matKhau;

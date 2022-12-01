@@ -39,6 +39,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_phone);
         edtPhoneNumber = findViewById(R.id.edtPhoneNumber);
+        edtPhoneNumber.setText("+84");
         btnContinue = findViewById(R.id.btnContinue);
         mAuth = FirebaseAuth.getInstance();
         btnContinue.setOnClickListener(new View.OnClickListener() {

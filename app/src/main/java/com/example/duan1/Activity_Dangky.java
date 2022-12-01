@@ -1,5 +1,6 @@
 package com.example.duan1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,14 +38,18 @@ public class Activity_Dangky extends AppCompatActivity {
             public void onClick(View v) {
                 String taikhoan = edtUserdk.getText().toString();
                 String matkhau = edtPassdk.getText().toString();
+                String soDT = tvSoDT.getText().toString();
                 taiKhoan.setTaiKhoan(taikhoan);
                 taiKhoan.setMatKhau(matkhau);
-                taiKhoan.setSoDT(phoneNumber);
+                taiKhoan.setSoDT(soDT);
 
                 boolean checkDK = taiKhoanDAO.insert(taiKhoan);
                 if(checkDK==true) {
                     Toast.makeText(Activity_Dangky.this, "thanh cong", Toast.LENGTH_SHORT).show();
-                    finish();
+                    Intent intent = new Intent(Activity_Dangky.this, Login_Activity.class);
+                    //clear activity
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
                 }else {
                     Toast.makeText(Activity_Dangky.this, "khong thanh cong", Toast.LENGTH_SHORT).show();
                     return;

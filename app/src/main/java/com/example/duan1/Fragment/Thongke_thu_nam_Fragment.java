@@ -46,18 +46,18 @@ public class Thongke_thu_nam_Fragment extends Fragment {
 //
 //        thongKeNam.add(new BarEntry(1, yData[0]));
 //        thongKeNam.add(new BarEntry(1, yData[1]));
-        thongKeNam.add(new BarEntry(1,thuChiDAO.getDoanhThuNam(soTK(),"2022/01/01","2022/01/31","thu")));
-        thongKeNam.add(new BarEntry(2,thuChiDAO.getDoanhThuNam(soTK(),"2022/02/01","2022/02/28","thu")));
-        thongKeNam.add(new BarEntry(3,thuChiDAO.getDoanhThuNam(soTK(),"2022/03/01","2022/03/31","thu")));
-        thongKeNam.add(new BarEntry(4,thuChiDAO.getDoanhThuNam(soTK(),"2022/04/01","2022/04/30","thu")));
-        thongKeNam.add(new BarEntry(5,thuChiDAO.getDoanhThuNam(soTK(),"2022/05/01","2022/05/31","thu")));
-        thongKeNam.add(new BarEntry(6,thuChiDAO.getDoanhThuNam(soTK(),"2022/06/01","2022/06/30","thu")));
-        thongKeNam.add(new BarEntry(7,thuChiDAO.getDoanhThuNam(soTK(),"2022/07/01","2022/07/31","thu")));
-        thongKeNam.add(new BarEntry(8,thuChiDAO.getDoanhThuNam(soTK(),"2022/08/01","2022/08/31","thu")));
-        thongKeNam.add(new BarEntry(9,thuChiDAO.getDoanhThuNam(soTK(),"2022/09/01","2022/09/30","thu")));
-        thongKeNam.add(new BarEntry(10,thuChiDAO.getDoanhThuNam(soTK(),"2022/10/01","2022/10/31","thu")));
-        thongKeNam.add(new BarEntry(11,thuChiDAO.getDoanhThuNam(soTK(),"2022/11/01","2022/11/30","thu")));
-        thongKeNam.add(new BarEntry(12,thuChiDAO.getDoanhThuNam(soTK(),"2022/12/01","2022/12/31","thu")));
+        thongKeNam.add(new BarEntry(1,thuChiDAO.getDoanhThuNam("2022/01/01","2022/01/31","thu")));
+        thongKeNam.add(new BarEntry(2,thuChiDAO.getDoanhThuNam("2022/02/01","2022/02/28","thu")));
+        thongKeNam.add(new BarEntry(3,thuChiDAO.getDoanhThuNam("2022/03/01","2022/03/31","thu")));
+        thongKeNam.add(new BarEntry(4,thuChiDAO.getDoanhThuNam("2022/04/01","2022/04/30","thu")));
+        thongKeNam.add(new BarEntry(5,thuChiDAO.getDoanhThuNam("2022/05/01","2022/05/31","thu")));
+        thongKeNam.add(new BarEntry(6,thuChiDAO.getDoanhThuNam("2022/06/01","2022/06/30","thu")));
+        thongKeNam.add(new BarEntry(7,thuChiDAO.getDoanhThuNam("2022/07/01","2022/07/31","thu")));
+        thongKeNam.add(new BarEntry(8,thuChiDAO.getDoanhThuNam("2022/08/01","2022/08/31","thu")));
+        thongKeNam.add(new BarEntry(9,thuChiDAO.getDoanhThuNam("2022/09/01","2022/09/30","thu")));
+        thongKeNam.add(new BarEntry(10,thuChiDAO.getDoanhThuNam("2022/10/01","2022/10/31","thu")));
+        thongKeNam.add(new BarEntry(11,thuChiDAO.getDoanhThuNam("2022/11/01","2022/11/30","thu")));
+        thongKeNam.add(new BarEntry(12,thuChiDAO.getDoanhThuNam("2022/12/01","2022/12/31","thu")));
         BarDataSet barDataSet = new BarDataSet(thongKeNam, "Thống kê theo năm");
         barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         barDataSet.setValueTextColor(Color.BLACK);
@@ -68,9 +68,9 @@ public class Thongke_thu_nam_Fragment extends Fragment {
         barChart.getDescription().setText("Tiền");
         barChart.animateY(2000);
     }
-    private int soTK(){
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("THUTHU", Context.MODE_PRIVATE);
-        int soTK = sharedPreferences.getInt("soTK", 0);
-        return soTK;
-    }
+//    private int soTK(){
+//        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("THUTHU", Context.MODE_PRIVATE);
+//        int soTK = sharedPreferences.getInt("soTK", 0);
+//        return soTK;
+//    }
 }

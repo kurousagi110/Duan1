@@ -12,13 +12,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.duan1.DAO.TaiKhoanDAO;
+import com.example.duan1.VerifyPhoneNumber.FingeprintActivity;
 import com.example.duan1.VerifyPhoneNumber.VerifyPhoneActivity;
 
 public class Login_Activity extends AppCompatActivity {
     TaiKhoanDAO taiKhoanDAO;
     CheckBox chkRememberPass;
     EditText edtUser, edtPass;
-
+    Button bntLogin,bntdangky,btnLoginOTP,btnLoginFinger;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +28,11 @@ public class Login_Activity extends AppCompatActivity {
         edtUser = findViewById(R.id.edtUsername);
         edtPass = findViewById(R.id.edtPassword);
         chkRememberPass = findViewById(R.id.chkRememberPass);
-        Button bntLogin = findViewById(R.id.btnLogin);
-        Button bntdangky = findViewById(R.id.btnDANGKY);
+        bntLogin = findViewById(R.id.btnLogin);
+        bntdangky = findViewById(R.id.btnDANGKY);
+        btnLoginOTP = findViewById(R.id.btnLoginOTP);
+        btnLoginFinger = findViewById(R.id.btnLoginFinger);
+
         taiKhoanDAO = new TaiKhoanDAO(this);
         final int[] soTK = new int[1];
         showInfoRem();
@@ -37,7 +41,7 @@ public class Login_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(Login_Activity.this, "dd", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Login_Activity.this, VerifyPhoneActivity.class);
+                Intent intent = new Intent(Login_Activity.this, Activity_Dangky.class);
                 startActivity(intent);
             }
         });
@@ -56,6 +60,22 @@ public class Login_Activity extends AppCompatActivity {
                 } else {
 
                 }
+            }
+        });
+
+        btnLoginOTP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login_Activity.this, VerifyPhoneActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnLoginFinger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login_Activity.this, FingeprintActivity.class);
+                startActivity(intent);
             }
         });
     }

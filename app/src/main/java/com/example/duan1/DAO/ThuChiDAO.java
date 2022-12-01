@@ -23,16 +23,15 @@ public class ThuChiDAO {
 
     // get danh sách loại thu/chi
 
-    public ArrayList<Loai> getDsLoaiThuChi(String loai, Integer id) {
+    public ArrayList<Loai> getDsLoaiThuChi(String loai) {
         ArrayList<Loai> list = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = dataHelper.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM LOAI", null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
-                Integer maTK = cursor.getInt(3);
                 String trangthai = cursor.getString(2);
-                if (trangthai.equals(loai) && maTK.equals(id)) {
+                if (trangthai.equals(loai)) {
                     list.add(new Loai(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3)));
                 }
             } while (cursor.moveToNext());
@@ -76,10 +75,10 @@ public class ThuChiDAO {
     }
 
     //lay danh sach khoan thu chi
-    public ArrayList<KhoanThuChi> getDSKhoanThuChi(String loai, int soTK) {
+    public ArrayList<KhoanThuChi> getDSKhoanThuChi(String loai) {
         ArrayList<KhoanThuChi> list = new ArrayList<>();
         SQLiteDatabase database = dataHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT k.maKhoan, k.tien, l.tenLoai, k.ngay, k.maLoai FROM LOAI l, KHOANTHUCHI k WHERE l.maLoai = k.maLoai AND l.trangthai = ? and l.soTK =?", new String[]{loai, String.valueOf(soTK)});
+        Cursor cursor = database.rawQuery("SELECT k.maKhoan, k.tien, l.tenLoai, k.ngay, k.maLoai FROM LOAI l, KHOANTHUCHI k WHERE l.maLoai = k.maLoai AND l.trangthai = ? ", new String[]{loai});
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
@@ -148,18 +147,18 @@ public class ThuChiDAO {
         return ketQua;
     }
 
-    public Integer[] getDoanhThuTheoThang(Integer id, String ngaybatdau, String ngayketthuc) { //2022/09/30
+    public Integer[] getDoanhThuTheoThang( String ngaybatdau, String ngayketthuc) { //2022/09/30
         ngaybatdau = ngaybatdau.replace("/", "");
         ngayketthuc = ngayketthuc.replace("/", "");
         SQLiteDatabase sqLiteDatabase = dataHelper.getReadableDatabase();
         int thu = 0, chi = 0;
         //                                                 SELECT SUM(tien) FROM KHOANTHUCHI WHERE maLoai in (select maLoai FROM LOAI where trangthai = 'chi' and soTK = 2) and substr(ngay,7)||substr(ngay,4,2)||substr(ngay,1,2) between '20220101' and '20221119'
-        Cursor cursorThu = sqLiteDatabase.rawQuery("SELECT SUM(tien) FROM KHOANTHUCHI WHERE maloai in (select maloai FROM LOAI where trangthai = 'thu' and soTK = ?) and substr(ngay,7)||substr(ngay,4,2)||substr(ngay,1,2) between ? and ?", new String[]{String.valueOf(id), ngaybatdau, ngayketthuc});
+        Cursor cursorThu = sqLiteDatabase.rawQuery("SELECT SUM(tien) FROM KHOANTHUCHI WHERE maloai in (select maloai FROM LOAI where trangthai = 'thu') and substr(ngay,7)||substr(ngay,4,2)||substr(ngay,1,2) between ? and ?", new String[]{ ngaybatdau, ngayketthuc});
         if (cursorThu.getCount() != 0) {
             cursorThu.moveToFirst();
             thu = cursorThu.getInt(0);
         }
-        Cursor cursorChi = sqLiteDatabase.rawQuery("SELECT SUM(tien) FROM KHOANTHUCHI WHERE maLoai in (select maLoai FROM LOAI where trangthai = 'chi' and soTK = ?) and substr(ngay,7)||substr(ngay,4,2)||substr(ngay,1,2) between ? and ?", new String[]{String.valueOf(id), ngaybatdau, ngayketthuc});
+        Cursor cursorChi = sqLiteDatabase.rawQuery("SELECT SUM(tien) FROM KHOANTHUCHI WHERE maLoai in (select maLoai FROM LOAI where trangthai = 'chi') and substr(ngay,7)||substr(ngay,4,2)||substr(ngay,1,2) between ? and ?", new String[]{ ngaybatdau, ngayketthuc});
         if (cursorChi.getCount() != 0) {
             cursorChi.moveToFirst();
             chi = cursorChi.getInt(0);
@@ -168,17 +167,17 @@ public class ThuChiDAO {
         return ketQua;
     }
 
-    public Integer getDoanhThuNam(Integer id, String ngaybatdau, String ngayketthuc, String loai) { //2022/09/30
+    public Integer getDoanhThuNam(String ngaybatdau, String ngayketthuc, String loai) { //2022/09/30
         ngaybatdau = ngaybatdau.replace("/", "");
         ngayketthuc = ngayketthuc.replace("/", "");
         SQLiteDatabase sqLiteDatabase = dataHelper.getReadableDatabase();
         Integer thu1 = 0, chi1 = 0;
-            Cursor cursorThu = sqLiteDatabase.rawQuery("SELECT SUM(tien) FROM KHOANTHUCHI WHERE maLoai in (select maLoai FROM LOAI where trangthai = 'thu' and soTK = ?) and substr(ngay,7)||substr(ngay,4,2)||substr(ngay,1,2) between ? and ?", new String[]{String.valueOf(id), ngaybatdau, ngayketthuc});
+            Cursor cursorThu = sqLiteDatabase.rawQuery("SELECT SUM(tien) FROM KHOANTHUCHI WHERE maLoai in (select maLoai FROM LOAI where trangthai = 'thu' ) and substr(ngay,7)||substr(ngay,4,2)||substr(ngay,1,2) between ? and ?", new String[]{ ngaybatdau, ngayketthuc});
             if (cursorThu.getCount() != 0) {
                 cursorThu.moveToFirst();
                 thu1 = cursorThu.getInt(0);
             }
-            Cursor cursorChi = sqLiteDatabase.rawQuery("SELECT SUM(tien) FROM KHOANTHUCHI WHERE maLoai in (select maLoai FROM LOAI where trangthai = 'chi' and soTK = ?) and substr(ngay,7)||substr(ngay,4,2)||substr(ngay,1,2) between ? and ?", new String[]{String.valueOf(id), ngaybatdau, ngayketthuc});
+            Cursor cursorChi = sqLiteDatabase.rawQuery("SELECT SUM(tien) FROM KHOANTHUCHI WHERE maLoai in (select maLoai FROM LOAI where trangthai = 'chi' ) and substr(ngay,7)||substr(ngay,4,2)||substr(ngay,1,2) between ? and ?", new String[]{ ngaybatdau, ngayketthuc});
             if (cursorChi.getCount() != 0) {
                 cursorChi.moveToFirst();
                 chi1 = cursorChi.getInt(0);

@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.duan1.Adapter.KhoanThuAdapter;
+import com.example.duan1.Adapter.KhoanThuNoAdapter;
 import com.example.duan1.DAO.ThuChiDAO;
 import com.example.duan1.Model.KhoanThuChi;
 import com.example.duan1.Model.Loai;
@@ -35,7 +36,7 @@ public class KhoanThuNoFragment extends Fragment {
     ArrayList<KhoanThuChi> list;
     ThuChiDAO thuChiDAO;
     ArrayList<HashMap<String,Object>> listSpinner;
-    KhoanThuAdapter adapter;
+    KhoanThuNoAdapter adapter;
 
     @Nullable
     @Override
@@ -61,7 +62,7 @@ public class KhoanThuNoFragment extends Fragment {
         list = thuChiDAO.getDSKhoanThuChi("no");
 
 
-        adapter = new KhoanThuAdapter(list,getContext(),thuChiDAO,getDataSpinner());
+        adapter = new KhoanThuNoAdapter(list,getContext(),thuChiDAO,getDataSpinner());
         listViewKhoanThuNo.setAdapter(adapter);
     }
     private void showDialogThem(){

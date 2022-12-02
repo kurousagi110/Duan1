@@ -29,7 +29,7 @@ public class KhoanThuNoAdapter extends BaseAdapter {
     private ThuChiDAO thuChiDAO;
     private ArrayList<HashMap<String,Object>> listSpinner;
 
-    public KhoanThuNoAdapter(ArrayList<KhoanThuChi> list, Context context, ThuChiDAO thuChiDAO, ArrayList<HashMap<String,Object>> listSpinner, int soTK) {
+    public KhoanThuNoAdapter(ArrayList<KhoanThuChi> list, Context context, ThuChiDAO thuChiDAO, ArrayList<HashMap<String, Object>> listSpinner) {
         this.list = list;
         this.context = context;
         this.thuChiDAO = thuChiDAO;

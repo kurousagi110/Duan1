@@ -34,7 +34,7 @@ public class KhoanThuNoAdapter extends BaseAdapter {
         this.context = context;
         this.thuChiDAO = thuChiDAO;
         this.listSpinner = listSpinner;
-        this.soTK = soTK;
+
     }
 
     @Override
@@ -63,13 +63,13 @@ public class KhoanThuNoAdapter extends BaseAdapter {
         LayoutInflater inflater = ((Activity)context).getLayoutInflater();
         ViewOfItem viewOfItem;
         if(view == null){
-                view = inflater.inflate(R.layout.item_khoanthu,viewGroup,false);
+                view = inflater.inflate(R.layout.item_khoanno,viewGroup,false);
                 viewOfItem = new ViewOfItem();
-                viewOfItem.txtTen = view.findViewById(R.id.txtTenThu);
-                viewOfItem.txtTien = view.findViewById(R.id.txtTienThu);
-                viewOfItem.ivSua = view.findViewById(R.id.ivSuaThu);
-                viewOfItem.ivXoa = view.findViewById(R.id.ivXoaThu);
-            viewOfItem.txtNgayThu = view.findViewById(R.id.txtNgayThu);
+                viewOfItem.txtTen = view.findViewById(R.id.txtTenThuNo);
+                viewOfItem.txtTien = view.findViewById(R.id.txtTienThuNo);
+                viewOfItem.ivSua = view.findViewById(R.id.ivSuaThuNo);
+                viewOfItem.ivXoa = view.findViewById(R.id.ivXoaThuNo);
+            viewOfItem.txtNgayThu = view.findViewById(R.id.txtNgayThuNo);
 
             view.setTag(viewOfItem);
         }else{
@@ -104,9 +104,9 @@ public class KhoanThuNoAdapter extends BaseAdapter {
     private void showDialogSua(KhoanThuChi khoanThuChi){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-        View view = inflater.inflate(R.layout.dialog_suakhoanthu,null);
-        Spinner spnLoaiThu = view.findViewById(R.id.spnLoaiThu);
-        EditText edtTien = view.findViewById(R.id.edtTien);
+        View view = inflater.inflate(R.layout.dialog_suakhoanno,null);
+        Spinner spnLoaiThuNo = view.findViewById(R.id.spnLoaiThuNo);
+        EditText edtTien = view.findViewById(R.id.edtTienNo);
         builder.setView(view);
 
         SimpleAdapter adapter = new SimpleAdapter(
@@ -116,7 +116,7 @@ public class KhoanThuNoAdapter extends BaseAdapter {
                 new String[]{"tenloai"},
                 new int[]{android.R.id.text1}
         );
-        spnLoaiThu.setAdapter(adapter);
+        spnLoaiThuNo.setAdapter(adapter);
 
         edtTien.setText(String.valueOf(khoanThuChi.getTien()));
         int index = 0;
@@ -126,13 +126,13 @@ public class KhoanThuNoAdapter extends BaseAdapter {
                 vitri = index;
             index++;
         }
-        spnLoaiThu.setSelection(vitri);
+        spnLoaiThuNo.setSelection(vitri);
 
         builder.setPositiveButton("Cập nhật", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String tien =edtTien.getText().toString();
-                HashMap<String,Object> selected = (HashMap<String, Object>) spnLoaiThu.getSelectedItem();
+                HashMap<String,Object> selected = (HashMap<String, Object>) spnLoaiThuNo.getSelectedItem();
                 int maloai = (int) selected.get("maloai");
                 khoanThuChi.setTien(Integer.parseInt(tien));
                 khoanThuChi.setMaLoai(maloai);
@@ -156,7 +156,7 @@ public class KhoanThuNoAdapter extends BaseAdapter {
     }
     private void reLoadData(){
         list.clear();
-        list = thuChiDAO.getDSKhoanThuChi("thu",soTK);
+        list = thuChiDAO.getDSKhoanThuChi("no");
         notifyDataSetChanged();
     }
 }

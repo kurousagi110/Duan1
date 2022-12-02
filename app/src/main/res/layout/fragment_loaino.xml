@@ -14,7 +14,7 @@
         android:src="@drawable/ic_add"
         android:layout_gravity="bottom|end"
         android:layout_margin="15dp"
-        app:layout_anchor="@id/listViewLoaiThu"
+        app:layout_anchor="@id/listViewLoaiThuNo"
         app:layout_anchorGravity="bottom|end"
         android:id="@+id/floatAddLoaiNo"/>
 

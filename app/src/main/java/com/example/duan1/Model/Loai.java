@@ -16,10 +16,10 @@ public class Loai {
         this.soTK = soTK;
     }
 
-    public Loai(String tenLoai, String trangThai, Integer soTK) {
+    public Loai(String tenLoai, String trangThai) {
         this.tenLoai = tenLoai;
         this.trangThai = trangThai;
-        this.soTK = soTK;
+
     }
 
     public Integer getMaLoai() {

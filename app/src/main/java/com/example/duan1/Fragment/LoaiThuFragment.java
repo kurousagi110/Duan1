@@ -61,7 +61,7 @@ public class LoaiThuFragment extends Fragment {
 //        return soTK;
 //    }
     private void loadData(){
-        list = thuChiDAO.getDsLoaiThuChi("thu");
+        list = thuChiDAO.getDsLoaiThuChi("no");
 
         loaiThuAdapter = new LoaiThuAdapter(list,getContext(),thuChiDAO);
         listViewLoaiThu.setAdapter(loaiThuAdapter);
@@ -77,7 +77,7 @@ public class LoaiThuFragment extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 String tenloai = edtInput.getText().toString();
-                Loai loaiThem = new Loai(tenloai,"thu",2);
+                Loai loaiThem = new Loai(tenloai,"thu");
                 if(thuChiDAO.addLoaiThuChi(loaiThem)){
                     Toast.makeText(getContext(), "Theem thnah cong", Toast.LENGTH_SHORT).show();
                     loadData();

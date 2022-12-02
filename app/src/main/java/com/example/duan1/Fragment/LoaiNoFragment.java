@@ -1,9 +1,7 @@
 package com.example.duan1.Fragment;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.duan1.Adapter.LoaiNoAdapter;
 import com.example.duan1.Adapter.LoaiThuAdapter;
 import com.example.duan1.DAO.ThuChiDAO;
 import com.example.duan1.Model.Loai;
@@ -27,13 +26,13 @@ import java.util.ArrayList;
 public class LoaiNoFragment extends Fragment {
     ListView listViewLoaiThuNo;
     FloatingActionButton floatAddLoaiNo;
-    LoaiThuAdapter loaiThuAdapter;
+    LoaiNoAdapter loaiNoAdapter;
     ArrayList<Loai> list;
     ThuChiDAO thuChiDAO;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_loaithuno,container,false);
+        View view = inflater.inflate(R.layout.fragment_loaino,container,false);
 
         listViewLoaiThuNo = view.findViewById(R.id.listViewLoaiThuNo);
        floatAddLoaiNo = view.findViewById(R.id.floatAddLoaiNo);
@@ -48,16 +47,12 @@ public class LoaiNoFragment extends Fragment {
         });
         return view;
     }
-    private int soTK(){
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("THUTHU", Context.MODE_PRIVATE);
-        int soTK = sharedPreferences.getInt("soTK", 0);
-        return soTK;
-    }
-    private void loadData(){
-        list = thuChiDAO.getDsLoaiThuChi("thu",soTK());
 
-        loaiThuAdapter = new LoaiThuAdapter(list,getContext(),thuChiDAO);
-        listViewLoaiThuNo.setAdapter(loaiThuAdapter);
+    private void loadData(){
+        list = thuChiDAO.getDsLoaiThuChi("no");
+
+        loaiNoAdapter = new LoaiNoAdapter(list,getContext(),thuChiDAO);
+        listViewLoaiThuNo.setAdapter(loaiNoAdapter);
     }
     private void showDiaLogThem(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -70,7 +65,7 @@ public class LoaiNoFragment extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 String tenloai = edtInputNO.getText().toString();
-                Loai loaiThem = new Loai(tenloai,"chi",soTK());
+                Loai loaiThem = new Loai(tenloai,"no");
                 if(thuChiDAO.addLoaiThuChi(loaiThem)){
                     Toast.makeText(getContext(), "Them thanh cong", Toast.LENGTH_SHORT).show();
                     loadData();

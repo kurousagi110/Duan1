@@ -19,12 +19,12 @@ import com.example.duan1.R;
 
 import java.util.ArrayList;
 
-public class LoaiThuNoAdapter extends BaseAdapter {
+public class LoaiNoAdapter extends BaseAdapter {
     private ArrayList<Loai> list;
     private Context context;
     private ThuChiDAO thuChiDAO;
 
-    public LoaiThuNoAdapter(ArrayList<Loai> list, Context context, ThuChiDAO thuChiDAO) {
+    public LoaiNoAdapter(ArrayList<Loai> list, Context context, ThuChiDAO thuChiDAO) {
         this.list = list;
         this.context = context;
         this.thuChiDAO = thuChiDAO;
@@ -55,10 +55,10 @@ public class LoaiThuNoAdapter extends BaseAdapter {
         ViewOfItem viewOfItem;
         if(view == null){
             viewOfItem = new ViewOfItem();
-            view = inflater.inflate(R.layout.item_loaithu,viewGroup,false);
-            viewOfItem.txtTen = view.findViewById(R.id.txtTen);
-            viewOfItem.ivSua = view.findViewById(R.id.ivSua);
-            viewOfItem.ivXoa = view.findViewById(R.id.ivXoa);
+            view = inflater.inflate(R.layout.item_loaino,viewGroup,false);
+            viewOfItem.txtTen = view.findViewById(R.id.txtTenNO);
+            viewOfItem.ivSua = view.findViewById(R.id.ivSuaNO);
+            viewOfItem.ivXoa = view.findViewById(R.id.ivXoaNO);
             view.setTag(viewOfItem);
         }else{
             viewOfItem = (ViewOfItem) view.getTag();
@@ -90,7 +90,7 @@ public class LoaiThuNoAdapter extends BaseAdapter {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = ((Activity)context).getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_sualoaino,null);
-        EditText edtInput = view.findViewById(R.id.edtInputNo);
+        EditText edtInput = view.findViewById(R.id.edtInputno);
         builder.setView(view);
 
         edtInput.setText(loai.getTenLoai());
@@ -118,7 +118,7 @@ public class LoaiThuNoAdapter extends BaseAdapter {
     }
     private void reLoadData(){
         list.clear();
-        list = thuChiDAO.getDsLoaiThuChi("no",2);
+        list = thuChiDAO.getDsLoaiThuChi("no");
         notifyDataSetChanged();
     }
 }

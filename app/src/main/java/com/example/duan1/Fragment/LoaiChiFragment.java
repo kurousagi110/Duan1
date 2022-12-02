@@ -72,7 +72,7 @@ public class LoaiChiFragment extends Fragment {
             public void onClick(DialogInterface dialogInterface, int i) {
 
                 String tenloai = edtInput.getText().toString();
-                Loai loaiThem = new Loai(tenloai,"chi",2);
+                Loai loaiThem = new Loai(tenloai,"chi");
                 if(thuChiDAO.addLoaiThuChi(loaiThem)){
                     Toast.makeText(getContext(), "Theem thnah cong", Toast.LENGTH_SHORT).show();
                     loadData();

@@ -7,6 +7,7 @@
         android:orientation="vertical"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/botton_bo_goc"
         android:layout_weight="8">
         <TextView
             android:id="@+id/txtTenThuNo"
@@ -34,13 +35,13 @@
         android:layout_width="0dp"
         android:layout_height="95dp"
         android:layout_weight="1"
-        android:src="@drawable/ic_sua"/>
+        android:src="@drawable/ic_cong"/>
     <ImageView
         android:id="@+id/ivXoaThuNo"
         android:layout_width="0dp"
         android:layout_height="95dp"
         android:layout_weight="1"
-        android:src="@drawable/ic_delete"/>
+        android:src="@drawable/ic_tru"/>
 
 
 

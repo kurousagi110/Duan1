@@ -26,10 +26,10 @@ public class QuanlynoActivity extends AppCompatActivity {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                 if(position == 0){
-                    tab.setText("Loại Nợ");
+                    tab.setText("Tên người Nợ");
                 }
                 else{
-                    tab.setText("Khoản Thu nợ");
+                    tab.setText("Khoản nợ");
                 }
             }
         }).attach();

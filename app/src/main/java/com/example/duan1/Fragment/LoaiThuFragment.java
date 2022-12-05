@@ -55,13 +55,13 @@ public class LoaiThuFragment extends Fragment {
         });
         return view;
     }
-//    private int soTK(){
-//        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("THUTHU", Context.MODE_PRIVATE);
-//        int soTK = sharedPreferences.getInt("soTK", 0);
-//        return soTK;
-//    }
+    private int soTK(){
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("THUTHU", Context.MODE_PRIVATE);
+        int soTK = sharedPreferences.getInt("soTK", 0);
+        return soTK;
+    }
     private void loadData(){
-        list = thuChiDAO.getDsLoaiThuChi("no");
+        list = thuChiDAO.getDsLoaiThuChi("thu");
 
         loaiThuAdapter = new LoaiThuAdapter(list,getContext(),thuChiDAO);
         listViewLoaiThu.setAdapter(loaiThuAdapter);

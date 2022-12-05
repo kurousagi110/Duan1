@@ -9,19 +9,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Sưa Khoan No"
-        android:textColor="#D500F9"
+        android:text="Sửa Loai Nợ"
+        android:textColor="#F50057"
         android:textSize="40dp"/>
-    <Spinner
-        android:id="@+id/spnLoaiThuNo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 
     <EditText
-        android:id="@+id/edtTienNo"
+        android:id="@+id/edtInputno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhâp tiền"
+        android:hint="Nhap ten loai nợ"
         android:textSize="19sp"/>
 
 

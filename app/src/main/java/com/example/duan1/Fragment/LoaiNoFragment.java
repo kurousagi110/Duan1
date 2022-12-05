@@ -15,9 +15,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.duan1.Adapter.LoaiNoAdapter;
-import com.example.duan1.Adapter.LoaiThuAdapter;
-import com.example.duan1.DAO.ThuChiDAO;
+import com.example.duan1.DAO.QuanLyNoDAO;
 import com.example.duan1.Model.Loai;
+import com.example.duan1.Model.QLno;
 import com.example.duan1.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -27,8 +27,8 @@ public class LoaiNoFragment extends Fragment {
     ListView listViewLoaiThuNo;
     FloatingActionButton floatAddLoaiNo;
     LoaiNoAdapter loaiNoAdapter;
-    ArrayList<Loai> list;
-    ThuChiDAO thuChiDAO;
+    ArrayList<QLno> list;
+    QuanLyNoDAO quanLyNoDAO;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class LoaiNoFragment extends Fragment {
         listViewLoaiThuNo = view.findViewById(R.id.listViewLoaiThuNo);
        floatAddLoaiNo = view.findViewById(R.id.floatAddLoaiNo);
 
-        thuChiDAO = new ThuChiDAO(getContext());
+         quanLyNoDAO = new QuanLyNoDAO(getContext());
         loadData();
 
         floatAddLoaiNo.setOnClickListener(new View.OnClickListener() {@Override
@@ -49,24 +49,31 @@ public class LoaiNoFragment extends Fragment {
     }
 
     private void loadData(){
-        list = thuChiDAO.getDsLoaiThuChi("no");
+        list = quanLyNoDAO.getDsQuanLyNo("no");
 
-        loaiNoAdapter = new LoaiNoAdapter(list,getContext(),thuChiDAO);
+        loaiNoAdapter = new LoaiNoAdapter(list,getContext(),quanLyNoDAO);
         listViewLoaiThuNo.setAdapter(loaiNoAdapter);
     }
     private void showDiaLogThem(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_themloaino,null);
-        EditText edtInputNO = view.findViewById(R.id.edtInputNo);
+        EditText edtTen = view.findViewById(R.id.edtTenNo);
+        EditText edtSoTien = view.findViewById(R.id.edtSoTienNo);
+        EditText edtDaTra = view.findViewById(R.id.edtDaTra);
+        EditText edtConLai = view.findViewById(R.id.edtSoDu);
+
         builder.setView(view);
 
         builder.setPositiveButton("Them", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                String tenloai = edtInputNO.getText().toString();
-                Loai loaiThem = new Loai(tenloai,"no");
-                if(thuChiDAO.addLoaiThuChi(loaiThem)){
+                String ten = edtTen.getText().toString();
+                String sotien = edtSoTien.getText().toString();
+                String datra = edtDaTra.getText().toString();
+                String conlai = edtConLai.getText().toString();
+                QLno noThem = new QLno(ten,"no");
+                if(quanLyNoDAO.addLoaino(noThem)){
                     Toast.makeText(getContext(), "Them thanh cong", Toast.LENGTH_SHORT).show();
                     loadData();
                 }else {

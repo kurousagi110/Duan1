@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@drawable/bottom_bo"
     android:layout_height="match_parent"
     android:orientation="vertical">
     
@@ -14,10 +15,28 @@
         android:textSize="40dp"/>
 
     <EditText
-        android:id="@+id/edtInputNo"
+        android:id="@+id/edtTenNo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhap ten loai nợ"
+        android:hint=" tên "
+        android:textSize="19sp"/>
+    <EditText
+        android:id="@+id/edtSoTienNo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Số tiền"
+        android:textSize="19sp"/>
+    <EditText
+        android:id="@+id/edtDaTra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Đã trả"
+        android:textSize="19sp"/>
+    <EditText
+        android:id="@+id/edtSoDu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Còn lại"
         android:textSize="19sp"/>
 
 

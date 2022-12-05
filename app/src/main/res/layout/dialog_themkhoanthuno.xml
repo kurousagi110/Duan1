@@ -18,10 +18,10 @@
         android:layout_height="wrap_content"/>
 
     <EditText
-        android:id="@+id/edtTien3"
+        android:id="@+id/edtTen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhâp tiền"
+        android:hint="Nhâp Tên"
         android:textSize="19sp"
         android:inputType="number"/>
 

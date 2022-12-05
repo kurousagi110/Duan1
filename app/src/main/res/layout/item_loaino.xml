@@ -1,29 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="25dp"
+    app:cardElevation="10dp"
+    android:layout_marginTop="20dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    
-    <TextView
-        android:id="@+id/txtTenNO"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="8"
-        android:textSize="20sp"
-        android:text="Tiền Lương"/>
+    android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/ivSuaNO"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:src="@drawable/ic_sua"/>
-    <ImageView
-        android:id="@+id/ivXoaNO"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:src="@drawable/ic_delete"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_TenNguoiNo"
+            android:background="#FFB85F"
+            android:textColor="#462066"
+            android:gravity="center"
+            android:padding="15dp"
+            android:textSize="22sp"
+            android:text="Tên Khoản  Thu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
 
+        <TextView
+            android:id="@+id/tv_tenNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_TenNguoiNo"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="tên"
+            android:textColor="@color/black"
+            android:textSize="20sp"></TextView>
 
+        <TextView
+            android:layout_below="@id/tv_tenNo"
+            android:id="@+id/tvSoTien"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:text="Số tiền:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
+        <TextView
+            android:layout_below="@id/tvSoTien"
+            android:id="@+id/tv_DaTra"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:text="Đã trả:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tv_ConLai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_DaTra"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Còn lại"
+            android:textColor="@color/black"
+            android:textSize="20sp"></TextView>
+
+        <ImageView
+            android:id="@+id/iv_cong"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/iv_tru"
+            android:src="@drawable/ic_cong"></ImageView>
+
+        <ImageView
+            android:id="@+id/iv_tru"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_tru"></ImageView>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

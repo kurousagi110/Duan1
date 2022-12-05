@@ -1,6 +1,8 @@
 package com.example.duan1.Model;
 
 public class Loai {
+
+
     private Integer maLoai;
     private String tenLoai;
     private String trangThai;
@@ -14,6 +16,7 @@ public class Loai {
         this.tenLoai = tenLoai;
         this.trangThai = trangThai;
         this.soTK = soTK;
+
     }
 
     public Loai(String tenLoai, String trangThai) {
@@ -53,4 +56,5 @@ public class Loai {
     public void setSoTK(Integer soTK) {
         this.soTK = soTK;
     }
+
 }

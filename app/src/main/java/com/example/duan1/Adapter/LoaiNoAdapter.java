@@ -13,21 +13,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.duan1.DAO.QuanLyNoDAO;
 import com.example.duan1.DAO.ThuChiDAO;
 import com.example.duan1.Model.Loai;
+import com.example.duan1.Model.QLno;
 import com.example.duan1.R;
 
 import java.util.ArrayList;
 
 public class LoaiNoAdapter extends BaseAdapter {
-    private ArrayList<Loai> list;
+    private final com.example.duan1.DAO.QuanLyNoDAO QuanLyNoDAO;
+    private ArrayList<QLno> list;
     private Context context;
-    private ThuChiDAO thuChiDAO;
+    private QuanLyNoDAO quanlynoDao;
 
-    public LoaiNoAdapter(ArrayList<Loai> list, Context context, ThuChiDAO thuChiDAO) {
+    public LoaiNoAdapter(ArrayList<QLno> list, Context context, QuanLyNoDAO quanlynoDao) {
         this.list = list;
         this.context = context;
-        this.thuChiDAO = thuChiDAO;
+        this.QuanLyNoDAO = quanlynoDao;
     }
 
     @Override
@@ -45,7 +48,7 @@ public class LoaiNoAdapter extends BaseAdapter {
         return 0;
     }
     public static class ViewOfItem{
-        TextView txtTen;
+        TextView txtTen, txtSoDu, txtDaTra, txtSoTien;
         ImageView ivSua,ivXoa;
     }
 
@@ -56,14 +59,21 @@ public class LoaiNoAdapter extends BaseAdapter {
         if(view == null){
             viewOfItem = new ViewOfItem();
             view = inflater.inflate(R.layout.item_loaino,viewGroup,false);
-            viewOfItem.txtTen = view.findViewById(R.id.txtTenNO);
-            viewOfItem.ivSua = view.findViewById(R.id.ivSuaNO);
-            viewOfItem.ivXoa = view.findViewById(R.id.ivXoaNO);
+            viewOfItem.txtSoTien = view.findViewById(R.id.tvSoTien);
+            viewOfItem.txtDaTra = view.findViewById(R.id.tv_DaTra);
+            viewOfItem.txtSoDu = view.findViewById(R.id.tv_ConLai);
+            viewOfItem.txtTen = view.findViewById(R.id.tv_tenNo);
+            viewOfItem.ivSua = view.findViewById(R.id.iv_cong);
+            viewOfItem.ivXoa = view.findViewById(R.id.iv_tru);
             view.setTag(viewOfItem);
         }else{
             viewOfItem = (ViewOfItem) view.getTag();
         }
-        viewOfItem.txtTen.setText(list.get(i).getTenLoai());
+        viewOfItem.txtTen.setText(list.get(i).getTEN());
+        viewOfItem.txtSoDu.setText(list.get(i).getConLai());
+        viewOfItem.txtSoTien.setText(list.get(i).getSoTien());
+        viewOfItem.txtDaTra.setText(list.get(i).getDaTra());
+
 
         viewOfItem.ivSua.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,35 +82,38 @@ public class LoaiNoAdapter extends BaseAdapter {
                 showDiaLogSuaLoaiThuNo(list.get(i));
             }
         });
-        viewOfItem.ivXoa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int idCanXoa = list.get(i).getMaLoai();
-                if(thuChiDAO.deleteLoaiThuChi(idCanXoa)){
-                    Toast.makeText(context, "xoa thanh cong", Toast.LENGTH_SHORT).show();
-                    reLoadData();
-                }else{
-                    Toast.makeText(context, "that bai", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+//        viewOfItem.ivXoa.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int idCanXoa = Integer.parseInt(list.get(i).getTEN());
+//                if(QuanLyNoDAO.deleteLoaiThuChi(idCanXoa)){
+//                    Toast.makeText(context, "xoa thanh cong", Toast.LENGTH_SHORT).show();
+//                    reLoadData();
+//                }else{
+//                    Toast.makeText(context, "that bai", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
         return view;
     }
-    private void showDiaLogSuaLoaiThuNo(Loai loai){
+    private void showDiaLogSuaLoaiThuNo(QLno qLno){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = ((Activity)context).getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_sualoaino,null);
-        EditText edtInput = view.findViewById(R.id.edtInputno);
+        EditText edtTenno = view.findViewById(R.id.edt_sua_ten_khoan_no);
+        EditText edtSoDu = view.findViewById(R.id.edt_so_du);
+
         builder.setView(view);
 
-        edtInput.setText(loai.getTenLoai());
+        edtTenno.setText(qLno.getTEN());
+        edtSoDu.setText(qLno.getConLai());
 
         builder.setPositiveButton("Cập Nhật", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                String tenloai = edtInput.getText().toString();
-                loai.setTenLoai(tenloai);
-                if(thuChiDAO.updateLoaiThuChi(loai)){
+                String tenno = edtTenno.getText().toString();
+                qLno.setTEN(tenno);
+                if(quanlynoDao.updateLoaino(qLno)){
                     Toast.makeText(context, "cap nhat thnah cong", Toast.LENGTH_SHORT).show();
                     reLoadData();
                 }else{
@@ -118,7 +131,7 @@ public class LoaiNoAdapter extends BaseAdapter {
     }
     private void reLoadData(){
         list.clear();
-        list = thuChiDAO.getDsLoaiThuChi("no");
+        list = quanlynoDao.getDsQuanLyNo("no");
         notifyDataSetChanged();
     }
 }

@@ -3,6 +3,7 @@ package com.example.duan1.VerifyPhoneNumber;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.CancellationSignal;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.duan1.MainActivity;
 import com.example.duan1.R;
 
 public class FingerprintHandler extends FingerprintManager.AuthenticationCallback {
@@ -46,7 +48,9 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 
     @Override
     public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
-        this.update("Fingerprint Authentication succeeded.", true);
+        this.update("Thành công", true);
+        Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
     }
 
     public void update(String e, Boolean success) {

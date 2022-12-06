@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@drawable/botton_bo_goc">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/botton_bo_goc"
+
         android:layout_weight="8">
         <TextView
             android:id="@+id/txtTenThuNo"
@@ -22,26 +23,35 @@
             android:textSize="20sp"
             android:text="5000"/>
         <TextView
-            android:id="@+id/txtNgayThuNo"
+            android:id="@+id/txtTienDaTra"
+            android:text="4000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="25dp"/>
+            android:textSize="20dp"/>
+        <TextView
+            android:id="@+id/txtTienConThieu"
+            android:text="1000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"/>
+
     </LinearLayout>
-    
-
-
     <ImageView
-        android:id="@+id/ivSuaThuNo"
+        android:id="@+id/ivThemTienNo"
         android:layout_width="0dp"
-        android:layout_height="95dp"
+        android:layout_height="130dp"
         android:layout_weight="1"
         android:src="@drawable/ic_cong"/>
     <ImageView
-        android:id="@+id/ivXoaThuNo"
+        android:id="@+id/ivGiamTienNo"
         android:layout_width="0dp"
-        android:layout_height="95dp"
+        android:layout_height="130dp"
         android:layout_weight="1"
         android:src="@drawable/ic_tru"/>
+    
+
+
+
 
 
 

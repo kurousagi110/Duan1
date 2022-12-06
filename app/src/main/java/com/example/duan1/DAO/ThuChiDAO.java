@@ -78,11 +78,11 @@ public class ThuChiDAO {
     public ArrayList<KhoanThuChi> getDSKhoanThuChi(String loai) {
         ArrayList<KhoanThuChi> list = new ArrayList<>();
         SQLiteDatabase database = dataHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT k.maKhoan, k.tien, l.tenLoai, k.ngay, k.maLoai FROM LOAI l, KHOANTHUCHI k WHERE l.maLoai = k.maLoai AND l.trangthai = ? ", new String[]{loai});
+        Cursor cursor = database.rawQuery("SELECT k.maKhoan, k.tien, k.tiendaco, l.tenLoai, k.ngay, k.maLoai FROM LOAI l, KHOANTHUCHI k WHERE l.maLoai = k.maLoai AND l.trangthai = ? ", new String[]{loai});
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
-                list.add(new KhoanThuChi(cursor.getInt(0), cursor.getInt(1), cursor.getString(2), cursor.getString(3), cursor.getInt(4)));
+                list.add(new KhoanThuChi(cursor.getInt(0), cursor.getInt(1), cursor.getInt(2), cursor.getString(3), cursor.getString(4),cursor.getInt(5)));
             } while (cursor.moveToNext());
         }
         return list;
@@ -93,6 +93,7 @@ public class ThuChiDAO {
         SQLiteDatabase database = dataHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("tien", khoanThuChi.getTien());
+        contentValues.put("tiendaco",0);
         contentValues.put("ngay", khoanThuChi.getNgay());
         contentValues.put("maLoai", khoanThuChi.getMaLoai());
         long check = database.insert("KHOANTHUCHI", null, contentValues);
@@ -107,6 +108,7 @@ public class ThuChiDAO {
         ContentValues contentValues = new ContentValues();
         contentValues.put("maKhoan", khoanThuChi.getMaKhoan());
         contentValues.put("tien", khoanThuChi.getTien());
+        contentValues.put("tiendaco",khoanThuChi.getTienDaCo());
         contentValues.put("ngay", khoanThuChi.getNgay());
         contentValues.put("maLoai", khoanThuChi.getMaLoai());
         long check = sqLiteDatabase.update("KHOANTHUCHI", contentValues, "maKhoan = ?", new String[]{String.valueOf(khoanThuChi.getMaKhoan())});
@@ -188,6 +190,48 @@ public class ThuChiDAO {
                 return chi1;
             }
     }
-
-
+//    //Thêm dự định tiền tương lai:
+//    public boolean addKhoanTien(KhoanThuChi khoanThuChi) {
+//        SQLiteDatabase database = dataHelper.getWritableDatabase();
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put("makhoan", khoanThuChi.getTien());
+//        contentValues.put("tiendaco", khoanThuChi.getNgay());
+//        long check = database.insert("TIENDACO", null, contentValues);
+//        if (check == -1)
+//            return false;
+//        return true;
+//    }
+//    //Sửa dự định tương lai:
+//    public boolean updateKhoanNo(KhoanThuChi khoanThuChi) {
+//        SQLiteDatabase sqLiteDatabase = dataHelper.getWritableDatabase();
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put("maKhoan", khoanThuChi.getMaKhoan());
+//        contentValues.put("tiendaco", khoanThuChi.getTien());
+//        long check = sqLiteDatabase.update("TIENDACO", contentValues, "maKhoan = ?", new String[]{String.valueOf(khoanThuChi.getMaKhoan())});
+//        if (check == -1)
+//            return false;
+//        return true;
+//    }
+//    //Xoá dự định tương lai:
+//
+//    public boolean deleteKhoanNo(int maKhoan) {
+//        SQLiteDatabase sqLiteDatabase = dataHelper.getWritableDatabase();
+//        long check = sqLiteDatabase.delete("TIENDACO", "maKhoan = ?", new String[]{String.valueOf(maKhoan)});
+//        if (check == -1)
+//            return false;
+//        return true;
+//    }
+//    //Lay danh sach khoan no:
+//    public ArrayList<KhoanThuChi> getTienDaco(String loai) {
+//        ArrayList<KhoanThuChi> list = new ArrayList<>();
+//        SQLiteDatabase database = dataHelper.getReadableDatabase();
+//        Cursor cursor = database.rawQuery("SELECT * FROM TIENDACO",null);
+//        if (cursor.getCount() > 0) {
+//            cursor.moveToFirst();
+//            do {
+//                list.add(new KhoanThuChi(cursor.getInt(0),cursor.getInt(1)));
+//            } while (cursor.moveToNext());
+//        }
+//        return list;
+//    }
 }

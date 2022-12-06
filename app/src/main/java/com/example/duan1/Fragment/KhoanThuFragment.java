@@ -61,8 +61,6 @@ public class KhoanThuFragment extends Fragment {
     }
     private void getData(){
         list = thuChiDAO.getDSKhoanThuChi("thu");
-
-
         adapter = new KhoanThuAdapter(list,getContext(),thuChiDAO,getDataSpinner());
         listViewKhoanThu.setAdapter(adapter);
     }
@@ -82,11 +80,6 @@ public class KhoanThuFragment extends Fragment {
                 new String[]{"tenloai"},
                 new int[]{android.R.id.text1}
         );
-
-
-
-
-
         builder.setPositiveButton("thêm", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {

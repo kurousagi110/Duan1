@@ -15,9 +15,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.duan1.Adapter.LoaiNoAdapter;
-import com.example.duan1.DAO.QuanLyNoDAO;
+import com.example.duan1.DAO.ThuChiDAO;
+import com.example.duan1.Model.KhoanThuChi;
 import com.example.duan1.Model.Loai;
-import com.example.duan1.Model.QLno;
 import com.example.duan1.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -27,8 +27,8 @@ public class LoaiNoFragment extends Fragment {
     ListView listViewLoaiThuNo;
     FloatingActionButton floatAddLoaiNo;
     LoaiNoAdapter loaiNoAdapter;
-    ArrayList<QLno> list;
-    QuanLyNoDAO quanLyNoDAO;
+    ArrayList<Loai> list;
+    ThuChiDAO thuChiDAO;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class LoaiNoFragment extends Fragment {
         listViewLoaiThuNo = view.findViewById(R.id.listViewLoaiThuNo);
        floatAddLoaiNo = view.findViewById(R.id.floatAddLoaiNo);
 
-         quanLyNoDAO = new QuanLyNoDAO(getContext());
+        thuChiDAO = new ThuChiDAO(getContext());
         loadData();
 
         floatAddLoaiNo.setOnClickListener(new View.OnClickListener() {@Override
@@ -49,9 +49,9 @@ public class LoaiNoFragment extends Fragment {
     }
 
     private void loadData(){
-        list = quanLyNoDAO.getDsQuanLyNo("no");
+        list = thuChiDAO.getDsLoaiThuChi("no");
 
-        loaiNoAdapter = new LoaiNoAdapter(list,getContext(),quanLyNoDAO);
+        loaiNoAdapter = new LoaiNoAdapter(list,getContext(),thuChiDAO);
         listViewLoaiThuNo.setAdapter(loaiNoAdapter);
     }
     private void showDiaLogThem(){
@@ -59,9 +59,6 @@ public class LoaiNoFragment extends Fragment {
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_themloaino,null);
         EditText edtTen = view.findViewById(R.id.edtTenNo);
-        EditText edtSoTien = view.findViewById(R.id.edtSoTienNo);
-        EditText edtDaTra = view.findViewById(R.id.edtDaTra);
-        EditText edtConLai = view.findViewById(R.id.edtSoDu);
 
         builder.setView(view);
 
@@ -69,11 +66,8 @@ public class LoaiNoFragment extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 String ten = edtTen.getText().toString();
-                String sotien = edtSoTien.getText().toString();
-                String datra = edtDaTra.getText().toString();
-                String conlai = edtConLai.getText().toString();
-                QLno noThem = new QLno(ten,"no");
-                if(quanLyNoDAO.addLoaino(noThem)){
+                Loai loai = new Loai(ten,"no");
+                if(thuChiDAO.addLoaiThuChi(loai)){
                     Toast.makeText(getContext(), "Them thanh cong", Toast.LENGTH_SHORT).show();
                     loadData();
                 }else {

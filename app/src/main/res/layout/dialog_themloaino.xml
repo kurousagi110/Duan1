@@ -20,24 +20,6 @@
         android:layout_height="wrap_content"
         android:hint=" tên "
         android:textSize="19sp"/>
-    <EditText
-        android:id="@+id/edtSoTienNo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Số tiền"
-        android:textSize="19sp"/>
-    <EditText
-        android:id="@+id/edtDaTra"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Đã trả"
-        android:textSize="19sp"/>
-    <EditText
-        android:id="@+id/edtSoDu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Còn lại"
-        android:textSize="19sp"/>
 
 
 </LinearLayout>

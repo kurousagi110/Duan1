@@ -15,24 +15,23 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.duan1.DAO.QuanLyNoDAO;
 import com.example.duan1.DAO.ThuChiDAO;
-import com.example.duan1.Model.QLno;
+import com.example.duan1.Model.KhoanThuChi;
 import com.example.duan1.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class KhoanThuNoAdapter extends BaseAdapter {
-    private ArrayList<QLno> list;
+    private ArrayList<KhoanThuChi> list;
     private Context context;
-    private  QuanLyNoDAO quanLyNoDAO;
-    private ArrayList<HashMap<String,Object>> listSpinner;
+    private ThuChiDAO thuChiDAO;
+    private ArrayList<HashMap<String, Object>> listSpinner;
 
-    public KhoanThuNoAdapter(ArrayList<QLno> list, Context context, QuanLyNoDAO quanLyNoDAO, ArrayList<HashMap<String, Object>> listSpinner) {
+    public KhoanThuNoAdapter(ArrayList<KhoanThuChi> list, Context context, ThuChiDAO thuChiDAO, ArrayList<HashMap<String, Object>> listSpinner) {
         this.list = list;
         this.context = context;
-        this.quanLyNoDAO = quanLyNoDAO;
+        this.thuChiDAO = thuChiDAO;
         this.listSpinner = listSpinner;
 
     }
@@ -53,110 +52,166 @@ public class KhoanThuNoAdapter extends BaseAdapter {
         return 0;
     }
 
-    public static class ViewOfItem{
-        TextView txtTen,txtTien;
-        ImageView ivSua,ivXoa;
+    public static class ViewOfItem {
+        TextView txtTenThuNo, txtTienThuNo,txtTienDaTra,txtTienConThieu;
+        ImageView ivThemTienNo, ivGiamTienNo;
     }
 
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+        LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         ViewOfItem viewOfItem;
-        if(view == null){
-                view = inflater.inflate(R.layout.item_khoanno,viewGroup,false);
-                viewOfItem = new ViewOfItem();
-                viewOfItem.txtTen = view.findViewById(R.id.txtTenThuNo);
-                viewOfItem.txtTien = view.findViewById(R.id.txtTienThuNo);
-                viewOfItem.ivSua = view.findViewById(R.id.ivSuaThuNo);
-                viewOfItem.ivXoa = view.findViewById(R.id.ivXoaThuNo);
+        if (view == null) {
+            view = inflater.inflate(R.layout.item_khoanno, viewGroup, false);
+            viewOfItem = new ViewOfItem();
+            viewOfItem.txtTenThuNo = view.findViewById(R.id.txtTenThuNo);
+            viewOfItem.txtTienThuNo = view.findViewById(R.id.txtTienThuNo);
+            viewOfItem.txtTienDaTra = view.findViewById(R.id.txtTienDaTra);
+            viewOfItem.txtTienConThieu = view.findViewById(R.id.txtTienConThieu);
+            viewOfItem.ivThemTienNo = view.findViewById(R.id.ivThemTienNo);
+            viewOfItem.ivGiamTienNo = view.findViewById(R.id.ivGiamTienNo);
 
             view.setTag(viewOfItem);
-        }else{
+        } else {
             viewOfItem = (ViewOfItem) view.getTag();
         }
-        viewOfItem.txtTen.setText("Tên: "+list.get(i).getTEN());
-        viewOfItem.txtTien.setText("Số tiền: "+list.get(i).getSoTien());
+        int sotien = list.get(i).getTien();
+        int tiendatra = list.get(i).getTienDaCo();
+        int tienconthieu = sotien - tiendatra;
+        viewOfItem.txtTenThuNo.setText("Tên: " + list.get(i).getTenKhoan());
+        viewOfItem.txtTienThuNo.setText("Số tiền: " + sotien);
+        viewOfItem.txtTienDaTra.setText("Tiền đã trả: "+tiendatra);
+        viewOfItem.txtTienConThieu.setText("Tiền còn thiếu: "+tienconthieu);
 
-
-
-//        viewOfItem.ivSua.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                showDialogSua(list.get(i));
-//            }
-//        });
-//        viewOfItem.ivXoa.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int makhoan = list.get(i).getMaKhoan();
-//                if(thuChiDAO.deleteKhoanThuChi(makhoan)){
-//                    Toast.makeText(context, "xoa thanh cong", Toast.LENGTH_SHORT).show();
-//                    reLoadData();
-//                }else{
-//                    Toast.makeText(context, "xoa that bai", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
+        viewOfItem.ivThemTienNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialogThem(list.get(i));
+            }
+        });
+        viewOfItem.ivGiamTienNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialogGiam(list.get(i));
+            }
+        });
         return view;
     }
-//    private void showDialogSua(QLno qLno){
-//        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-//        LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-//        View view = inflater.inflate(R.layout.dialog_suakhoanno,null);
-//        Spinner spnLoaiThuNo = view.findViewById(R.id.spnLoaiThuNo);
-//        EditText edtTien = view.findViewById(R.id.edt_sua_ten_khoan_no);
-//        builder.setView(view);
-//
-//        SimpleAdapter adapter = new SimpleAdapter(
-//                context,
-//                listSpinner,
-//                android.R.layout.simple_list_item_1,
-//                new String[]{"tenloai"},
-//                new int[]{android.R.id.text1}
-//        );
-//        spnLoaiThuNo.setAdapter(adapter);
-//
-//        edtTien.setText(String.valueOf(qLno.getSoTien()));
-//        int index = 0;
-//        int vitri = -1;
-//        for(HashMap<String,Object> item : listSpinner){
-//            if((int)item.get("Ten") == qLno.getTEN())
-//                vitri = index;
-//            index++;
-//        }
-//        spnLoaiThuNo.setSelection(vitri);
-//
-//        builder.setPositiveButton("Cập nhật", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                String tien =edtTien.getText().toString();
-//                HashMap<String,Object> selected = (HashMap<String, Object>) spnLoaiThuNo.getSelectedItem();
-//                int maloai = (int) selected.get("maloai");
-//                khoanThuChi.setTien(Integer.parseInt(tien));
-//                khoanThuChi.setMaLoai(maloai);
-//                if(thuChiDAO.updateKhoanThuChi(khoanThuChi)){
-//                    Toast.makeText(context, "cap nhat thanh cong", Toast.LENGTH_SHORT).show();
-//                    reLoadData();
-//                }else{
-//                    Toast.makeText(context, "That bai", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-//        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//
-//            }
-//        });
-//
-//        AlertDialog alertDialog = builder.create();
-//        alertDialog.show();
-//    }
-    private void reLoadData(){
+
+        private void showDialogThem(KhoanThuChi khoanThuChi){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialog_suakhoanno,null);
+        Spinner spnLoaiThuNo = view.findViewById(R.id.spnLoaiThemNo);
+        EditText edtTien = view.findViewById(R.id.edtTienNo);
+        builder.setView(view);
+
+        SimpleAdapter adapter = new SimpleAdapter(
+                context,
+                listSpinner,
+                android.R.layout.simple_list_item_1,
+                new String[]{"tenloai"},
+                new int[]{android.R.id.text1}
+        );
+        spnLoaiThuNo.setAdapter(adapter);
+        int index = 0;
+        int vitri = -1;
+        for(HashMap<String,Object> item : listSpinner){
+            if((int)item.get("maloai") == khoanThuChi.getMaLoai())
+                vitri = index;
+            index++;
+        }
+        spnLoaiThuNo.setSelection(vitri);
+
+        builder.setPositiveButton("Cập nhật", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                int tienmoi = Integer.parseInt(edtTien.getText().toString());
+                int tiencu = khoanThuChi.getTien();
+                int tien = tiencu + tienmoi;
+                HashMap<String,Object> selected = (HashMap<String, Object>) spnLoaiThuNo.getSelectedItem();
+                int maloai = (int) selected.get("maloai");
+                khoanThuChi.setTien(tien);
+                khoanThuChi.setMaLoai(maloai);
+                if(thuChiDAO.updateKhoanThuChi(khoanThuChi)){
+                    Toast.makeText(context, "cap nhat thanh cong", Toast.LENGTH_SHORT).show();
+                    reLoadData();
+                }else{
+                    Toast.makeText(context, "That bai", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void showDialogGiam(KhoanThuChi khoanThuChi){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialog_suakhoanno,null);
+        Spinner spnLoaiThuNo = view.findViewById(R.id.spnLoaiThemNo);
+        EditText edtTien = view.findViewById(R.id.edtTienNo);
+        builder.setView(view);
+
+        SimpleAdapter adapter = new SimpleAdapter(
+                context,
+                listSpinner,
+                android.R.layout.simple_list_item_1,
+                new String[]{"tenloai"},
+                new int[]{android.R.id.text1}
+        );
+        spnLoaiThuNo.setAdapter(adapter);
+        int index = 0;
+        int vitri = -1;
+        for(HashMap<String,Object> item : listSpinner){
+            if((int)item.get("maloai") == khoanThuChi.getMaLoai())
+                vitri = index;
+            index++;
+        }
+        spnLoaiThuNo.setSelection(vitri);
+
+        builder.setPositiveButton("Cập nhật", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                int tienmoi = Integer.parseInt(edtTien.getText().toString());
+                int tiencu = khoanThuChi.getTien();
+                int tien = tiencu - tienmoi;
+                if (tien>0) {
+                    HashMap<String, Object> selected = (HashMap<String, Object>) spnLoaiThuNo.getSelectedItem();
+                    int maloai = (int) selected.get("maloai");
+                    khoanThuChi.setTien(tien);
+                    khoanThuChi.setMaLoai(maloai);
+                    if (thuChiDAO.updateKhoanThuChi(khoanThuChi)) {
+                        Toast.makeText(context, "cap nhat thanh cong", Toast.LENGTH_SHORT).show();
+                        reLoadData();
+                    } else {
+                        Toast.makeText(context, "That bai", Toast.LENGTH_SHORT).show();
+                    }
+                }else if (tien<0){
+                    Toast.makeText(context, "Tiền giảm không được quá 0", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+    private void reLoadData() {
         list.clear();
-        list = quanLyNoDAO.getDsQuanLyNo("no");
+        list = thuChiDAO.getDSKhoanThuChi("no");
         notifyDataSetChanged();
     }
 }

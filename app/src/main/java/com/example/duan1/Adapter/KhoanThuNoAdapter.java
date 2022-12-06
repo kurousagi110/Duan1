@@ -186,8 +186,8 @@ public class KhoanThuNoAdapter extends BaseAdapter {
                 if (tien>0) {
                     HashMap<String, Object> selected = (HashMap<String, Object>) spnLoaiThuNo.getSelectedItem();
                     int maloai = (int) selected.get("maloai");
-                    khoanThuChi.setTien(tien);
                     khoanThuChi.setMaLoai(maloai);
+                    khoanThuChi.setTienDaCo(tienmoi);
                     if (thuChiDAO.updateKhoanThuChi(khoanThuChi)) {
                         Toast.makeText(context, "cap nhat thanh cong", Toast.LENGTH_SHORT).show();
                         reLoadData();

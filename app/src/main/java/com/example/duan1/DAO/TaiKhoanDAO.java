@@ -34,7 +34,7 @@ public class TaiKhoanDAO {
             ContentValues values = new ContentValues();
             values.put("taikhoan", obj.getTaiKhoan());
             values.put("matkhau", obj.getMatKhau());
-            values.put("sodt",obj.getSoDT());
+  //          values.put("sodt",obj.getSoDT());
             long check = database.insert("TAIKHOAN", null, values);
             if (check == -1) {
                 return false;

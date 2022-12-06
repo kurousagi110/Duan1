@@ -24,9 +24,9 @@ public class ViewPager2AdapterThongKe extends FragmentStateAdapter {
             case 0:
                 return new ThongKe_thang_Fragment();
             case 1:
-                return new ThongKe_chi_nam_Fragment();
-            case 2:
                 return new Thongke_thu_nam_Fragment();
+            case 2:
+                return new ThongKe_chi_nam_Fragment();
 
             default:
                 return new ThongKe_thang_Fragment();

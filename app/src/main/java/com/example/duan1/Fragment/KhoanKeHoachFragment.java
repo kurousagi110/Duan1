@@ -1,11 +1,13 @@
 package com.example.duan1.Fragment;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -26,6 +28,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -68,7 +71,9 @@ public class KhoanKeHoachFragment extends Fragment {
         LayoutInflater layoutInflater = getLayoutInflater();
         View view = layoutInflater.inflate(R.layout.dialog_themkhoankehoach,null);
         Spinner spnLoaiKeHoach = view.findViewById(R.id.spnLoaiKeHoach);
-        EditText edtTiedtTienKeHoachen = view.findViewById(R.id.edtTienKeHoach);
+        EditText edtTienKeHoachen = view.findViewById(R.id.edtTienKeHoach);
+        EditText edtNgayChon = view.findViewById(R.id.edtChonngay);
+        Calendar calendar = Calendar.getInstance();
 
         builder.setView(view);
         SimpleAdapter adapter = new SimpleAdapter(
@@ -78,13 +83,40 @@ public class KhoanKeHoachFragment extends Fragment {
                 new String[]{"tenloai"},
                 new int[]{android.R.id.text1}
         );
-
         builder.setPositiveButton("thêm", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
-                String tien = edtTiedtTienKeHoachen.getText().toString();
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                String ngay = sdf.format(new Date());
+                String tien = edtTienKeHoachen.getText().toString();
+                edtNgayChon.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                                getContext(), new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int i, int i1, int i2) {
+                                String ngay = "";
+                                String thang = "";
+                                if (i2<10){
+                                    ngay = "0"+i2;
+                                }else {
+                                    ngay = String.valueOf(i2);
+                                }
+                                if ((i1+1)<10){
+                                    thang = "0"+(i1+1);
+                                }else {
+                                    thang = String.valueOf(i1+1);
+                                }
+                                edtNgayChon.setText(i+"/"+thang+"/"+ngay);
+                            }
+                        },
+                                calendar.get(Calendar.YEAR),
+                                calendar.get(Calendar.MONTH),
+                                calendar.get(Calendar.DAY_OF_MONTH)
+                        );
+                        datePickerDialog.show();
+                    }
+                });
+                String ngay = edtNgayChon.getText().toString();
                 HashMap<String,Object> selected = (HashMap<String, Object>) spnLoaiKeHoach.getSelectedItem();
                 int maloai = (int) selected.get("maloai");
                 KhoanThuChi khoanThuChi = new KhoanThuChi(Integer.parseInt(tien),maloai,ngay);
@@ -105,7 +137,6 @@ public class KhoanKeHoachFragment extends Fragment {
         spnLoaiKeHoach.setAdapter(adapter);
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-
     }
     private ArrayList<HashMap<String,Object>> getDataSpinner(){
         ArrayList<Loai> listLoai = thuChiDAO.getDsLoaiThuChi("kehoach");

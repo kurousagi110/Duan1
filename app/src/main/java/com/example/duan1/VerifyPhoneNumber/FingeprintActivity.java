@@ -60,8 +60,6 @@ public class FingeprintActivity extends AppCompatActivity {
              * Intent intent = new Intent(this, DefaultAuthenticationActivity.class);
              * startActivity(intent);
              */
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
             textView.setText("Your Device does not have a Fingerprint Sensor");
         }else {
             // Checks whether fingerprint permission is set on manifest

@@ -80,6 +80,9 @@ public class KhoanThuFragment extends Fragment {
                 new String[]{"tenloai"},
                 new int[]{android.R.id.text1}
         );
+
+
+
         builder.setPositiveButton("thêm", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
@@ -120,9 +123,5 @@ public class KhoanThuFragment extends Fragment {
         }
         return listSpinner;
     }
-//    private int soTK(){
-//        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("THUTHU", Context.MODE_PRIVATE);
-//        int soTK = sharedPreferences.getInt("soTK", 0);
-//        return soTK;
-//    }
+
 }

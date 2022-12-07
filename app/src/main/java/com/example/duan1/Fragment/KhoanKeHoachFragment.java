@@ -74,6 +74,35 @@ public class KhoanKeHoachFragment extends Fragment {
         EditText edtTienKeHoachen = view.findViewById(R.id.edtTienKeHoach);
         EditText edtNgayChon = view.findViewById(R.id.edtChonngay);
         Calendar calendar = Calendar.getInstance();
+        edtNgayChon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int i, int i1, int i2) {
+                        String ngay = "";
+                        String thang = "";
+                        if (i2<10){
+                            ngay = "0"+i2;
+                        }else {
+                            ngay = String.valueOf(i2);
+                        }
+                        if ((i1+1)<10){
+                            thang = "0"+(i1+1);
+                        }else {
+                            thang = String.valueOf(i1+1);
+                        }
+                        edtNgayChon.setText(i+"/"+thang+"/"+ngay);
+                    }
+                },
+                        calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)
+                );
+                datePickerDialog.show();
+            }
+        });
 
         builder.setView(view);
         SimpleAdapter adapter = new SimpleAdapter(
@@ -87,35 +116,7 @@ public class KhoanKeHoachFragment extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 String tien = edtTienKeHoachen.getText().toString();
-                edtNgayChon.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        DatePickerDialog datePickerDialog = new DatePickerDialog(
-                                getContext(), new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int i, int i1, int i2) {
-                                String ngay = "";
-                                String thang = "";
-                                if (i2<10){
-                                    ngay = "0"+i2;
-                                }else {
-                                    ngay = String.valueOf(i2);
-                                }
-                                if ((i1+1)<10){
-                                    thang = "0"+(i1+1);
-                                }else {
-                                    thang = String.valueOf(i1+1);
-                                }
-                                edtNgayChon.setText(i+"/"+thang+"/"+ngay);
-                            }
-                        },
-                                calendar.get(Calendar.YEAR),
-                                calendar.get(Calendar.MONTH),
-                                calendar.get(Calendar.DAY_OF_MONTH)
-                        );
-                        datePickerDialog.show();
-                    }
-                });
+
                 String ngay = edtNgayChon.getText().toString();
                 HashMap<String,Object> selected = (HashMap<String, Object>) spnLoaiKeHoach.getSelectedItem();
                 int maloai = (int) selected.get("maloai");

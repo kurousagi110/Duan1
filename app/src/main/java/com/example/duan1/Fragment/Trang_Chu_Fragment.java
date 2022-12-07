@@ -12,12 +12,13 @@ import android.widget.Button;
 
 import com.example.duan1.ChiActivity;
 import com.example.duan1.QuanlynoActivity;
+
 import com.example.duan1.KeHoachActivity;
 import com.example.duan1.R;
 import com.example.duan1.ThuActivity;
 
 
-public class Trang_Chu_Fragment extends Fragment {
+public class Trang_Chu_Fragment extends Fragment  {
 Button btn;
     public Trang_Chu_Fragment() {
         // Required empty public constructor
@@ -48,16 +49,19 @@ Button btn;
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), QuanlynoActivity.class);
-
-        btn = view.findViewById(R.id.btnKeHoach);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), KeHoachActivity.class);
-
                 startActivity(intent);
             }
         });
+                btn = view.findViewById(R.id.btnKeHoach);
+                btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), KeHoachActivity.class);
+
+                        startActivity(intent);
+                    }
+                });
+
         return view;
 
     }

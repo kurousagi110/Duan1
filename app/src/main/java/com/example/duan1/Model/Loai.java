@@ -25,6 +25,9 @@ public class Loai {
 
     }
 
+    public Loai(String tenloai, String kehoach, int i) {
+    }
+
     public Integer getMaLoai() {
         return maLoai;
     }

@@ -7,7 +7,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 
 import com.example.duan1.Fragment.LienHe_Fragment;
-import com.example.duan1.Fragment.KeHoach_Fragment;
 import com.example.duan1.Fragment.TaiKhoan_Fragment;
 import com.example.duan1.Fragment.Trang_Chu_Fragment;
 

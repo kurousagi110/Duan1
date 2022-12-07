@@ -39,28 +39,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="Đã Trả/Nợ thêm"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-        <Spinner
-            android:id="@+id/spnLoaiThuNo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:hint="50000"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_so_du"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:textSize="20dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
 
     <LinearLayout
         android:layout_width="match_parent"

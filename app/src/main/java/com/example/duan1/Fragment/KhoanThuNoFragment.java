@@ -17,8 +17,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.duan1.Adapter.KhoanThuNoAdapter;
-import com.example.duan1.DAO.QuanLyNoDAO;
-import com.example.duan1.Model.QLno;
+import com.example.duan1.DAO.ThuChiDAO;
+import com.example.duan1.Model.KhoanThuChi;
+import com.example.duan1.Model.Loai;
 import com.example.duan1.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -29,8 +30,8 @@ import java.util.HashMap;
 
 public class KhoanThuNoFragment extends Fragment {
     ListView listViewKhoanThuNo;
-    ArrayList<QLno> list;
-    QuanLyNoDAO quanLyNoDAO;
+    ArrayList<KhoanThuChi> list;
+    ThuChiDAO thuChiDAO;
     ArrayList<HashMap<String,Object>> listSpinner;
     KhoanThuNoAdapter adapter;
 
@@ -42,7 +43,7 @@ public class KhoanThuNoFragment extends Fragment {
         listViewKhoanThuNo = view.findViewById(R.id.listViewKhoanThuNo);
         FloatingActionButton floatAdd = view.findViewById(R.id.floatAddThuNo);
 
-        quanLyNoDAO = new QuanLyNoDAO(getContext());
+        thuChiDAO = new ThuChiDAO(getContext());
         getData();
 
         floatAdd.setOnClickListener(new View.OnClickListener() {
@@ -55,9 +56,8 @@ public class KhoanThuNoFragment extends Fragment {
         return view;
     }
     private void getData(){
-        list = quanLyNoDAO.getDsQuanLyNo("no");
-
-        adapter = new KhoanThuNoAdapter(list,getContext(),quanLyNoDAO,getDataSpinner());
+        list = thuChiDAO.getDSKhoanThuChi("no");
+        adapter = new KhoanThuNoAdapter(list,getContext(),thuChiDAO,getDataSpinner());
         listViewKhoanThuNo.setAdapter(adapter);
     }
     private void showDialogThem(){
@@ -65,7 +65,7 @@ public class KhoanThuNoFragment extends Fragment {
         LayoutInflater layoutInflater = getLayoutInflater();
         View view = layoutInflater.inflate(R.layout.dialog_themkhoanthuno,null);
         Spinner spnLoaiNo = view.findViewById(R.id.spnLoaiThuNO);
-        EditText edtTen = view.findViewById(R.id.edtTen);
+        EditText edtTien = view.findViewById(R.id.edtTienKhoanNo);
 
         builder.setView(view);
 
@@ -79,13 +79,13 @@ public class KhoanThuNoFragment extends Fragment {
         builder.setPositiveButton("thêm", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
-                String Ten = edtTen.getText().toString();
+                String tien = edtTien.getText().toString();
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 String ngay = sdf.format(new Date());
                 HashMap<String,Object> selected = (HashMap<String, Object>) spnLoaiNo.getSelectedItem();
                 int maloai = (int) selected.get("maloai");
-                QLno qLno = new QLno(Integer.parseInt(Ten));
-                if(quanLyNoDAO.addLoaino(qLno)){
+                KhoanThuChi khoanThuChi = new KhoanThuChi(Integer.parseInt(tien),maloai,ngay);
+                if(thuChiDAO.addKhoanThuChi(khoanThuChi)){
                     Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
                     getData();
                 }else{
@@ -105,12 +105,13 @@ public class KhoanThuNoFragment extends Fragment {
 
     }
     private ArrayList<HashMap<String,Object>> getDataSpinner(){
-        ArrayList<QLno> listQLno = quanLyNoDAO.getDsQuanLyNo("no");
+        ArrayList<Loai> listLoai = thuChiDAO.getDsLoaiThuChi("no");
         listSpinner = new ArrayList<>();
 
-        for(QLno qLno : listQLno){
+        for(Loai loai : listLoai){
             HashMap<String,Object> hashMap = new HashMap<>();
-            hashMap.put("TenNo",qLno.getTEN());
+            hashMap.put("maloai",loai.getMaLoai());
+            hashMap.put("tenloai",loai.getTenLoai());
             listSpinner.add(hashMap);
         }
         return listSpinner;

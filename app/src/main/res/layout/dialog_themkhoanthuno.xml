@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"/>
 
     <EditText
-        android:id="@+id/edtTen"
+        android:id="@+id/edtTienKhoanNo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nhâp Tên"

@@ -22,7 +22,6 @@ public class DataHelper extends SQLiteOpenHelper {
 
         String qKhoan = "CREATE TABLE KHOANTHUCHI(makhoan integer primary key autoincrement, tien integer, ngay text, maloai integer,FOREIGN KEY(maloai) references LOAI(maloai))";
         db.execSQL(qKhoan);
-
         //data mẫu:
         String taikhoan = "INSERT INTO TAIKHOAN VALUES(1, 'admin', 'admin'), (2, 'hoa123', '123'), (3, 'tai456', '456'), (4, 'loi789', '789')";
         db.execSQL(taikhoan);

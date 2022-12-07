@@ -77,7 +77,6 @@ public class TaiKhoanDAO {
             return false;
         }
     }
-
     public int getSoTK(String username, String password) {
         SQLiteDatabase sqLiteOpenHelper = dataHelper.getReadableDatabase();
         int soTK = 0;

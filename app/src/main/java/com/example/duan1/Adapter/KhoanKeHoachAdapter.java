@@ -51,7 +51,7 @@ public class KhoanKeHoachAdapter extends BaseAdapter {
     }
 
     public static class ViewOfItem{
-        TextView txtTenKeHoach,txtTienKeHoach,txtNgayKeHoach;
+        TextView txtTenKeHoach,txtTienKeHoach,txtNgayKeHoach,txtGioKeHoach;
         ImageView ivSuaKeHoach,ivXoaKeHoach;
     }
 
@@ -68,6 +68,7 @@ public class KhoanKeHoachAdapter extends BaseAdapter {
             viewOfItem.ivSuaKeHoach = view.findViewById(R.id.ivSuaKeHoach);
             viewOfItem.ivXoaKeHoach = view.findViewById(R.id.ivXoaKeHoach);
             viewOfItem.txtNgayKeHoach = view.findViewById(R.id.txtNgayKeHoach);
+            viewOfItem.txtGioKeHoach = view.findViewById(R.id.txtGioKeHoach);
 
             view.setTag(viewOfItem);
         }else{
@@ -76,6 +77,7 @@ public class KhoanKeHoachAdapter extends BaseAdapter {
         viewOfItem.txtTenKeHoach.setText("Tên: "+list.get(i).getTenKhoan());
         viewOfItem.txtTienKeHoach.setText("Số tiền: "+list.get(i).getTien());
         viewOfItem.txtNgayKeHoach.setText("Ngày: "+list.get(i).getNgay());
+        viewOfItem.txtGioKeHoach.setText("Gio:"+list.get(i).getGio());
 
 
         viewOfItem.ivSuaKeHoach.setOnClickListener(new View.OnClickListener() {

@@ -7,6 +7,25 @@ public class KhoanThuChi {
     private String ngay;
     private Integer maLoai;
     private String tenLoai;
+    private String gio;
+
+    public String getGio() {
+        return gio;
+    }
+
+    public void setGio(String gio) {
+        this.gio = gio;
+    }
+
+    public KhoanThuChi(Integer maKhoan, Integer tien, String tenKhoan, String ngay, Integer maLoai, String tenLoai, String gio) {
+        this.maKhoan = maKhoan;
+        this.tien = tien;
+        this.tenKhoan = tenKhoan;
+        this.ngay = ngay;
+        this.maLoai = maLoai;
+        this.tenLoai = tenLoai;
+        this.gio = gio;
+    }
 
     public KhoanThuChi(Integer maKhoan, Integer tien, String tenKhoan, String ngay, Integer maLoai, String tenLoai) {
         this.maKhoan = maKhoan;

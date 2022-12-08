@@ -2,16 +2,19 @@ package com.example.duan1.Fragment;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,6 +34,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.TimeZone;
 
 public class KhoanKeHoachFragment extends Fragment {
     ListView listViewKhoanKeHoach;
@@ -38,6 +42,7 @@ public class KhoanKeHoachFragment extends Fragment {
     ThuChiDAO thuChiDAO;
     ArrayList<HashMap<String,Object>> listSpinner;
     KhoanKeHoachAdapter adapter;
+
 
     @Nullable
     @Override
@@ -62,7 +67,6 @@ public class KhoanKeHoachFragment extends Fragment {
     private void getData(){
         list = thuChiDAO.getDSKhoanThuChi("kehoach");
 
-
         adapter = new KhoanKeHoachAdapter(list,getContext(),thuChiDAO,getDataSpinner());
         listViewKhoanKeHoach.setAdapter(adapter);
     }
@@ -73,7 +77,10 @@ public class KhoanKeHoachFragment extends Fragment {
         Spinner spnLoaiKeHoach = view.findViewById(R.id.spnLoaiKeHoach);
         EditText edtTienKeHoachen = view.findViewById(R.id.edtTienKeHoach);
         EditText edtNgayChon = view.findViewById(R.id.edtChonngay);
+        EditText edtGioChon = view.findViewById(R.id.edtGioChon);
+
         Calendar calendar = Calendar.getInstance();
+
         edtNgayChon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +110,23 @@ public class KhoanKeHoachFragment extends Fragment {
                 datePickerDialog.show();
             }
         });
-
+        edtGioChon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendar = Calendar.getInstance();
+                int hours = calendar.get(Calendar.HOUR_OF_DAY);
+                int mins=calendar.get(Calendar.MINUTE);
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), androidx.appcompat.R.style.Theme_AppCompat_Dialog, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        Calendar c = Calendar.getInstance();
+                        c.set(Calendar.HOUR_OF_DAY,hourOfDay);
+                        c.set(Calendar.MINUTE,minute);
+                    }
+                },hours ,mins, false);
+                timePickerDialog.show();
+            }
+        });
         builder.setView(view);
         SimpleAdapter adapter = new SimpleAdapter(
                 getContext(),
@@ -116,7 +139,6 @@ public class KhoanKeHoachFragment extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 String tien = edtTienKeHoachen.getText().toString();
-
                 String ngay = edtNgayChon.getText().toString();
                 HashMap<String,Object> selected = (HashMap<String, Object>) spnLoaiKeHoach.getSelectedItem();
                 int maloai = (int) selected.get("maloai");

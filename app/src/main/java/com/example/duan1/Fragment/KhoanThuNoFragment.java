@@ -2,10 +2,12 @@ package com.example.duan1.Fragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -17,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.duan1.Adapter.KhoanThuNoAdapter;
+import com.example.duan1.ChiTietNoActivity;
 import com.example.duan1.DAO.ThuChiDAO;
 import com.example.duan1.Model.KhoanThuChi;
 import com.example.duan1.Model.Loai;
@@ -45,7 +48,15 @@ public class KhoanThuNoFragment extends Fragment {
 
         thuChiDAO = new ThuChiDAO(getContext());
         getData();
-
+        listViewKhoanThuNo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getContext(), ChiTietNoActivity.class);
+                int makhoan = list.get(position).getMaKhoan();
+                intent.putExtra("makhoan",makhoan);
+                startActivity(intent);
+            }
+        });
         floatAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

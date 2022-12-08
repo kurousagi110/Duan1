@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DataHelper extends SQLiteOpenHelper {
     public DataHelper( Context context) {
-        super(context, "ThuChiDatabase", null, 21);
+        super(context, "ThuChiDatabase", null, 24);
     }
 
     @Override
@@ -34,6 +34,12 @@ public class DataHelper extends SQLiteOpenHelper {
 
         String khoanthuchi1 = "INSERT INTO KHOANTHUCHI VALUES(4, 5000,0, '01/11/2022' ,6), (5, 7000,0, '09/11/2022', 5), (6, 1000,0, '08/12/2022',4)";
         db.execSQL(khoanthuchi1);
+
+        String lichsu = "create table LICHSU (mals integer primary key, ten string, tien integer, ngay string)";
+        db.execSQL(lichsu);
+        String khoanthuchi10 = "INSERT INTO LICHSU VALUES(1,'hoa', 5000,'01/11/2022'), (2,'hoa', 7000,'09/11/2022'), (3,'hoa', 1000,'08/12/2022')";
+        db.execSQL(khoanthuchi10);
+
            }
 
     @Override
@@ -45,7 +51,10 @@ public class DataHelper extends SQLiteOpenHelper {
             db.execSQL(dLoai);
             String dKhoan = "DROP TABLE IF EXISTS KHOANTHUCHI";
             db.execSQL(dKhoan);
+            String lichsu = "DROP TABLE IF EXISTS LICHSU";
+            db.execSQL(lichsu);
             onCreate(db);
+
         }
     }
 }

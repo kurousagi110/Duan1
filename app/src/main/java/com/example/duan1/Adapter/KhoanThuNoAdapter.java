@@ -182,12 +182,14 @@ public class KhoanThuNoAdapter extends BaseAdapter {
             public void onClick(DialogInterface dialog, int which) {
                 int tienmoi = Integer.parseInt(edtTien.getText().toString());
                 int tiencu = khoanThuChi.getTien();
+                int tiendatra = khoanThuChi.getTienDaCo();
+                int tiendatraupdate = tiendatra+tienmoi;
                 int tien = tiencu - tienmoi;
                 if (tien>0) {
                     HashMap<String, Object> selected = (HashMap<String, Object>) spnLoaiThuNo.getSelectedItem();
                     int maloai = (int) selected.get("maloai");
                     khoanThuChi.setMaLoai(maloai);
-                    khoanThuChi.setTienDaCo(tienmoi);
+                    khoanThuChi.setTienDaCo(tiendatraupdate);
                     if (thuChiDAO.updateKhoanThuChi(khoanThuChi)) {
                         Toast.makeText(context, "cap nhat thanh cong", Toast.LENGTH_SHORT).show();
                         reLoadData();

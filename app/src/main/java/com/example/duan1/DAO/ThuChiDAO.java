@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.duan1.Model.KhoanThuChi;
+import com.example.duan1.Model.LichSu;
 import com.example.duan1.Model.Loai;
 import com.example.duan1.Model.ThongKe;
 import com.example.duan1.database.DataHelper;
@@ -82,6 +83,24 @@ public class ThuChiDAO {
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
+                list.add(new KhoanThuChi(cursor.getInt(0), cursor.getInt(1), cursor.getInt(2), cursor.getString(3), cursor.getString(4),cursor.getInt(5)));
+            } while (cursor.moveToNext());
+        }
+        return list;
+    }
+
+    //lay danh sach 1 khoan thu chi
+    public ArrayList<KhoanThuChi> getDSchitiet(String loai, Integer makhoan){
+        ArrayList<KhoanThuChi> list = new ArrayList<>();
+        KhoanThuChi khoanThuChi = new KhoanThuChi();
+        SQLiteDatabase database = dataHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT k.maKhoan, k.tien, k.tiendaco, l.tenLoai, k.ngay, k.maLoai FROM LOAI l, KHOANTHUCHI k WHERE l.maLoai = k.maLoai AND l.trangthai = ? and k.makhoan =?", new String[]{loai, String.valueOf(makhoan)});
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+//                khoanThuChi.setMaKhoan(cursor.getInt(0));
+//                khoanThuChi.getTien(cursor.getInt(1));
+//                khoanThuChi.getTienDaCo(cursor.getInt(2));
                 list.add(new KhoanThuChi(cursor.getInt(0), cursor.getInt(1), cursor.getInt(2), cursor.getString(3), cursor.getString(4),cursor.getInt(5)));
             } while (cursor.moveToNext());
         }
@@ -190,48 +209,33 @@ public class ThuChiDAO {
                 return chi1;
             }
     }
-//    //Thêm dự định tiền tương lai:
-//    public boolean addKhoanTien(KhoanThuChi khoanThuChi) {
-//        SQLiteDatabase database = dataHelper.getWritableDatabase();
-//        ContentValues contentValues = new ContentValues();
-//        contentValues.put("makhoan", khoanThuChi.getTien());
-//        contentValues.put("tiendaco", khoanThuChi.getNgay());
-//        long check = database.insert("TIENDACO", null, contentValues);
-//        if (check == -1)
-//            return false;
-//        return true;
-//    }
-//    //Sửa dự định tương lai:
-//    public boolean updateKhoanNo(KhoanThuChi khoanThuChi) {
-//        SQLiteDatabase sqLiteDatabase = dataHelper.getWritableDatabase();
-//        ContentValues contentValues = new ContentValues();
-//        contentValues.put("maKhoan", khoanThuChi.getMaKhoan());
-//        contentValues.put("tiendaco", khoanThuChi.getTien());
-//        long check = sqLiteDatabase.update("TIENDACO", contentValues, "maKhoan = ?", new String[]{String.valueOf(khoanThuChi.getMaKhoan())});
-//        if (check == -1)
-//            return false;
-//        return true;
-//    }
-//    //Xoá dự định tương lai:
-//
-//    public boolean deleteKhoanNo(int maKhoan) {
-//        SQLiteDatabase sqLiteDatabase = dataHelper.getWritableDatabase();
-//        long check = sqLiteDatabase.delete("TIENDACO", "maKhoan = ?", new String[]{String.valueOf(maKhoan)});
-//        if (check == -1)
-//            return false;
-//        return true;
-//    }
-//    //Lay danh sach khoan no:
-//    public ArrayList<KhoanThuChi> getTienDaco(String loai) {
-//        ArrayList<KhoanThuChi> list = new ArrayList<>();
-//        SQLiteDatabase database = dataHelper.getReadableDatabase();
-//        Cursor cursor = database.rawQuery("SELECT * FROM TIENDACO",null);
-//        if (cursor.getCount() > 0) {
-//            cursor.moveToFirst();
-//            do {
-//                list.add(new KhoanThuChi(cursor.getInt(0),cursor.getInt(1)));
-//            } while (cursor.moveToNext());
-//        }
-//        return list;
-//    }
+
+    //them lich su
+    public boolean addLichSu(LichSu lichSu) {
+        SQLiteDatabase sqLiteDatabase = dataHelper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("ten", lichSu.getTen());
+        contentValues.put("tien", lichSu.getTien());
+        contentValues.put("ngay", lichSu.getNgay());
+        long check = sqLiteDatabase.insert("LICHSU",  null, contentValues);
+        if (check == -1)
+            return false;
+        return true;
+    }
+    //hiện thị lịch sử
+    public ArrayList<LichSu> getDsLichSu() {
+        ArrayList<LichSu> list = new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase = dataHelper.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM LICHSU", null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+
+                    list.add(new LichSu(cursor.getInt(0), cursor.getString(1), cursor.getInt(2), cursor.getString(3)));
+
+            } while (cursor.moveToNext());
+        }
+        return list;
+    }
+
 }

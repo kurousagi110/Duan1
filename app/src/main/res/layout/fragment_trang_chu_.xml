@@ -116,19 +116,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:rippleColor="#D12828" />
 
-                <Button
-                    android:id="@+id/btnNo"
-                    android:layout_width="289dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="292dp"
-                    android:background="@drawable/custombuttonchi"
-                    android:text="QUẢN LÍ NỢ"
-                    android:textAlignment="center"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.506"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:rippleColor="#D12828" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>

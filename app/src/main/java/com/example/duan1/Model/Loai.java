@@ -8,10 +8,10 @@ public class Loai {
     private String trangThai;
     private Integer soTK;
 
-    public Loai() {
+    public Loai(int anInt, String string, String cursorString, int cursorInt) {
     }
 
-    public Loai(Integer maLoai, String tenLoai, String trangThai, Integer soTK) {
+    public Loai(String tenLoai, String trangThai, Integer soTK) {
         this.maLoai = maLoai;
         this.tenLoai = tenLoai;
         this.trangThai = trangThai;

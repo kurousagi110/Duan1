@@ -67,9 +67,9 @@ public class FingeprintActivity extends AppCompatActivity {
                 textView.setText("Thiết bị của bạn không có cảm biến vân tay\n");
             }else{
                 // Check whether at least one fingerprint is registered
-                if (!fingerprintManager.hasEnrolledFingerprints()) {
+                if (!fingerprintManager.hasEnrolledFingerprints())
                     textView.setText("Tạo ít nhất một dấu vân tay trong Cài đặt\n");
-                }else{
+                else{
                     // Checks whether lock screen security is enabled or not
                     if (!keyguardManager.isKeyguardSecure()) {
                         textView.setText("Bảo mật màn hình khóa không được bật trong Cài đặt\n");

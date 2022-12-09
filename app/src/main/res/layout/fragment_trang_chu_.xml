@@ -116,7 +116,7 @@
                     app:layout_constraintHorizontal_bias="0.614"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/btnChi" />
-
+<Button
                     android:id="@+id/btnKeHoach"
                     android:layout_width="289dp"
                     android:layout_height="48dp"

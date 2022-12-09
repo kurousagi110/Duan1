@@ -49,7 +49,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView12"
                 app:layout_constraintVertical_bias="0.304" />
 
-
             <ImageView
                 android:id="@+id/imageView16"
                 android:layout_width="148dp"
@@ -104,39 +103,12 @@
                     app:rippleColor="#D12828" />
 
                 <Button
-
-                    android:id="@+id/btnQLNO"
-                    android:layout_width="289dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="40dp"
-                    android:background="@drawable/custombuttonthu"
-                    android:backgroundTint="#B11111"
-                    android:text="QUẢN LÍ NỢ"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.614"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnChi" />
-<Button
                     android:id="@+id/btnKeHoach"
                     android:layout_width="289dp"
                     android:layout_height="48dp"
                     android:layout_marginTop="220dp"
                     android:background="@drawable/custombuttonchi"
                     android:text="KẾ HOẠCH TƯƠNG LAI"
-                    android:textAlignment="center"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.506"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:rippleColor="#D12828" />
-
-                <Button
-                    android:id="@+id/btnNo"
-                    android:layout_width="289dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="292dp"
-                    android:background="@drawable/custombuttonchi"
-                    android:text="QUẢN LÍ NỢ"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.506"

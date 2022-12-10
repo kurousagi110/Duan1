@@ -49,6 +49,9 @@
         <activity
             android:name=".QuanlynoActivity"
             android:exported="true"></activity>
+        <activity
+            android:name=".KeHoachActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

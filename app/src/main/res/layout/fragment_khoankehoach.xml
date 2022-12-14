@@ -18,4 +18,5 @@
         app:layout_anchorGravity="bottom|end"
         android:id="@+id/floatAddKhoanKeHoach"/>
 
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

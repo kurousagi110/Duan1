@@ -1,13 +1,21 @@
 package com.example.duan1.Fragment;
 
+import android.annotation.SuppressLint;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -18,12 +26,15 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.example.duan1.Adapter.KhoanKeHoachAdapter;
 import com.example.duan1.DAO.ThuChiDAO;
 import com.example.duan1.Model.KhoanThuChi;
 import com.example.duan1.Model.Loai;
+import com.example.duan1.MyAlarm;
+import com.example.duan1.MyBroadcast;
 import com.example.duan1.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -37,8 +48,11 @@ public class KhoanKeHoachFragment extends Fragment {
     ThuChiDAO thuChiDAO;
     ArrayList<HashMap<String,Object>> listSpinner;
     KhoanKeHoachAdapter adapter;
+    Calendar calendar;
+    AlarmManager am;
+    PendingIntent pi;
 
-
+    @SuppressLint("MissingInflatedId")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,6 +60,13 @@ public class KhoanKeHoachFragment extends Fragment {
 
         listViewKhoanKeHoach = view.findViewById(R.id.listViewKhoanKeHoach);
         FloatingActionButton floatAdd = view.findViewById(R.id.floatAddKhoanKeHoach);
+
+        Intent i = new Intent(getContext(), MyAlarm.class);
+        pi = PendingIntent.getBroadcast(getContext(), 0, i, 0);
+        MyBroadcast broadcast = new MyBroadcast();
+        IntentFilter intentFilter = new IntentFilter("com.example");
+        getContext().registerReceiver(broadcast, intentFilter);
+
 
         thuChiDAO = new ThuChiDAO(getContext());
         getData();
@@ -84,6 +105,29 @@ public class KhoanKeHoachFragment extends Fragment {
                     public void onDateSet(DatePicker view, int i, int i1, int i2) {
                         String ngay = "";
                         String thang = "";
+                        calendar.clear();
+                        calendar.set(Calendar.YEAR, i);
+                        calendar.set(Calendar.MONTH, i1);
+                        calendar.set(Calendar.DAY_OF_MONTH, i2);
+                        TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
+                            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                            @Override
+                            public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
+
+
+                                //SetTime
+                                calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                                calendar.set(Calendar.MINUTE, minute);
+
+
+                                am =(AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
+
+                                am.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);
+                            }
+
+                        };
+                        //5
+                        new TimePickerDialog(getContext(), timeSetListener, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false).show();
                         if (i2<10){
                             ngay = "0"+i2;
                         }else {
@@ -155,4 +199,43 @@ public class KhoanKeHoachFragment extends Fragment {
 //        int soTK = sharedPreferences.getInt("soTK", 0);
 //        return soTK;
 //    }
+
+    private void showDateTimeDialog() {
+
+
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+
+                //3 Set DATE
+                calendar.clear();
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+
+                TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
+
+
+                        //SetTime
+                        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                        calendar.set(Calendar.MINUTE, minute);
+
+
+                        am =(AlarmManager)getContext().getSystemService(Context.ALARM_SERVICE);
+//                        am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);
+                        am.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);
+                    }
+
+                };
+                //5
+                new TimePickerDialog(getActivity(), timeSetListener, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false).show();
+            }
+        };
+
+        new DatePickerDialog(getActivity(), dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+    }
 }

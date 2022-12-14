@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_trangchu"/>
     <item
         android:id="@+id/mquanlyno"
-        android:title="quan ly no"
+        android:title="nạp tiền"
         android:icon="@drawable/ic_nap_tien"/>
 
     <item

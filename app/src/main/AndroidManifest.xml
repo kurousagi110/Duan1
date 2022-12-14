@@ -43,10 +43,10 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Activity_Chao"
+            android:name=".Login_Activity"
             android:exported="true"></activity>
         <activity
-            android:name=".Login_Activity"
+            android:name=".Activity_Chao"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

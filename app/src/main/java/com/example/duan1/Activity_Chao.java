@@ -19,7 +19,7 @@ public class Activity_Chao extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
-            },   15000);
+            },   1500);
 
           }
     }

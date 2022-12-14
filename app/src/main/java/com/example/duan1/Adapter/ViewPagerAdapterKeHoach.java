@@ -6,10 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.duan1.Fragment.KhoanKeHoachFragment;
-import com.example.duan1.Fragment.KhoanThuFragment;
-import com.example.duan1.Fragment.LoaiChiFragment;
 import com.example.duan1.Fragment.LoaiKeHoachFragment;
-import com.example.duan1.Fragment.LoaiThuFragment;
 
 public class ViewPagerAdapterKeHoach extends FragmentStateAdapter {
 

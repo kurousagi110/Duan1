@@ -52,16 +52,16 @@ public class LoaiKeHoachAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         LayoutInflater inflater =((Activity)context).getLayoutInflater();
-        LoaiKeHoachAdapter.ViewOfItem viewOfItem;
+        ViewOfItem viewOfItem;
         if(view == null){
-            viewOfItem = new LoaiKeHoachAdapter.ViewOfItem();
+            viewOfItem = new ViewOfItem();
             view = inflater.inflate(R.layout.item_loaikehoach,viewGroup,false);
             viewOfItem.txtTenKeHoach = view.findViewById(R.id.txtTenKeHoach);
             viewOfItem.ivSuaKeHoach = view.findViewById(R.id.ivSuaKeHoach);
             viewOfItem.ivXoaKeHoach = view.findViewById(R.id.ivXoaKeHoach);
             view.setTag(viewOfItem);
         }else{
-            viewOfItem = (LoaiKeHoachAdapter.ViewOfItem) view.getTag();
+            viewOfItem = (ViewOfItem) view.getTag();
         }
         viewOfItem.txtTenKeHoach.setText(list.get(i).getTenLoai());
 

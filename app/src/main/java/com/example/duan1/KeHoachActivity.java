@@ -1,12 +1,11 @@
 package com.example.duan1;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.os.Bundle;
-
-import com.example.duan1.Adapter.ViewPager2AdapterChi;
 import com.example.duan1.Adapter.ViewPagerAdapterKeHoach;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;

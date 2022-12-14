@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -22,19 +21,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.duan1.Adapter.KhoanKeHoachAdapter;
-import com.example.duan1.Adapter.KhoanThuAdapter;
 import com.example.duan1.DAO.ThuChiDAO;
 import com.example.duan1.Model.KhoanThuChi;
 import com.example.duan1.Model.Loai;
 import com.example.duan1.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.TimeZone;
 
 public class KhoanKeHoachFragment extends Fragment {
     ListView listViewKhoanKeHoach;
@@ -77,7 +72,6 @@ public class KhoanKeHoachFragment extends Fragment {
         Spinner spnLoaiKeHoach = view.findViewById(R.id.spnLoaiKeHoach);
         EditText edtTienKeHoachen = view.findViewById(R.id.edtTienKeHoach);
         EditText edtNgayChon = view.findViewById(R.id.edtChonngay);
-        EditText edtGioChon = view.findViewById(R.id.edtGioChon);
 
         Calendar calendar = Calendar.getInstance();
 
@@ -108,23 +102,6 @@ public class KhoanKeHoachFragment extends Fragment {
                         calendar.get(Calendar.DAY_OF_MONTH)
                 );
                 datePickerDialog.show();
-            }
-        });
-        edtGioChon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar calendar = Calendar.getInstance();
-                int hours = calendar.get(Calendar.HOUR_OF_DAY);
-                int mins=calendar.get(Calendar.MINUTE);
-                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), androidx.appcompat.R.style.Theme_AppCompat_Dialog, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        Calendar c = Calendar.getInstance();
-                        c.set(Calendar.HOUR_OF_DAY,hourOfDay);
-                        c.set(Calendar.MINUTE,minute);
-                    }
-                },hours ,mins, false);
-                timePickerDialog.show();
             }
         });
         builder.setView(view);

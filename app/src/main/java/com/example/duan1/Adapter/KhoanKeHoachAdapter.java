@@ -28,7 +28,7 @@ public class KhoanKeHoachAdapter extends BaseAdapter {
     private ThuChiDAO thuChiDAO;
     private ArrayList<HashMap<String,Object>> listSpinner;
 
-    public KhoanKeHoachAdapter(ArrayList<KhoanThuChi> list, Context context, ThuChiDAO thuChiDAO,ArrayList<HashMap<String,Object>> listSpinner) {
+    public KhoanKeHoachAdapter(ArrayList<KhoanThuChi> list, Context context, ThuChiDAO thuChiDAO, ArrayList<HashMap<String,Object>> listSpinner) {
         this.list = list;
         this.context = context;
         this.thuChiDAO = thuChiDAO;
@@ -59,25 +59,25 @@ public class KhoanKeHoachAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-        KhoanKeHoachAdapter.ViewOfItem viewOfItem;
+        ViewOfItem viewOfItem;
         if(view == null){
             view = inflater.inflate(R.layout.item_khoankehoach,viewGroup,false);
-            viewOfItem = new KhoanKeHoachAdapter.ViewOfItem();
+            viewOfItem = new ViewOfItem();
             viewOfItem.txtTenKeHoach = view.findViewById(R.id.txtTenKeHoach);
             viewOfItem.txtTienKeHoach = view.findViewById(R.id.txtTienKeHoach);
             viewOfItem.ivSuaKeHoach = view.findViewById(R.id.ivSuaKeHoach);
             viewOfItem.ivXoaKeHoach = view.findViewById(R.id.ivXoaKeHoach);
             viewOfItem.txtNgayKeHoach = view.findViewById(R.id.txtNgayKeHoach);
-            viewOfItem.txtGioKeHoach = view.findViewById(R.id.txtGioKeHoach);
+
 
             view.setTag(viewOfItem);
         }else{
-            viewOfItem = (KhoanKeHoachAdapter.ViewOfItem) view.getTag();
+            viewOfItem = (ViewOfItem) view.getTag();
         }
         viewOfItem.txtTenKeHoach.setText("Tên: "+list.get(i).getTenKhoan());
         viewOfItem.txtTienKeHoach.setText("Số tiền: "+list.get(i).getTien());
         viewOfItem.txtNgayKeHoach.setText("Ngày: "+list.get(i).getNgay());
-        viewOfItem.txtGioKeHoach.setText("Gio:"+list.get(i).getGio());
+
 
 
         viewOfItem.ivSuaKeHoach.setOnClickListener(new View.OnClickListener() {

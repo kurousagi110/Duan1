@@ -69,7 +69,7 @@ public class LoaiKeHoachFragment extends Fragment {
             public void onClick(DialogInterface dialogInterface, int i) {
 
                 String tenloai = edtInput.getText().toString();
-                Loai loaiThem = new Loai(tenloai,"kehoach",2);
+                Loai loaiThem = new Loai(tenloai,"kehoach");
                 if(thuChiDAO.addLoaiThuChi(loaiThem)){
                     Toast.makeText(getContext(), "Thêm Thành Công", Toast.LENGTH_SHORT).show();
                     loadData();
@@ -81,7 +81,6 @@ public class LoaiKeHoachFragment extends Fragment {
         builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
             }
         });
         AlertDialog alertDialog = builder.create();

@@ -10,7 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Them Loai Nợ"
+        android:textStyle="bold"
+        android:text="Thêm loại nợ"
         android:textColor="#D500F9"
         android:textSize="40dp"/>
 
@@ -18,7 +19,7 @@
         android:id="@+id/edtTenNo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint=" tên "
+        android:hint="nhập tên loại nợ "
         android:textSize="19sp"/>
 
 

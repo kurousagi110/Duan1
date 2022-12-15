@@ -72,7 +72,6 @@ public class KhoanKeHoachFragment extends Fragment {
         Spinner spnLoaiKeHoach = view.findViewById(R.id.spnLoaiKeHoach);
         EditText edtTienKeHoachen = view.findViewById(R.id.edtTienKeHoach);
         EditText edtNgayChon = view.findViewById(R.id.edtChonngay);
-
         Calendar calendar = Calendar.getInstance();
 
         edtNgayChon.setOnClickListener(new View.OnClickListener() {
@@ -117,18 +116,22 @@ public class KhoanKeHoachFragment extends Fragment {
             public void onClick(DialogInterface dialogInterface, int which) {
                 String tien = edtTienKeHoachen.getText().toString();
                 String ngay = edtNgayChon.getText().toString();
-                HashMap<String,Object> selected = (HashMap<String, Object>) spnLoaiKeHoach.getSelectedItem();
-                int maloai = (int) selected.get("maloai");
-                KhoanThuChi khoanThuChi = new KhoanThuChi(Integer.parseInt(tien),maloai,ngay);
-                if(thuChiDAO.addKhoanThuChi(khoanThuChi)){
-                    Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-                    getData();
-                }else{
-                    Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                if (tien.length() == 0 || ngay.length() == 0) {
+                    Toast.makeText(getContext(), "Tiền và ngày không được để trống", Toast.LENGTH_SHORT).show();
+                } else {
+                    HashMap<String, Object> selected = (HashMap<String, Object>) spnLoaiKeHoach.getSelectedItem();
+                    int maloai = (int) selected.get("maloai");
+                    KhoanThuChi khoanThuChi = new KhoanThuChi(Integer.parseInt(tien), maloai, ngay);
+                    if (thuChiDAO.addKhoanThuChi(khoanThuChi)) {
+                        Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        getData();
+                    } else {
+                        Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
-        builder.setNegativeButton("hủy", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 

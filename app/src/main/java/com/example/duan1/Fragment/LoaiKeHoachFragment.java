@@ -69,12 +69,16 @@ public class LoaiKeHoachFragment extends Fragment {
             public void onClick(DialogInterface dialogInterface, int i) {
 
                 String tenloai = edtInput.getText().toString();
-                Loai loaiThem = new Loai(tenloai,"kehoach");
-                if(thuChiDAO.addLoaiThuChi(loaiThem)){
-                    Toast.makeText(getContext(), "Thêm Thành Công", Toast.LENGTH_SHORT).show();
-                    loadData();
-                }else {
-                    Toast.makeText(getContext(), "Them khong thanh cong", Toast.LENGTH_SHORT).show();
+                if (tenloai.length() == 0) {
+                    Toast.makeText(getContext(), "Tên loại không được để trống", Toast.LENGTH_SHORT).show();
+                } else {
+                    Loai loaiThem = new Loai(tenloai, "kehoach");
+                    if (thuChiDAO.addLoaiThuChi(loaiThem)) {
+                        Toast.makeText(getContext(), "Thêm Thành Công", Toast.LENGTH_SHORT).show();
+                        loadData();
+                    } else {
+                        Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

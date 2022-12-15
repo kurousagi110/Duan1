@@ -12,7 +12,7 @@
         android:layout_height="58dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/botron_button"
-        android:text="QUẢN LÝ THU"
+        android:text="QUẢN LÝ THU NHẬP"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"

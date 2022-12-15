@@ -4,10 +4,6 @@
         android:id="@+id/mTrangChu"
         android:title="Trang chủ "
         android:icon="@drawable/ic_trangchu"/>
-    <item
-        android:id="@+id/mquanlyno"
-        android:title="quan ly no"
-        android:icon="@drawable/ic_nap_tien"/>
 
     <item
         android:id="@+id/mThongKe"

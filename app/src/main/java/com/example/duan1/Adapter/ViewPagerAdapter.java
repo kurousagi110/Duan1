@@ -29,12 +29,11 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
             case 0:
                 return new Trang_Chu_Fragment();
             case 1:
-                return new NapTien_Fragment();
-            case 2:
                 return new ThongKe_Fragment();
-            case 3:
+
+            case 2:
                 return new TaiKhoan_Fragment();
-            case 4:
+            case 3:
                 return new LienHe_Fragment();
             default:
                 return new Trang_Chu_Fragment();
@@ -43,6 +42,6 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 5;
+        return 4;
     }
 }

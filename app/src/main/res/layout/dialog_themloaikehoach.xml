@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Thêm Mục Kế Hoạch"
+        android:textStyle="bold"
         android:textColor="#D500F9"
         android:textSize="40dp"/>
 

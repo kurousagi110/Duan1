@@ -90,7 +90,7 @@ public class LoaiThuAdapter extends BaseAdapter {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = ((Activity)context).getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_sualoaithu,null);
-        EditText edtInput = view.findViewById(R.id.edtInput);
+        EditText edtInput = view.findViewById(R.id.edtInputNo);
         builder.setView(view);
 
         edtInput.setText(loai.getTenLoai());
@@ -99,12 +99,16 @@ public class LoaiThuAdapter extends BaseAdapter {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 String tenloai = edtInput.getText().toString();
-                loai.setTenLoai(tenloai);
-                if(thuChiDAO.updateLoaiThuChi(loai)){
-                    Toast.makeText(context, "cap nhat thnah cong", Toast.LENGTH_SHORT).show();
-                    reLoadData();
-                }else{
-                    Toast.makeText(context, "Thát bai", Toast.LENGTH_SHORT).show();
+                if (tenloai.length() == 0) {
+                    Toast.makeText(context, "Tên loại không được để trống", Toast.LENGTH_SHORT).show();
+                } else {
+                    loai.setTenLoai(tenloai);
+                    if (thuChiDAO.updateLoaiThuChi(loai)) {
+                        Toast.makeText(context, "cap nhat thnah cong", Toast.LENGTH_SHORT).show();
+                        reLoadData();
+                    } else {
+                        Toast.makeText(context, "Thát bai", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

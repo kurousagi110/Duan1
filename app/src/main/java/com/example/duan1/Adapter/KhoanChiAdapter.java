@@ -130,16 +130,20 @@ public class KhoanChiAdapter extends BaseAdapter {
         builder.setPositiveButton("Cập nhật", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String tien =edtTien.getText().toString();
-                HashMap<String,Object> selected = (HashMap<String, Object>) spnLoaiThu.getSelectedItem();
-                int maloai = (int) selected.get("maloai");
-                khoanThuChi.setTien(Integer.parseInt(tien));
-                khoanThuChi.setMaLoai(maloai);
-                if(thuChiDAO.updateKhoanThuChi(khoanThuChi)){
-                    Toast.makeText(context, "cap nhat thanh cong", Toast.LENGTH_SHORT).show();
-                    reLoadData();
-                }else{
-                    Toast.makeText(context, "That bai", Toast.LENGTH_SHORT).show();
+                String tien = edtTien.getText().toString();
+                if (tien.length() == 0) {
+                    Toast.makeText(context, "Tiền không được để trống", Toast.LENGTH_SHORT).show();
+                } else {
+                    HashMap<String, Object> selected = (HashMap<String, Object>) spnLoaiThu.getSelectedItem();
+                    int maloai = (int) selected.get("maloai");
+                    khoanThuChi.setTien(Integer.parseInt(tien));
+                    khoanThuChi.setMaLoai(maloai);
+                    if (thuChiDAO.updateKhoanThuChi(khoanThuChi)) {
+                        Toast.makeText(context, "cap nhat thanh cong", Toast.LENGTH_SHORT).show();
+                        reLoadData();
+                    } else {
+                        Toast.makeText(context, "That bai", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

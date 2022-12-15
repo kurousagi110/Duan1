@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -118,20 +119,24 @@ public class ThongKe_thang_Fragment extends Fragment implements OnChartValueSele
             public void onClick(View v) {
                 String ngaybatdau = edtNgayBatDau.getText().toString();
                 String denngay = edtDenNgay.getText().toString();
-                PieChart mChart = view.findViewById(R.id.chartThongKeTheoThang);
-                mChart.setRotationEnabled(true);
-                mChart.setDescription(new Description());
-                mChart.setHoleRadius(35f);
-                mChart.setTransparentCircleAlpha(0);
-                mChart.setCenterText("Thống kê");
-                mChart.setCenterTextSize(20);
-                mChart.setDrawEntryLabels(true);
+                if (ngaybatdau.length() == 0 || denngay.length() == 0) {
+                    Toast.makeText(getContext(), "Ngày không được để trống", Toast.LENGTH_SHORT).show();
+                } else {
+                    PieChart mChart = view.findViewById(R.id.chartThongKeTheoThang);
+                    mChart.setRotationEnabled(true);
+                    mChart.setDescription(new Description());
+                    mChart.setHoleRadius(35f);
+                    mChart.setTransparentCircleAlpha(0);
+                    mChart.setCenterText("Thống kê");
+                    mChart.setCenterTextSize(20);
+                    mChart.setDrawEntryLabels(true);
 
-                mChart.setRotationEnabled(true);
-                mChart.setHoleRadius(35f);
-                mChart.setTransparentCircleAlpha(0);
-                mChart.setDrawEntryLabels(true);
-                addDataSet(mChart, ngaybatdau, denngay);
+                    mChart.setRotationEnabled(true);
+                    mChart.setHoleRadius(35f);
+                    mChart.setTransparentCircleAlpha(0);
+                    mChart.setDrawEntryLabels(true);
+                    addDataSet(mChart, ngaybatdau, denngay);
+                }
             }
         });
 

@@ -39,18 +39,14 @@ public class MainActivity extends AppCompatActivity {
                     bottomNavigationView.getMenu().findItem(R.id.mTrangChu).setChecked(true);
                     break;
                     case 1:
-                        bottomNavigationView.getMenu().findItem(R.id.mquanlyno).setChecked(true);
-                        break;
-                    case 2:
                         bottomNavigationView.getMenu().findItem(R.id.mThongKe).setChecked(true);
                         break;
-                    case 3:
+                    case 2:
                         bottomNavigationView.getMenu().findItem(R.id.mTaiKhoan).setChecked(true);
                         break;
-                    case 4:
+                    case 3:
                         bottomNavigationView.getMenu().findItem(R.id.mLienHe).setChecked(true);
                         break;
-
                 }
             }
         });
@@ -61,19 +57,15 @@ public class MainActivity extends AppCompatActivity {
             case R.id.mTrangChu:
                 viewPager.setCurrentItem(0);
                 break;
-            case R.id.mquanlyno:
+            case R.id.mThongKe:
                 viewPager.setCurrentItem(1);
                 break;
-            case R.id.mThongKe:
+            case R.id.mTaiKhoan:
                 viewPager.setCurrentItem(2);
                 break;
-            case R.id.mTaiKhoan:
+            case R.id.mLienHe:
                 viewPager.setCurrentItem(3);
                 break;
-            case R.id.mLienHe:
-                viewPager.setCurrentItem(4);
-                break;
-
                     }
                 }
             });

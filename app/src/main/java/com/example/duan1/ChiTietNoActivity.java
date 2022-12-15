@@ -52,16 +52,8 @@ public class ChiTietNoActivity extends AppCompatActivity {
         btnTraNoCT = findViewById(R.id.btnTraNoCT);
         btnQuayLai = findViewById(R.id.btnQuayLai);
 
-        lvLichSuNo = findViewById(R.id.lvLichSuNo);
-        thuChiDAO = new ThuChiDAO(this);
-        khoanThuChi = new KhoanThuChi();
-        lichSu = new LichSu();
-        listLS = new ArrayList<>();
-        list = new ArrayList<>();
-        listLS = thuChiDAO.getDsLichSu();
-        adapter = new AdapterChiTietNo(listLS,this,thuChiDAO);
-        lvLichSuNo.setAdapter(adapter);
 
+        getData();
 
         btnTraNoCT.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,22 +61,16 @@ public class ChiTietNoActivity extends AppCompatActivity {
                 showDialogTraNo(list.get(0));
             }
         });
+        btnQuayLai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
 
-        Bundle bundle = getIntent().getExtras();
-        makhoan = bundle.getInt("makhoan");
-        list= thuChiDAO.getDSchitiet("no",makhoan);
 
-        tien = list.get(0).getTien();
-        tiendatra = list.get(0).getTienDaCo();
-        tienconthieu = tien-tiendatra;
-        ten = list.get(0).getTenKhoan();
-        txtTenKhoanNoCT.setText("Tên người nợ: "+ten);
-        txtTienNoCT.setText("Tiền thiếu: "+tien);
-        txtTienDaCoCT.setText("Tiền đã trả: "+tiendatra);
-        txtTienConThieuCT.setText("Tiền còn thiếu: "+tienconthieu);
-        txtNgayNoCT.setText("Ngày: "+list.get(0).getNgay());
 
     }
     private void showDialogTraNo(KhoanThuChi khoanThuChi){
@@ -98,26 +84,31 @@ public class ChiTietNoActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 Dialog dialogView = (Dialog) dialog;
                 EditText edtTraNo = (EditText) dialogView.findViewById(R.id.edtTraNo);
-                int tienmoi = Integer.parseInt(edtTraNo.getText().toString());
-                int tiendatraupdate = tiendatra+tienmoi;
-                int tien0 = tien - tienmoi;
-                if (tien0>0) {
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                    String ngay = sdf.format(new Date());
-                    lichSu.setTen(ten);
-                    lichSu.setTien(tienmoi);
-                    lichSu.setNgay(ngay);
-                    khoanThuChi.setMaLoai(makhoan);
-                    khoanThuChi.setTienDaCo(tiendatraupdate);
-                    if (thuChiDAO.updateKhoanThuChi(khoanThuChi)&thuChiDAO.addLichSu(lichSu)) {
-                        Toast.makeText(ChiTietNoActivity.this, "cap nhat thanh cong", Toast.LENGTH_SHORT).show();
-                        list.clear();
-                        list= thuChiDAO.getDSchitiet("no",makhoan);
-                    } else {
-                        Toast.makeText(ChiTietNoActivity.this, "That bai", Toast.LENGTH_SHORT).show();
+                if (edtTraNo.length() == 0) {
+                    Toast.makeText(ChiTietNoActivity.this, "Không được để trống số tiền", Toast.LENGTH_SHORT).show();
+                } else {
+                    int tienmoi = Integer.parseInt(edtTraNo.getText().toString());
+                    int tiendatraupdate = tiendatra + tienmoi;
+                    int tien0 = tien - tienmoi;
+                    if (tien0 > 0) {
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                        String ngay = sdf.format(new Date());
+                        lichSu.setTen(ten);
+                        lichSu.setTien(tienmoi);
+                        lichSu.setNgay(ngay);
+                        khoanThuChi.setMaLoai(makhoan);
+                        khoanThuChi.setTienDaCo(tiendatraupdate);
+                        if (thuChiDAO.updateKhoanThuChi(khoanThuChi) & thuChiDAO.addLichSu(lichSu)) {
+                            Toast.makeText(ChiTietNoActivity.this, "cap nhat thanh cong", Toast.LENGTH_SHORT).show();
+                            getData();
+//                            list.clear();
+//                            list = thuChiDAO.getDSchitiet("no", makhoan);
+                        } else {
+                            Toast.makeText(ChiTietNoActivity.this, "That bai", Toast.LENGTH_SHORT).show();
+                        }
+                    } else if (tien0 < 0) {
+                        Toast.makeText(ChiTietNoActivity.this, "Tiền giảm không được quá 0", Toast.LENGTH_SHORT).show();
                     }
-                }else if (tien0<0){
-                    Toast.makeText(ChiTietNoActivity.this, "Tiền giảm không được quá 0", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -132,7 +123,28 @@ public class ChiTietNoActivity extends AppCompatActivity {
         alertDialog.show();
     }
     private void getData(){
+        lvLichSuNo = findViewById(R.id.lvLichSuNo);
+        thuChiDAO = new ThuChiDAO(this);
+        khoanThuChi = new KhoanThuChi();
+        lichSu = new LichSu();
+        listLS = new ArrayList<>();
+        list = new ArrayList<>();
+        listLS = thuChiDAO.getDsLichSu();
+        adapter = new AdapterChiTietNo(listLS,this,thuChiDAO);
+        lvLichSuNo.setAdapter(adapter);
+        Bundle bundle = getIntent().getExtras();
+        makhoan = bundle.getInt("makhoan");
+        list= thuChiDAO.getDSchitiet("no",makhoan);
 
+        tien = list.get(0).getTien();
+        tiendatra = list.get(0).getTienDaCo();
+        tienconthieu = tien-tiendatra;
+        ten = list.get(0).getTenKhoan();
+        txtTenKhoanNoCT.setText("Tên người nợ: "+ten);
+        txtTienNoCT.setText("Tiền thiếu: "+tien);
+        txtTienDaCoCT.setText("Tiền đã trả: "+tiendatra);
+        txtTienConThieuCT.setText("Tiền còn thiếu: "+tienconthieu);
+        txtNgayNoCT.setText("Ngày: "+list.get(0).getNgay());
     }
 
 }

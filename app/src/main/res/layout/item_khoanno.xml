@@ -2,7 +2,9 @@
 <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/botton_bo_goc">
+    android:background="#ADF8B7"
+    android:layout_margin="15dp"
+    android:padding="10dp">
 
     <LinearLayout
         android:orientation="vertical"
@@ -14,12 +16,16 @@
             android:id="@+id/txtTenThuNo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             android:text="tien xang"
             android:textSize="25dp"/>
         <TextView
             android:id="@+id/txtTienThuNo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:text="5000"/>
         <TextView
@@ -27,12 +33,16 @@
             android:text="4000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             android:textSize="20dp"/>
         <TextView
             android:id="@+id/txtTienConThieu"
             android:text="1000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             android:textSize="20dp"/>
 
     </LinearLayout>

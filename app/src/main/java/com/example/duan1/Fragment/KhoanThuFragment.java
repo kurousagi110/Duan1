@@ -84,20 +84,24 @@ public class KhoanThuFragment extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 String tien = edtTien.getText().toString();
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                String ngay = sdf.format(new Date());
-                HashMap<String,Object> selected = (HashMap<String, Object>) spnLoaiThu.getSelectedItem();
-                int maloai = (int) selected.get("maloai");
-                KhoanThuChi khoanThuChi = new KhoanThuChi(Integer.parseInt(tien),maloai,ngay);
-                if(thuChiDAO.addKhoanThuChi(khoanThuChi)){
-                    Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-                    getData();
-                }else{
-                    Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                if (tien.length() == 0) {
+                    Toast.makeText(getContext(), "Tiền không được để trống", Toast.LENGTH_SHORT).show();
+                } else {
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    String ngay = sdf.format(new Date());
+                    HashMap<String, Object> selected = (HashMap<String, Object>) spnLoaiThu.getSelectedItem();
+                    int maloai = (int) selected.get("maloai");
+                    KhoanThuChi khoanThuChi = new KhoanThuChi(Integer.parseInt(tien), maloai, ngay);
+                    if (thuChiDAO.addKhoanThuChi(khoanThuChi)) {
+                        Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        getData();
+                    } else {
+                        Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
-        builder.setNegativeButton("hủy", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 

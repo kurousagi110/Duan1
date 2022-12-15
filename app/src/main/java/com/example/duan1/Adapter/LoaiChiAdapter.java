@@ -98,12 +98,16 @@ public class LoaiChiAdapter extends BaseAdapter {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 String tenloai = edtInput.getText().toString();
-                loai.setTenLoai(tenloai);
-                if(thuChiDAO.updateLoaiThuChi(loai)){
-                    Toast.makeText(context, "cap nhat thnah cong", Toast.LENGTH_SHORT).show();
-                    reLoadData();
-                }else{
-                    Toast.makeText(context, "Thát bai", Toast.LENGTH_SHORT).show();
+                if (tenloai.length() == 0) {
+                    Toast.makeText(context, "Tên loại không được để trống", Toast.LENGTH_SHORT).show();
+                } else {
+                    loai.setTenLoai(tenloai);
+                    if (thuChiDAO.updateLoaiThuChi(loai)) {
+                        Toast.makeText(context, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+                        reLoadData();
+                    } else {
+                        Toast.makeText(context, "Cập nhật thát bai", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

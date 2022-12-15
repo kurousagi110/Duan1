@@ -9,7 +9,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Them Loai Thu"
+        android:text="Thêm Loại Thu"
+        android:textStyle="bold"
         android:textColor="#D500F9"
         android:textSize="40dp"/>
 
@@ -17,7 +18,7 @@
         android:id="@+id/edtInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhap ten loai thu"
+        android:hint="Nhập tên loại thu"
         android:textSize="19sp"/>
 
 

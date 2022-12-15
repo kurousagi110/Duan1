@@ -91,10 +91,10 @@ public class KhoanKeHoachAdapter extends BaseAdapter {
             public void onClick(View v) {
                 int makhoan = list.get(i).getMaKhoan();
                 if(thuChiDAO.deleteKhoanThuChi(makhoan)){
-                    Toast.makeText(context, "xoa thanh cong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Xoá thành công", Toast.LENGTH_SHORT).show();
                     reLoadData();
                 }else{
-                    Toast.makeText(context, "xoa that bai", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Xoá thất bại", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -130,16 +130,20 @@ public class KhoanKeHoachAdapter extends BaseAdapter {
         builder.setPositiveButton("Cập nhật", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String tien =edtTienKeHoach.getText().toString();
-                HashMap<String,Object> selected = (HashMap<String, Object>) spnLoaiKeHoach.getSelectedItem();
-                int maloai = (int) selected.get("maloai");
-                khoanThuChi.setTien(Integer.parseInt(tien));
-                khoanThuChi.setMaLoai(maloai);
-                if(thuChiDAO.updateKhoanThuChi(khoanThuChi)){
-                    Toast.makeText(context, "cap nhat thanh cong", Toast.LENGTH_SHORT).show();
-                    reLoadData();
-                }else{
-                    Toast.makeText(context, "That bai", Toast.LENGTH_SHORT).show();
+                String tien = edtTienKeHoach.getText().toString();
+                if (tien.length() == 0) {
+                    Toast.makeText(context, "Tiền không được để trống", Toast.LENGTH_SHORT).show();
+                } else {
+                    HashMap<String, Object> selected = (HashMap<String, Object>) spnLoaiKeHoach.getSelectedItem();
+                    int maloai = (int) selected.get("maloai");
+                    khoanThuChi.setTien(Integer.parseInt(tien));
+                    khoanThuChi.setMaLoai(maloai);
+                    if (thuChiDAO.updateKhoanThuChi(khoanThuChi)) {
+                        Toast.makeText(context, "cap nhat thanh cong", Toast.LENGTH_SHORT).show();
+                        reLoadData();
+                    } else {
+                        Toast.makeText(context, "That bai", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

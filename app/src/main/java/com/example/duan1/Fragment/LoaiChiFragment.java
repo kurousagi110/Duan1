@@ -67,21 +67,25 @@ public class LoaiChiFragment extends Fragment {
         EditText edtInput = view.findViewById(R.id.edtInput);
         builder.setView(view);
 
-        builder.setPositiveButton("Them", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Thêm", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
                 String tenloai = edtInput.getText().toString();
-                Loai loaiThem = new Loai(tenloai,"chi");
-                if(thuChiDAO.addLoaiThuChi(loaiThem)){
-                    Toast.makeText(getContext(), "Theem thnah cong", Toast.LENGTH_SHORT).show();
-                    loadData();
-                }else {
-                    Toast.makeText(getContext(), "Them khong thanh cong", Toast.LENGTH_SHORT).show();
+                if (tenloai.length() == 0) {
+                    Toast.makeText(getContext(), "Tên loại không được để trống", Toast.LENGTH_SHORT).show();
+                } else {
+                    Loai loaiThem = new Loai(tenloai, "chi");
+                    if (thuChiDAO.addLoaiThuChi(loaiThem)) {
+                        Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        loadData();
+                    } else {
+                        Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
-        builder.setNegativeButton("huy", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
